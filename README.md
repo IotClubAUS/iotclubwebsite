@@ -1,165 +1,205 @@
-# IoT Club AUS Website
+📘 Club Website — Full Technical & UI/UX Architecture
 
-Official website for the IoT Club at the American University of Sharjah (AUS).
+A modern, high-performance club website built with Next.js App Router, using a server-first architecture and a hybrid UI system combining Preline UI, shadcn/ui, and Motion (motion.dev).
 
-This website was created to showcase the club, share upcoming events, highlight projects, and provide students with an easy way to learn more about the Internet of Things and the club’s activities.
+This project is designed for performance, scalability, and clean separation of concerns using an “island architecture” model.
 
----
+⚙️ Tech Stack Overview
+Core Stack
+Next.js (App Router) → Server-first React framework
+TypeScript → Type safety
+Tailwind CSS → Utility-first styling
+Preline UI → Layout + page structure (static UI system)
+shadcn/ui → Interactive components (client-side islands)
+Motion (motion.dev) → Animations
+UI Layering System
+Layer	Tool	Purpose
+Structure	Preline UI + Tailwind	Layout, grids, sections
+Interaction	shadcn/ui	Forms, calendar, menus, popovers
+Animation	Motion	Transitions + scroll effects
+🧠 Architecture Model
+Island Architecture (Core Concept)
 
-## Features
+The site is mostly server-rendered HTML, with small interactive “islands”.
 
-* Modern and responsive design
-* Homepage with club introduction
-* Events and workshops section
-* Projects showcase
-* Team or committee member section
-* Contact form / social links
-* Mobile-friendly layout
-* Fast performance using modern web technologies
+Page (Server Component)
+ ├── Static Layout (Preline UI)
+ ├── Content Sections (Server)
+ ├── Interactive Islands (Client)
+ │     ├── Calendar
+ │     ├── Carousel
+ │     ├── Forms
+ │     ├── Navbar dropdowns
+ │     └── Mobile menu
+ └── Motion Animations (Client wrappers)
+Key Rule:
 
----
+Everything is server-side by default. Only interactive components use "use client".
 
-## Tech Stack
+📄 Pages Structure
+app/
+├── page.tsx              # Home
+├── events/
+│   └── page.tsx
+├── newsletter/
+│   └── page.tsx
+├── team/
+│   └── page.tsx
+├── about/
+│   └── page.tsx
+└── contact/
+    └── page.tsx
+🧩 Component Architecture
+UI Components (shadcn)
 
-This project was built using:
+Used for interactivity only:
 
-* Next.js
-* React
-* TypeScript / JavaScript
-* Tailwind CSS
-* Node.js
+Calendar
+Carousel
+Popover
+Sheet (mobile menu)
+Navigation Menu
+Input / Textarea / Button
+Sonner (toasts)
+Layout Components (Preline UI)
 
----
+Used for static structure:
 
-## Getting Started
+Navbar shell
+Footer
+Grid sections
+Hero layouts
+Cards
+Timeline
+Stats blocks
+Feature Components
+Home
+Hero Section
+Stats Bar
+Featured Events
+Sponsor Cloud
+Newsletter Preview
+Events
+Calendar (interactive)
+Timeline
+Event Cards
+Filters
+Newsletter
+Carousel (issues)
+Archive grid
+Team
+Leadership section
+Department grids
+Member cards
+Contact
+Contact form (client)
+Info panel
+🎨 UI/UX DESIGN SYSTEM
+Design Principles
+Clean engineering-style layout
+Content-first design
+Minimal motion, purposeful animation
+Grid-based structure
+Accessibility-first UI
+Visual Style
+Dark-neutral base theme
+Accent color (cyan / green / electric tone)
+12-column grid system
+Large spacing system (Tailwind scale)
+Typography
+Headings: Inter / Space Grotesk
+Body: Inter
+🚀 Performance Strategy
+Server vs Client Split
+Server (fast, no JS)
+Pages
+Layout sections
+Cards
+Grids
+Static content
+Client (interactive islands)
+Calendar
+Carousel
+Forms
+Navbar interactions
+Animations
+Optimization Rules
+Dynamic import heavy components
+Lazy load below-fold images
+Use next/image for all images
+Enable ISR for event content (optional)
+📁 Project Structure
+app/
+components/
+  ├── ui/                 # shadcn components
+  ├── layout/            # navbar, footer
+  ├── features/          # page sections
+  ├── animations/        # motion wrappers
 
-### 1. Clone the Repository
+lib/                     # data + helpers
+hooks/                   # reusable client logic
+types/                   # TypeScript types
+config/                  # site config + nav
+styles/                  # global styles
+public/                  # images + assets
+🧭 Navigation Structure
+Home
+Events
+Newsletter
+Team
+About
+Contact
 
-```bash
-git clone https://github.com/your-username/iot-club-aus-website.git
-cd iot-club-aus-website
-```
+Mobile uses a sheet drawer menu, desktop uses navigation menu dropdowns.
 
-### 2. Install Dependencies
+📊 Key UX Flow
+New User Journey
 
-```bash
-npm install
-```
+Home → Events → Newsletter → Team
 
-### 3. Run the Development Server
+Member Journey
 
-```bash
-npm run dev
-```
+Home → Events → Calendar → Signup
 
-Then open:
+Recruit Journey
 
-```text
-http://localhost:3000
-```
+About → Team → Contact
 
----
+⚡ Key Features
+Server-first rendering (fast load)
+Island-based interactivity
+Fully responsive design
+Accessible components (Radix/shadcn)
+Dynamic event system
+Newsletter archive system
+Motion-based micro-interactions
+📦 Deployment
+Requires Node.js environment
+Recommended: Vercel
+Not compatible with static hosting (GitHub Pages)
+🧪 Future (v2 Scope)
+Event database (Supabase)
+Admin dashboard
+Email system (Resend / Loops)
+RSVP system
+Member authentication
+CMS for newsletters
+🧠 Summary
 
-## Available Scripts
+This project follows a strict modern architecture:
 
-```bash
-npm run dev
-```
+Next.js Server Components + Preline layout system + shadcn interactive islands + Motion animations + Tailwind styling
 
-Starts the development server.
+It prioritizes:
 
-```bash
-npm run build
-```
+Performance
+Clean architecture
+Maintainability
+Scalability
+UX clarity
 
-Creates an optimized production build.
+If you want, I can next:
 
-```bash
-npm run start
-```
-
-Runs the production version of the website.
-
-```bash
-npm run lint
-```
-
-Checks the project for code issues.
-
----
-
-## Project Structure
-
-```text
-src/
-├── app/              # Pages and routing
-├── components/       # Reusable UI components
-├── data/             # Club events, projects, and content
-├── public/           # Images and static files
-├── styles/           # Global styling
-```
-
----
-
-## Goals of the Website
-
-The purpose of this website is to:
-
-* Promote the IoT Club at AUS
-* Help students discover club activities
-* Share upcoming events and announcements
-* Showcase projects made by members
-* Encourage more students to join and learn about IoT
-
----
-
-## Future Improvements
-
-Possible future additions include:
-
-* Member login system
-* Event registration
-* Blog or newsletter section
-* Gallery of workshops and competitions
-* Admin dashboard for updating content
-
----
-
-## Contributing
-
-Contributions are welcome.
-
-1. Fork the repository
-2. Create a new branch:
-
-```bash
-git checkout -b feature/your-feature-name
-```
-
-3. Commit your changes:
-
-```bash
-git commit -m "Add your message"
-```
-
-4. Push to the branch:
-
-```bash
-git push origin feature/your-feature-name
-```
-
-5. Open a pull request
-
----
-
-## License
-
-This project is intended for educational and club use.
-
-You may modify and reuse it with proper credit.
-
----
-
-## Contact
-
-For questions or suggestions, contact the IoT Club AUS team through the website or the club’s official social media pages.
+convert this into a GitHub-ready README.md file
+or generate your actual repo boilerplate (fully coded starter)
+or build the Home page + Navbar fully implemented in code
