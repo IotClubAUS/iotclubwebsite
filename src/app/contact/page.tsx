@@ -94,7 +94,7 @@ export function JoinPage() {
               Membership Fee
             </p>
             <p style={{ fontSize: "2rem", fontFamily: "'Space Mono', monospace", fontWeight: 700, color: "#e8edf2" }}>
-              $15 / semester
+              $0 / semester
             </p>
             <p className="mt-2" style={{ fontSize: "0.825rem", color: "#6b7a8d" }}>
               Covers lab materials, snacks at meetings, and the club's hardware fund. No fee in your first semester.
