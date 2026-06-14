@@ -88,7 +88,7 @@ export function Footer({ onNavigate }: FooterProps) {
           </p>
           <p style={{ fontSize: "0.825rem", color: "#6b7a8d", lineHeight: 1.7 }}>
             Meetings every <strong style={{ color: "#e8edf2" }}>Wednesday at 6 pm</strong><br />
-            Engineering Building, Room 214<br />
+            Engineering Building, Room 0037<br />
             <a
               href="mailto:hello@iotclub.edu"
               style={{ color: "#6b7a8d" }}
@@ -96,7 +96,7 @@ export function Footer({ onNavigate }: FooterProps) {
               onMouseLeave={(e) => (e.currentTarget.style.color = "#6b7a8d")}
               className="transition-colors"
             >
-              hello@iotclub.edu
+              iotclub@aus.edu  
             </a>
           </p>
         </div>

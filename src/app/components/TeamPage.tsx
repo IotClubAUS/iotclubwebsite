@@ -7,7 +7,7 @@ const team = [
     role: "President",
     bio: "Embedded systems nerd. Final-year EE student. Runs the firmware track and organizes the annual IoT showcase.",
     skills: ["ESP32", "FreeRTOS", "Rust"],
-    img: "https://images.unsplash.com/photo-1581091226205-b28ac533a45f?w=400&h=400&fit=crop&auto=format",
+    img:" ",
     github: "#",
     linkedin: "#",
   },
@@ -17,7 +17,7 @@ const team = [
     role: "Vice-president",
     bio: "Full-stack engineer focused on the cloud side of IoT — dashboards, APIs, and the pipelines that connect devices to data.",
     skills: ["Node-RED", "InfluxDB", "Grafana"],
-    img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=400&h=400&fit=crop&auto=format",
+    img:" ",
     github: "#",
     twitter: "#",
   },
@@ -27,7 +27,7 @@ const team = [
     role: "Head of Activities",
     bio: "Designs and runs our workshop program. Believes anyone can learn hardware if the docs are good enough.",
     skills: ["Arduino", "Python", "MQTT"],
-    img: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=400&h=400&fit=crop&auto=format",
+    img:" ",
     github: "#",
     linkedin: "#",
   },
@@ -37,27 +37,27 @@ const team = [
     role: "Head of Technical",
     bio: "Designs PCBs for fun. Obsessed with low-power design and LoRa long-range networks. Has bricked more boards than most people have seen.",
     skills: ["KiCad", "LoRa", "STM32"],
-    img: "https://images.unsplash.com/photo-1580982338369-650de7dfdc07?w=400&h=400&fit=crop&auto=format",
+    img:" ",
     github: "#",
     linkedin: "#",
   },
   {
     id: 5,
-    name: "Saachi ",
-    role: "PR lead",
-    bio: "Connects the dots between sensors and the cloud. Builds the dashboards that make IoT data actually useful for end users.",
+    name: "Aseil  ",
+    role: "Treasurer ",
+    bio: "Money",
     skills: ["React", "AWS IoT", "TimescaleDB"],
-    img: "https://images.unsplash.com/photo-1581091212911-f4efc3f71c48?w=400&h=400&fit=crop&auto=format",
+    img:" ",
     github: "#",
     twitter: "#",
   },
   {
     id: 6,
-    name: " ",
-    role: "Community Manager",
+    name: "Saachi ",
+    role: " PR Lead",
     bio: "Keeps the Discord alive, organizes socials, and makes sure every new member feels welcome from day one.",
     skills: ["Community", "Events", "Communications"],
-    img: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=400&h=400&fit=crop&auto=format",
+    img:" ",
     github: "#",
     linkedin: "#",
   },
@@ -68,9 +68,9 @@ const advisors = [
     id: 1,
     name: "Prof. Dr. Anastasia",
     role: "Faculty Advisor",
-    dept: "Dept. of COmputer Science and Engineering",
+    dept: "Dept. of Computer Science and Engineering",
     note: "Specialist in IoT",
-    img: "https://images.unsplash.com/photo-1581091226205-b28ac533a45f?w=300&h=300&fit=crop&auto=format",
+    img:" ",
   },
 ];
 
@@ -100,7 +100,7 @@ export function TeamPage() {
             Meet the Team
           </h1>
           <p className="mt-4 max-w-xl" style={{ color: "#6b7a8d", lineHeight: 1.7 }}>
-            Six students running the IoT Club — each owning a domain from hardware to community.
+            Eight students running the IoT Club — each owning a domain from hardware to community.
           </p>
         </div>
       </div>

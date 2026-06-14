@@ -33,7 +33,7 @@ const newsItems = [
 ];
 
 const stats = [
-  { value: "120+", label: "Active Members" },
+  { value: "20+", label: "Team Members" },
   { value: "3", label: "Hackathon Wins" },
   { value: "40+", label: "Projects Built" },
   { value: "12", label: "Industry Partners" },
@@ -104,7 +104,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
               className="mb-6 tracking-widest uppercase"
               style={{ fontFamily: "'Space Mono', monospace", fontSize: "11px", color: "#00d4ff" }}
             >
-              — University IoT Club / Est. 2019
+              — AUS IoT Club / Est. 2025
             </p>
             <h1
               className="mb-6 leading-none"
