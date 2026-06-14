@@ -9,7 +9,7 @@ const allNews = [
     title: "IoT Club Launch",
     excerpt:
       "IoT Club successfully launches ",
-    image: " ",
+    image: "/news/iot_banner.webp",
     author: "IoT Admin",
     readTime: "5 min read",
   },
@@ -31,7 +31,7 @@ const allNews = [
     title: "Networks-101 — Recap",
     excerpt:
       "Iot CLub hosted a virtual event entitled 'Networks 101'. This beginner-friendly, high-energy online session introduced students to the 'Internet' side of IoT, moving beyond basic circuitry to explore data routing, network security, and real-world infrastructure. Proving that complex networking concepts can be hands-on, the workshop featured interactive demos and culminated in a live, cloud-hosted CLI chatroom where attendees connected via SSH. The session wrapped up with an engaging, interactive quiz to test everyone's new skills, with top participants taking home vouchers and certificates.",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=500&fit=crop&auto=format",
+    image: "/news/networks_poster.webp",
     author: "IoT Admin",
     readTime: "8 min read",
   },

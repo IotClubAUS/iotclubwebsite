@@ -17,7 +17,7 @@ const team = [
     role: "Vice-president",
     bio: "Full-stack engineer focused on the cloud side of IoT — dashboards, APIs, and the pipelines that connect devices to data.",
     skills: ["Node-RED", "InfluxDB", "Grafana"],
-    img:" ",
+    img:"",
     github: "#",
     twitter: "#",
   },
