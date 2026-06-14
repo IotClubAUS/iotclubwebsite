@@ -70,7 +70,7 @@ const allNews = [
   },*/
 ];
 
-const tags = ["All", "Workshop", "Announcement", "Talk", "Project"];
+const tags = ["All","Announcement", "Workshop", "Event", "Talk", "Project"];
 
 const tagColors: Record<string, string> = {
   Workshop: "#00d4ff",
