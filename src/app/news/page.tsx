@@ -8,7 +8,7 @@ const allNews = [
     tag: "Announcement",
     title: "IoT Club Launch",
     excerpt: "IoT Club successfully launches ",
-    image: "/public/news/iot_banner.webp",
+    image: "public/news/iot_banner.webp",
     author: "IoT Admin",
     readTime: "5 min read",
   },
@@ -30,7 +30,7 @@ const allNews = [
     title: "Networks-101 — Recap",
     excerpt:
       "IoT Club hosted 'Networks 101', introducing networking, routing, and infrastructure concepts with hands-on demos.",
-    image: "/public/news/networks_poster.webp",
+    image: "public/news/networks_poster.webp",
     author: "IoT Admin",
     readTime: "8 min read",
   },
