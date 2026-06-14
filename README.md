@@ -62,7 +62,7 @@ PAGE (Server Component)
 │
 ├── news/
 │   ├── page.tsx           # Newsletter index
-│   └── [issue]/page.tsx   # Issue archive viewer
+│   └── [id]/page.tsx   # Issue archive viewer
 ├── team/
 │   └── page.tsx           # Leadership & department rosters
 ├── about/
