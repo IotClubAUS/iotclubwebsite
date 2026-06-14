@@ -4,49 +4,49 @@ import { Tag } from "lucide-react";
 const allNews = [
   {
     id: 1,
-    date: "2026-06-10",
-    tag: "Workshop",
-    title: "Hands-On MQTT Protocol Workshop — Recap",
+    date: "2026-01-12",
+    tag: "Announcement",
+    title: "IoT Club Launch",
     excerpt:
-      "Over 40 members joined our deep-dive into MQTT, building real-time sensor dashboards from scratch using Raspberry Pi and Node-RED. Full writeup and materials now available in our members portal.",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&h=500&fit=crop&auto=format",
-    author: "Priya Mehra",
+      "IoT Club successfully launches ",
+    image: " ",
+    author: "IoT Admin",
     readTime: "5 min read",
   },
   {
     id: 2,
-    date: "2026-06-03",
-    tag: "Announcement",
-    title: "IoT Club Wins Regional Hackathon 2026",
+    date: "2026-04-01",
+    tag: "Workshop",
+    title: "Arduino-101 — Recap",
     excerpt:
-      'Team "Pulse" took first place at HackWave 2026 with their smart-campus occupancy system — reducing energy use by 34% in a simulated building environment. Congratulations to Marcus, Leila, and Jonas!',
+      "We have Successfully hosted our inaugural event entitled, 'The Arduino-101 Workshop'. This beginner-friendly virtual session introduced students to the fundamentals of hardware and microcontroller programming, proving that no prior experience is needed to dive into tech. All attendees received an official certificate of participation and the session wrapped up with an engaging, interactive quiz to test everyone's new skills.",
     image: "https://images.unsplash.com/photo-1562408590-e32931084e23?w=800&h=500&fit=crop&auto=format",
-    author: "Marcus Lee",
+    author: "IoT Admin",
     readTime: "3 min read",
   },
   {
     id: 3,
-    date: "2026-05-28",
-    tag: "Talk",
-    title: "Guest Lecture: Edge AI on Microcontrollers",
+    date: "2026-04-14",
+    tag: "Workshop",
+    title: "Networks-101 — Recap",
     excerpt:
-      "Dr. Noa Reinholt from MIT Media Lab joined us to discuss running TinyML models on Arduino Nano BLE. The session covered model quantization, inference latency trade-offs, and practical deployment patterns.",
+      "Iot CLub hosted a virtual event entitled 'Networks 101'. This beginner-friendly, high-energy online session introduced students to the 'Internet' side of IoT, moving beyond basic circuitry to explore data routing, network security, and real-world infrastructure. Proving that complex networking concepts can be hands-on, the workshop featured interactive demos and culminated in a live, cloud-hosted CLI chatroom where attendees connected via SSH. The session wrapped up with an engaging, interactive quiz to test everyone's new skills, with top participants taking home vouchers and certificates.",
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=500&fit=crop&auto=format",
-    author: "Noa Reinholt (Guest)",
+    author: "IoT Admin",
     readTime: "8 min read",
   },
   {
     id: 4,
     date: "2026-05-15",
-    tag: "Project",
-    title: "Smart Plant Monitor: Season 2",
+    tag: "Event",
+    title: "IoT Club WoW event",
     excerpt:
       "Our greenhouse automation team upgraded the plant monitoring system with LoRa long-range sensors and a new React dashboard. Now tracking 18 variables across 3 campus greenhouse zones.",
     image: "https://images.unsplash.com/photo-1562408590-e32931084e23?w=800&h=500&fit=crop&auto=format",
-    author: "Sam Torres",
+    author: "IoT Admin",
     readTime: "4 min read",
   },
-  {
+  /*{
     id: 5,
     date: "2026-05-02",
     tag: "Workshop",
@@ -67,7 +67,7 @@ const allNews = [
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=500&fit=crop&auto=format",
     author: "Club Committee",
     readTime: "2 min read",
-  },
+  },*/
 ];
 
 const tags = ["All", "Workshop", "Announcement", "Talk", "Project"];
@@ -77,6 +77,7 @@ const tagColors: Record<string, string> = {
   Announcement: "#f59e0b",
   Talk: "#a78bfa",
   Project: "#34d399",
+  Event: "#f472b6",
 };
 
 export function NewsPage() {
