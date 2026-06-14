@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Navbar } from "./components/Navbar";
-import { HomePage } from "./components/HomePage";
-import { NewsPage } from "./components/NewsPage";
-import { TeamPage } from "./components/TeamPage";
-import { JoinPage } from "./components/JoinPage";
+import { HomePage } from "@/app/home/page";
+import { NewsPage } from "@/app/news/page";
+import { TeamPage } from "@/app/team/page";
+import { JoinPage } from "@/app/join/page";
 import { Footer } from "./components/Footer";
 
 {/* MARKER-MAKE-KIT-INVOKED */}
