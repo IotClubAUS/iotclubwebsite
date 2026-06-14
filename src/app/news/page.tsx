@@ -8,7 +8,7 @@ const allNews = [
     tag: "Announcement",
     title: "IoT Club Launch",
     excerpt: "IoT Club successfully launches ",
-    image: "/news/iot_banner.webp",
+    image: "/public/news/iot_banner.webp",
     author: "IoT Admin",
     readTime: "5 min read",
   },
@@ -19,8 +19,7 @@ const allNews = [
     title: "Arduino-101 — Recap",
     excerpt:
       "We have Successfully hosted our inaugural event entitled, 'The Arduino-101 Workshop'. This beginner-friendly virtual session introduced students to the fundamentals of hardware and microcontroller programming.",
-    image:
-      "https://images.unsplash.com/photo-1562408590-e32931084e23?w=800&h=500&fit=crop&auto=format",
+    image: " ",
     author: "IoT Admin",
     readTime: "3 min read",
   },
@@ -31,7 +30,7 @@ const allNews = [
     title: "Networks-101 — Recap",
     excerpt:
       "IoT Club hosted 'Networks 101', introducing networking, routing, and infrastructure concepts with hands-on demos.",
-    image: "/news/networks_poster.webp",
+    image: "/public/news/networks_poster.webp",
     author: "IoT Admin",
     readTime: "8 min read",
   },
