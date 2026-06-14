@@ -58,10 +58,9 @@ PAGE (Server Component)
  app/
 ├── layout.tsx             # Root layout with global context & fonts
 ├── page.tsx               # Homepage
-├── events/
-│   ├── page.tsx           # Interactive events directory
-│   └── [slug]/page.tsx    # Individual event dynamic details
-├── newsletter/
+├── App.tsx               # smooth transition between pages
+│
+├── news/
 │   ├── page.tsx           # Newsletter index
 │   └── [issue]/page.tsx   # Issue archive viewer
 ├── team/
