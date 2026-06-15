@@ -1,4 +1,4 @@
-import { Wifi, Github, Twitter, Mail } from "lucide-react";
+import { Wifi, Github, Linkedin, Mail, Instagram } from "lucide-react";
 
 interface FooterProps {
   onNavigate: (page: string) => void;
@@ -32,20 +32,53 @@ export function Footer({ onNavigate }: FooterProps) {
           <p style={{ fontSize: "0.825rem", color: "#6b7a8d", lineHeight: 1.7, maxWidth: "240px" }}>
             A student community building connected devices, one sensor at a time.
           </p>
-          <div className="flex gap-4 mt-5">
-            {[Github, Twitter, Mail].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                style={{ color: "#6b7a8d" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#00d4ff")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#6b7a8d")}
-                className="transition-colors"
-              >
-                <Icon size={15} />
-              </a>
-            ))}
-          </div>
+         <div className="flex gap-4 mt-5">
+  <a
+    href="mailto:iotclub@aus.edu"
+    style={{ color: "#6b7a8d" }}
+    onMouseEnter={(e) => (e.currentTarget.style.color = "#00d4ff")}
+    onMouseLeave={(e) => (e.currentTarget.style.color = "#6b7a8d")}
+    className="transition-colors duration-200"
+  >
+    <Mail size={15} />
+  </a>
+
+  <a
+    href="https://instagram.com/aus_iot"
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{ color: "#6b7a8d" }}
+    onMouseEnter={(e) => (e.currentTarget.style.color = "#00d4ff")}
+    onMouseLeave={(e) => (e.currentTarget.style.color = "#6b7a8d")}
+    className="transition-colors duration-200"
+  >
+    <Instagram size={15} />
+  </a>
+
+  <a
+    href="https://www.linkedin.com/company/aus-iot"
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{ color: "#6b7a8d" }}
+    onMouseEnter={(e) => (e.currentTarget.style.color = "#00d4ff")}
+    onMouseLeave={(e) => (e.currentTarget.style.color = "#6b7a8d")}
+    className="transition-colors duration-200"
+  >
+    <Linkedin size={15} />
+  </a>
+
+  <a
+    href="https://github.com/IotClubAUS"
+    target="_blank"
+    rel="noopener noreferrer"
+    style={{ color: "#6b7a8d" }}
+    onMouseEnter={(e) => (e.currentTarget.style.color = "#00d4ff")}
+    onMouseLeave={(e) => (e.currentTarget.style.color = "#6b7a8d")}
+    className="transition-colors duration-200"
+  >
+    <Github size={15} />
+  </a>
+</div>
         </div>
 
         {/* Navigation */}

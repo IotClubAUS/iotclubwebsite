@@ -6,30 +6,35 @@ const HERO_IMG = "https://images.unsplash.com/photo-1518770660439-4636190af475?w
 const newsItems = [
   {
     id: 1,
-    date: "2026-06-10",
-    tag: "Workshop",
-    title: "Hands-On MQTT Protocol Workshop — Recap",
-    excerpt:
-      "Over 40 members joined our deep-dive into MQTT, building real-time sensor dashboards from scratch using Raspberry Pi and Node-RED. Full writeup and materials now available.",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop&auto=format",
+    date: "2026-01-12",
+    tag: "Announcement",
+    title: "IoT Club Launch",
+    excerpt: "IoT Club successfully launches ",
+    image: "/news/iot_banner.webp",
+    author: "IoT Admin",
+    readTime: "5 min read",
   },
   {
     id: 2,
-    date: "2026-06-03",
-    tag: "Announcement",
-    title: "IoT Club Wins Regional Hackathon 2026",
+    date: "2026-04-01",
+    tag: "Workshop",
+    title: "Arduino-101 — Recap",
     excerpt:
-      'Team "Pulse" took first place at HackWave 2026 with their smart-campus occupancy system — reducing energy use by 34% in a simulated building environment.',
-    image: "https://images.unsplash.com/photo-1562408590-e32931084e23?w=600&h=400&fit=crop&auto=format",
+      "We have Successfully hosted our inaugural event entitled, 'The Arduino-101 Workshop'. This beginner-friendly virtual session introduced students to the fundamentals of hardware and microcontroller programming.",
+    image: " ",
+    author: "IoT Admin",
+    readTime: "3 min read",
   },
   {
     id: 3,
-    date: "2026-05-28",
-    tag: "Talk",
-    title: "Guest Lecture: Edge AI on Microcontrollers",
+    date: "2026-04-14",
+    tag: "Workshop",
+    title: "Networks-101 — Recap",
     excerpt:
-      "Dr. Noa Reinholt from MIT Media Lab joined us to discuss running TinyML models on Arduino Nano BLE. Slides and recording linked inside.",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop&auto=format",
+      "IoT Club hosted 'Networks 101', introducing networking, routing, and infrastructure concepts with hands-on demos.",
+    image: "/news/networks_poster.webp",
+    author: "IoT Admin",
+    readTime: "8 min read",
   },
 ];
 
