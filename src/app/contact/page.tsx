@@ -1,6 +1,7 @@
+"use client";
 
-import { useState } from "react";
 import { CheckCircle, Terminal, Users, Wrench } from "lucide-react";
+import { ChangeEvent, FormEvent, useState } from "react";
 
 const perks = [
   { icon: Terminal, title: "Access to Club Hardware Lab", desc: "Oscilloscopes, soldering stations, 3D printers, a full shelf of dev boards." },
@@ -9,15 +10,19 @@ const perks = [
   { icon: CheckCircle, title: "GitHub Org & Discord Access", desc: "Collaborate on projects, see what's being built, jump in anywhere." },
 ];
 
-export function JoinPage() {
+export default function JoinPage() {
   const [form, setForm] = useState({ name: "", email: "", major: "", experience: "", motivation: "" });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+ 
+
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
   };

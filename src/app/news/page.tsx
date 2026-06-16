@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { Tag } from "lucide-react";
 import { allNews } from "@/lib/news";
@@ -14,7 +16,7 @@ const tagColors: Record<string, string> = {
   Event: "#f472b6",
 };
 
-export function NewsPage() {
+export default function NewsPage() {
   const [activeTag, setActiveTag] = useState("All");
 
   const filtered =

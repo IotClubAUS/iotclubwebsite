@@ -1,11 +1,23 @@
-import type { NextConfig } from 'next'
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "export",
+
+  basePath: "/iotclubwebsite",
+  assetPrefix: "/iotclubwebsite/",
+
   images: {
+    unoptimized: true,
     remotePatterns: [
-      { protocol: 'https', hostname: 'images.unsplash.com' },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
     ],
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;
+
+
+// delete file when we stop using git files and importing images   -A.S

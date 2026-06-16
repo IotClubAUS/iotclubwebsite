@@ -5,7 +5,7 @@ import { Github, Linkedin, Twitter } from "lucide-react";
 import { team, advisors, roles } from "@/lib/team";
 
 
-export function TeamPage() {
+export default function TeamPage() {
   const [activeRole, setActiveRole] = useState("All");
 
     const filteredTeam =
@@ -44,7 +44,7 @@ export function TeamPage() {
             Eight students running the IoT Club — each owning a domain from hardware to community.
           </p>
         </div>
-      </div>
+     
 
       <div className="max-w-6xl mx-auto px-6 py-16">
 
@@ -279,5 +279,6 @@ export function TeamPage() {
         </div>
       </div>
     </div>
+     </div>
   );
 }
