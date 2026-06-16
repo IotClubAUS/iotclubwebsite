@@ -47,6 +47,7 @@ export default function TeamPage() {
      
 
       <div className="max-w-6xl mx-auto px-6 py-16">
+    </div>
 
         {/* ROLE FILTERS */}
 <div className="flex flex-wrap gap-2 mb-10">
@@ -279,6 +280,5 @@ export default function TeamPage() {
         </div>
       </div>
     </div>
-     </div>
   );
 }
