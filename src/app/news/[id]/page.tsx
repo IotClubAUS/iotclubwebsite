@@ -1,7 +1,9 @@
+export async function generateStaticParams() {
+  return [
+    { id: "placeholder" },
+  ];
+}
+
 export default function NewsDetailPage() {
-  return (
-    <main>
-      <h1>News WIP</h1>
-    </main>
-  );
+  return null;
 }
