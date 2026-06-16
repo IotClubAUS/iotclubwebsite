@@ -4,7 +4,7 @@ export const roles = [
   "Executive",
   "Activities",
   "Technical",
-  "Personal Relations",
+  "Public Relations",
   "Media",
 ];
 
@@ -92,7 +92,7 @@ export const team = [
 
 
   
-            /* PERSONAL RELATIONS */
+            /* PUBLIC RELATIONS */
   {
     id: 7,
     name: "Saachi Motwani",
