@@ -1,0 +1,46 @@
+export const allNews = [
+  {
+    id: 1,
+    date: "2026-01-12",
+    tag: "Announcement",
+    title: "IoT Club Launch",
+    excerpt: "IoT Club successfully launches ",
+    image: "/news/iot_banner.webp",
+    author: "IoT Admin",
+    readTime: "5 min read",
+  },
+  {
+    id: 2,
+    date: "2026-04-01",
+    tag: "Workshop",
+    title: "Arduino-101 — Recap",
+    excerpt:
+      "We have Successfully hosted our inaugural event entitled, 'The Arduino-101 Workshop'. This beginner-friendly virtual session introduced students to the fundamentals of hardware and microcontroller programming.",
+    image: " ",
+    author: "IoT Admin",
+    readTime: "3 min read",
+  },
+  {
+    id: 3,
+    date: "2026-04-14",
+    tag: "Workshop",
+    title: "Networks-101 — Recap",
+    excerpt:
+      "IoT Club hosted 'Networks 101', introducing networking, routing, and infrastructure concepts with hands-on demos.",
+    image: "/news/networks_poster.webp",
+    author: "IoT Admin",
+    readTime: "8 min read",
+  },
+  {
+    id: 4,
+    date: "2026-05-15",
+    tag: "Event",
+    title: "IoT Club WoW event",
+    excerpt:
+      "Upgraded greenhouse monitoring system with LoRa sensors and React dashboard across 3 zones.",
+    image:
+      "https://images.unsplash.com/photo-1562408590-e32931084e23?w=800&h=500&fit=crop&auto=format",
+    author: "IoT Admin",
+    readTime: "4 min read",
+  },
+];
