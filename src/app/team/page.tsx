@@ -1,100 +1,21 @@
+"use client";
+
+import { useState } from "react";
 import { Github, Linkedin, Twitter } from "lucide-react";
+import { team, advisors, roles } from "@/lib/team";
 
-const team = [
-  {
-    id: 1,
-    name: "Adam Serhan",
-    role: "President",
-    bio: "Embedded systems nerd. Final-year EE student. Runs the firmware track and organizes the annual IoT showcase.",
-    skills: ["ESP32", "FreeRTOS", "Rust"],
-    img:" ",
-    github: "#",
-    linkedin: "#",
-  },
-  {
-    id: 2,
-    name: "Ali Elatly",
-    role: "Vice-President",
-    bio: "Full-stack engineer focused on the cloud side of IoT — dashboards, APIs, and the pipelines that connect devices to data.",
-    skills: ["Node-RED", "InfluxDB", "Grafana"],
-    img:" ",
-    github: "#",
-    twitter: "#",
-  },
-  {
-    id: 3,
-    name: "Aseil AlShazly",
-    role: "Treasurer",
-    bio: "Money, just money.",
-    skills: ["Arduino", "Python", "MQTT"],
-    img:" ",
-    github: "#",
-    linkedin: "#",
-  },
-  {
-    id: 4,
-    name: "Mohammed Arsh",
-    role: "Executive Director",
-    bio: "Designs PCBs for fun. Obsessed with low-power design and LoRa long-range networks. Has bricked more boards than most people have seen.",
-    skills: ["KiCad", "LoRa", "STM32"],
-    img:" ",
-    github: "#",
-    linkedin: "#",
-  },
-  {
-    id: 5,
-    name: "Hashir Hameed",
-    role: "Activities Coordinator",
-    bio: "Designs and runs our workshop program. Believes anyone can learn hardware if the docs are good enough.",
-    skills: ["React", "AWS IoT", "TimescaleDB"],
-    img:" ",
-    github: "#",
-    twitter: "#",
-  },
-  {
-    id: 6,
-    name: "Saachi Motwani",
-    role: "PR Coordinator",
-    bio: "Keeps the Discord alive, organizes socials, and makes sure every new member feels welcome from day one.",
-    skills: ["Community", "Events", "Communications"],
-    img:" ",
-    github: "#",
-    linkedin: "#",
-  },
-  {
-    id: 7,
-    name: "Ahad Ali Suchedina",
-    role: "Media Coordinator",
-    bio: "Keeps the Discord alive, organizes socials, and makes sure every new member feels welcome from day one.",
-    skills: ["Community", "Events", "Communications"],
-    img:" ",
-    github: "#",
-    linkedin: "#",
-  },
-  {
-    id: 8,
-    name: "Adam Farag ",
-    role: "Technical Coordinator",
-    bio: "Keeps the Discord alive, organizes socials, and makes sure every new member feels welcome from day one.",
-    skills: ["Community", "Events", "Communications"],
-    img:" ",
-    github: "#",
-    linkedin: "#",
-  },
-];
-
-const advisors = [
-  {
-    id: 1,
-    name: "Prof. Dr. Anastassia Gharib",
-    role: "Faculty Advisor",
-    dept: "Dept. of Computer Science and Engineering",
-    note: "Specialist in IoT",
-    img:" ",
-  },
-];
 
 export function TeamPage() {
+  const [activeRole, setActiveRole] = useState("All");
+
+    const filteredTeam =
+  activeRole === "All"
+    ? team
+    : team.filter(
+        (member) => member.category === activeRole
+      );
+        
+
   return (
     <div style={{ fontFamily: "'Inter', sans-serif", minHeight: "100vh" }}>
       {/* Header */}
@@ -126,10 +47,65 @@ export function TeamPage() {
       </div>
 
       <div className="max-w-6xl mx-auto px-6 py-16">
+
+        {/* ROLE FILTERS */}
+<div className="flex flex-wrap gap-2 mb-10">
+  {roles.map((role) => {
+    const active = activeRole === role;
+
+    return (
+      <button
+        key={role}
+        onClick={() => setActiveRole(role)}
+        className="px-4 py-1.5 transition-all duration-200"
+        style={{
+          fontFamily: "'Space Mono', monospace",
+          fontSize: "11px",
+          letterSpacing: "0.1em",
+          textTransform: "uppercase",
+          borderRadius: "2px",
+          border: "1px solid",
+          borderColor: active
+            ? "#00d4ff"
+            : "rgba(0,212,255,0.2)",
+          color: active
+            ? "#00d4ff"
+            : "#6b7a8d",
+          background: active
+            ? "rgba(0,212,255,0.08)"
+            : "transparent",
+          boxShadow: active
+            ? "0 0 10px rgba(0,212,255,0.35)"
+            : "none",
+          textShadow: active
+            ? "0 0 8px rgba(0,212,255,0.8)"
+            : "none",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.boxShadow =
+            "0 0 10px rgba(0,212,255,0.45), 0 0 20px rgba(0,212,255,0.2)";
+
+          e.currentTarget.style.textShadow =
+            "0 0 8px rgba(0,212,255,0.8)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.boxShadow = active
+            ? "0 0 10px rgba(0,212,255,0.35)"
+            : "none";
+
+          e.currentTarget.style.textShadow = active
+            ? "0 0 8px rgba(0,212,255,0.8)"
+            : "none";
+        }}
+      >
+        {role}
+      </button>
+    );
+  })}
+</div>
         {/* Core team grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
-          {team.map((member) => (
-            <div
+{filteredTeam.map((member) => (            <div
               key={member.id}
               className="overflow-hidden transition-all duration-200 group"
               style={{
