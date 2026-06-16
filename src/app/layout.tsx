@@ -1,4 +1,4 @@
-import "../styles/index.css";
+import "../styles/global.css";
 import { Providers } from "./providers";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
