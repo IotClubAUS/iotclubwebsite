@@ -176,11 +176,10 @@ fontSize: "clamp(0.75rem, 2vw, 1rem)",
                <div className="flex flex-wrap gap-2 mb-4">
   {member.skills
     .filter((skill) => skill.trim() !== "")
-    .slice(0, 2)
     .map((skill, index) => (
       <span
         key={`${member.id}-${index}`}
-        className="px-2 py-0.5"
+        className={`${index >= 2 ? "hidden md:inline-block" : ""} px-2 py-0.5`}
         style={{
           fontFamily: "'Space Mono', monospace",
           fontSize: "10px",
