@@ -11,8 +11,8 @@ export default function TeamPage() {
     const filteredTeam =
   activeRole === "All"
     ? team
-    : team.filter(
-        (member) => member.category === activeRole
+    : team.filter((member) =>
+        member.category.includes(activeRole)
       );
         
 const BASE_PATH =
