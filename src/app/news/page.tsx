@@ -5,7 +5,12 @@ import { Tag } from "lucide-react";
 import { allNews } from "@/lib/news";
 
 
+const BASE_PATH =
+  process.env.NODE_ENV === "production"
+    ? "/iotclubwebsite"
+    : "";
 
+    
 const tags = ["All", "Announcement", "Workshop", "Event", "Talk", "Project"];
 
 const tagColors: Record<string, string> = {
@@ -133,13 +138,12 @@ export default function NewsPage() {
                 (e.currentTarget.style.borderColor = "rgba(0,212,255,0.12)")
               }
             >
-             <img
-  src={item.image}
+            <img
+  src={`${BASE_PATH}${item.image}`}
   alt={item.title}
   className="w-full h-60 md:h-auto object-cover"
   style={{ opacity: 0.75 }}
 />
-
               <div className="p-8">
                 <span
                   style={{
@@ -192,8 +196,8 @@ export default function NewsPage() {
                   (e.currentTarget.style.borderColor = "rgba(0,212,255,0.12)")
                 }
               >
-                <img
-  src={item.image}
+             <img
+  src={`${BASE_PATH}${item.image}`}
   alt={item.title}
   className="w-full h-40 object-cover"
   style={{ opacity: 0.7 }}
