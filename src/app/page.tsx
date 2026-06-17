@@ -264,8 +264,7 @@ export default function HomePage() {
         style={{background:"#080c10"}}
       >
 
-        <div className="max-w-6xl mx-auto px-6">
-
+<div className="max-w-6xl mx-auto px-6 md:px-0">
 
           <div className="flex justify-between mb-10">
 
@@ -276,17 +275,30 @@ export default function HomePage() {
               }}
             >
               News & Events
-            </h2>
-
-
+            </h2> 
+            
             <button
-              onClick={()=>router.push("/news")}
-              style={{color:"#00d4ff"}}
-            >
-              All News <ChevronRight size={14}/>
-            </button>
-
-          </div>
+  onClick={() => router.push("/news")}
+  className="flex items-center gap-1 transition-all duration-200"
+  style={{
+    color: "#00d4ff",
+    fontFamily: "'Space Mono', monospace",
+    fontSize: "12px",
+    letterSpacing: "0.08em",
+    textTransform: "uppercase",
+  }}
+  onMouseEnter={(e) => {
+    e.currentTarget.style.textShadow =
+      "0 0 8px #00d4ff, 0 0 16px #00d4ff55";
+  }}
+  onMouseLeave={(e) => {
+    e.currentTarget.style.textShadow = "none";
+  }}
+>
+  All News
+  <ChevronRight size={14} />
+</button>
+            </div>
 
 
 
