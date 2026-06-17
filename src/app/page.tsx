@@ -1,5 +1,6 @@
 "use client";
 
+import { allNews } from "@/lib/news";
 import { useRouter } from "next/navigation";
 import {
   ArrowRight,
@@ -11,40 +12,17 @@ import {
 } from "lucide-react";
 
 
-const BASE_PATH = "/iotclubwebsite";
+const BASE_PATH =
+  process.env.NODE_ENV === "production"
+    ? "/iotclubwebsite"
+    : "";
 
+const featuredNewsIds = [4, 3, 1];
 
 const HERO_IMG =
   "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&h=900&fit=crop&auto=format";
 
-const newsItems = [
-  {
-    id: 1,
-    date: "2026-01-12",
-    tag: "Announcement",
-    title: "IoT Club Launch",
-    excerpt: "IoT Club successfully launches.",
-    image: "/news/iot_banner.webp",
-  },
-  {
-    id: 2,
-    date: "2026-04-01",
-    tag: "Workshop",
-    title: "Arduino-101 — Recap",
-    excerpt:
-      "Beginner-friendly session introducing hardware and microcontroller programming.",
-    image: "/news/arduino.webp",
-  },
-  {
-    id: 3,
-    date: "2026-04-14",
-    tag: "Workshop",
-    title: "Networks-101 — Recap",
-    excerpt:
-      "Networking, routing, and infrastructure concepts with hands-on demos.",
-    image: "/news/networks_poster.webp",
-  },
-];
+
 
 const stats = [
   ["20+", "Team Members"],
@@ -312,9 +290,9 @@ export default function HomePage() {
 
           <div className="grid md:grid-cols-3 gap-6">
 
-            {newsItems.map(item=>(
-
-              <article
+{allNews
+  .filter((item) => featuredNewsIds.includes(item.id))
+  .map((item) => (              <article
                 key={item.id}
                 style={{
                   background:"#0e1520",
@@ -323,10 +301,10 @@ export default function HomePage() {
               >
 
                 <img
-                  src={item.image}
-                  className="w-full h-44 object-cover"
-                  alt={item.title}
-                />
+  src={item.image}
+  className="w-full h-44 object-cover"
+  alt={item.title}
+/>
 
 
                 <div className="p-5">
