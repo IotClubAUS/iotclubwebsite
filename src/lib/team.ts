@@ -67,7 +67,7 @@ export const team = [
     category:"Activities",
     bio:"Enjoys designing and building systems that turn ideas into reality. Loves exploring how hardware, software, and creativity come together to create practical solutions.",
     skills: ["Typescript", "Next.js", "C++"],
-    img:"../team/hashir_6",
+    img:"/team/hashir_6.webp",
     github: "https://github.com/hashir-hameed",
     Linkedin: "https://linkedin.com/in/hashirhameed",
   },
