@@ -5,7 +5,12 @@ import { useRouter } from "next/navigation";
 import { Github, Linkedin, Twitter } from "lucide-react";
 import { team, advisors, roles } from "@/lib/team";
 
+const BASE_PATH =
+  process.env.NODE_ENV === "production"
+    ? "/iotclubwebsite"
+    : "";
 
+    
 export default function TeamPage() {
   const router = useRouter();
   const [activeRole, setActiveRole] = useState("All");
@@ -147,7 +152,6 @@ onMouseLeave={(e) => {
 }}
             >
               {/* Photo */}
-{/* Photo */}
 <div
   className="h-56 overflow-hidden bg-slate-900 relative transition-all duration-500"
   style={{
@@ -159,7 +163,7 @@ onMouseLeave={(e) => {
   onClick={() => handleSecretClick(member.id)}
 >
   <img
-    src={member.img}
+    src={`${BASE_PATH}${member.img}`}
     alt={member.name}
     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
     style={{
