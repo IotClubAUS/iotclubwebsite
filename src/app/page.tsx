@@ -17,6 +17,8 @@ const BASE_PATH =
     ? "/iotclubwebsite"
     : "";
 
+    
+
 const featuredNewsIds = [4, 3, 1];
 
 const HERO_IMG =
