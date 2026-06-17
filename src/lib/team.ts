@@ -83,7 +83,7 @@ export const team = [
     category:"Activities",
     bio: " ",
     skills: ["", " ", " "],
-    img:"/team/hashir_6 (1).webp",
+    img:" ",
     
   },
   {
