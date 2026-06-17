@@ -1,10 +1,12 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === "production";
+
 const nextConfig: NextConfig = {
   output: "export",
 
-  basePath: "/iotclubwebsite",
-  assetPrefix: "/iotclubwebsite/",
+  basePath: isProd ? "/iotclubwebsite" : "",
+  assetPrefix: isProd ? "/iotclubwebsite/" : "",
 
   images: {
     unoptimized: true,
@@ -18,6 +20,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-
-
-// delete file when we stop using git files and importing images   -A.S

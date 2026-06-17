@@ -10,6 +10,10 @@ import {
   ChevronRight,
 } from "lucide-react";
 
+
+const BASE_PATH = "/iotclubwebsite";
+
+
 const HERO_IMG =
   "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&h=900&fit=crop&auto=format";
 

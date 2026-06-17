@@ -16,6 +16,11 @@ const tagColors: Record<string, string> = {
   Event: "#f472b6",
 };
 
+const BASE_PATH =
+  process.env.NODE_ENV === "production"
+    ? "/iotclubwebsite"
+    : "";
+    
 export default function NewsPage() {
   const [activeTag, setActiveTag] = useState("All");
 
@@ -131,11 +136,12 @@ export default function NewsPage() {
                 (e.currentTarget.style.borderColor = "rgba(0,212,255,0.12)")
               }
             >
-              <img
-                src={item.image}
-                className="w-full h-60 md:h-auto object-cover"
-                style={{ opacity: 0.75 }}
-              />
+             <img
+  src={`${BASE_PATH}${item.image}`}
+  alt={item.title}
+  className="w-full h-60 md:h-auto object-cover"
+  style={{ opacity: 0.75 }}
+/>
 
               <div className="p-8">
                 <span
@@ -190,10 +196,11 @@ export default function NewsPage() {
                 }
               >
                 <img
-                  src={item.image}
-                  className="w-full h-40 object-cover"
-                  style={{ opacity: 0.7 }}
-                />
+  src={`${BASE_PATH}${item.image}`}
+  alt={item.title}
+  className="w-full h-40 object-cover"
+  style={{ opacity: 0.7 }}
+/>
 
                 <div className="p-5">
                   <div className="flex items-center gap-2 mb-3">
