@@ -1,7 +1,7 @@
 
 export const roles = [
   "All",
-  "Executive",
+  "Executives",
   "Activities",
   "Technical",
   "Public Relations",
@@ -274,7 +274,7 @@ export const team = [
     role: "Media Coordinator",
     category:"Media",
     bio: "Part content creator, part hardware explorer. Turns random ideas into entertaining reels, experiments with microcontrollers, and believes the best projects start with curiosity and a little bit of chaos.",    
-    skills: ["Public Speaking", "Video Editing", "Embedded Systems"],
+    skills: ["Public Speaking", "Video-Editing", "Embedded Systems"],
     img:" ",
     linkedin: "https://www.linkedin.com/in/ahadali-suchedina-a5847b320/",
   },
