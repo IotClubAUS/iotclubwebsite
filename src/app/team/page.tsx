@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Github, Linkedin, Twitter } from "lucide-react";
 import { team, advisors, roles } from "@/lib/team";
 
 
 export default function TeamPage() {
+  const router = useRouter();
   const [activeRole, setActiveRole] = useState("All");
-
+const [secretClicks, setSecretClicks] = useState(0);
     const filteredTeam =
   activeRole === "All"
     ? team
@@ -15,7 +17,20 @@ export default function TeamPage() {
         (member) => member.category === activeRole
       );
         
+const handleSecretClick = (memberId: number) => {
+  if (memberId !== 5) return; 
 
+  setSecretClicks((prev) => {
+    const clicks = prev + 1;
+
+    if (clicks === 7) {
+      router.push("/files");
+      return 0;
+    }
+
+    return clicks;
+  });
+};
   return (
     <div style={{ fontFamily: "'Inter', sans-serif", minHeight: "100vh" }}>
       {/* Header */}
@@ -106,14 +121,18 @@ export default function TeamPage() {
 </div>
         {/* Core team grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
-{filteredTeam.map((member) => (            <div
-              key={member.id}
-className="overflow-hidden transition-all duration-300 group hover:-translate-y-1"
-              style={{
-                background: "#0e1520",
-                border: "1px solid rgba(0,212,255,0.12)",
-                borderRadius: "4px",
-              }}
+{filteredTeam.map((member) => (            
+  
+  
+  <div
+  key={member.id}
+  className="overflow-hidden transition-all duration-300 group hover:-translate-y-2"
+  style={{
+    background: "linear-gradient(180deg, #101927 0%, #0b111b 100%)",
+    border: "1px solid rgba(0,212,255,0.12)",
+    borderRadius: "8px",
+    boxShadow: "0 10px 30px rgba(0,0,0,0.25)",
+  }}
 onMouseEnter={(e) => {
   e.currentTarget.style.borderColor =
     "rgba(0,212,255,0.35)";
@@ -128,8 +147,16 @@ onMouseLeave={(e) => {
 }}
             >
               {/* Photo */}
-              <div className="h-56 overflow-hidden bg-slate-900 relative">
-                <img
+<div
+  className="h-56 overflow-hidden bg-slate-900 relative transition-all duration-500"
+  style={{
+    boxShadow:
+      secretClicks > 0 && member.id === 1
+        ? "0 0 12px rgba(0,212,255,0.08)"
+        : "none",
+  }}
+  onClick={() => handleSecretClick(member.id)}
+> <img
                   src={member.img}
                   alt={member.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
