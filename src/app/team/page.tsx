@@ -15,7 +15,11 @@ export default function TeamPage() {
         (member) => member.category === activeRole
       );
         
-
+const BASE_PATH =
+  process.env.NODE_ENV === "production"
+    ? "/iotclubwebsite"
+    : " ";
+    
   return (
     <div style={{ fontFamily: "'Inter', sans-serif", minHeight: "100vh" }}>
       {/* Header */}
@@ -120,7 +124,7 @@ export default function TeamPage() {
               {/* Photo */}
               <div className="h-56 overflow-hidden bg-slate-900 relative">
                 <img
-                  src={member.img}
+                  src={`${BASE_PATH}${member.img}`}
                   alt={member.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   style={{ filter: "grayscale(30%)", opacity: 0.85 }}
@@ -257,7 +261,7 @@ export default function TeamPage() {
                 className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 bg-slate-800"
                 style={{ border: "2px solid rgba(0,212,255,0.25)" }}
               >
-                <img src={a.img} alt={a.name} className="w-full h-full object-cover" style={{ filter: "grayscale(30%)" }} />
+                <img src={`${BASE_PATH}${a.img}`} alt={a.name} className="w-full h-full object-cover" style={{ filter: "grayscale(30%)" }} />
               </div>
               <div>
                 <h3

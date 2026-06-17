@@ -8,7 +8,7 @@ import { allNews } from "@/lib/news";
 const BASE_PATH =
   process.env.NODE_ENV === "production"
     ? "/iotclubwebsite"
-    : "";
+    : " ";
 
     
 const tags = ["All", "Announcement", "Workshop", "Event", "Talk", "Project"];
