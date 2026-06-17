@@ -11,15 +11,11 @@ export default function TeamPage() {
     const filteredTeam =
   activeRole === "All"
     ? team
-    : team.filter((member) =>
-        member.category.includes(activeRole)
+    : team.filter(
+        (member) => member.category === activeRole
       );
         
-const BASE_PATH =
-  process.env.NODE_ENV === "production"
-    ? "/iotclubwebsite"
-    : "";
-    
+
   return (
     <div style={{ fontFamily: "'Inter', sans-serif", minHeight: "100vh" }}>
       {/* Header */}
@@ -109,24 +105,34 @@ const BASE_PATH =
   })}
 </div>
         {/* Core team grid */}
-<div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-20">
-  {filteredTeam.map((member) => (           
-     <div
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+{filteredTeam.map((member) => (            <div
               key={member.id}
-              className="overflow-hidden transition-all duration-200 group"
+className="overflow-hidden transition-all duration-300 group hover:-translate-y-1"
               style={{
                 background: "#0e1520",
                 border: "1px solid rgba(0,212,255,0.12)",
                 borderRadius: "4px",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(0,212,255,0.35)")}
-              onMouseLeave={(e) => (e.currentTarget.style.borderColor = "rgba(0,212,255,0.12)")}
+onMouseEnter={(e) => {
+  e.currentTarget.style.borderColor =
+    "rgba(0,212,255,0.35)";
+  e.currentTarget.style.boxShadow =
+    "0 12px 30px rgba(0,0,0,0.35)";
+}}
+
+onMouseLeave={(e) => {
+  e.currentTarget.style.borderColor =
+    "rgba(0,212,255,0.12)";
+  e.currentTarget.style.boxShadow = "none";
+}}
             >
               {/* Photo */}
-<div className="h-32 md:h-56 overflow-hidden bg-slate-900 relative">                <img
-                  src={`${BASE_PATH}${member.img}`}
+              <div className="h-56 overflow-hidden bg-slate-900 relative">
+                <img
+                  src={member.img}
                   alt={member.name}
-className="w-full h-full object-cover object-center"
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   style={{ filter: "grayscale(30%)", opacity: 0.85 }}
                 />
                 <div
@@ -139,10 +145,11 @@ className="w-full h-full object-cover object-center"
               </div>
 
               {/* Info */}
-<div className="p-3 md:p-5">                <h3
+              <div className="p-5">
+                <h3
                   style={{
                     fontFamily: "'Space Mono', monospace",
-fontSize: "clamp(0.75rem, 2vw, 1rem)",
+                    fontSize: "1rem",
                     fontWeight: 700,
                     color: "#e8edf2",
                     marginBottom: "2px",
@@ -162,41 +169,37 @@ fontSize: "clamp(0.75rem, 2vw, 1rem)",
                 >
                   {member.role}
                 </p>
-<p
-  className="hidden md:block mb-4"
-  style={{
-    fontSize: "0.825rem",
-    color: "#6b7a8d",
-    lineHeight: 1.6,
-  }}
->                  {member.bio}
+                <p className="mb-4" style={{ fontSize: "0.825rem", color: "#6b7a8d", lineHeight: 1.6 }}>
+                  {member.bio}
                 </p>
 
                 {/* Skills */}
-               <div className="flex flex-wrap gap-2 mb-4">
-  {member.skills
-    .filter((skill) => skill.trim() !== "")
-    .map((skill, index) => (
-      <span
-        key={`${member.id}-${index}`}
-        className={`${index >= 2 ? "hidden md:inline-block" : ""} px-2 py-0.5`}
-        style={{
-          fontFamily: "'Space Mono', monospace",
-          fontSize: "10px",
-          color: "#6b7a8d",
-          background: "#111827",
-          border: "1px solid rgba(0,212,255,0.12)",
-          borderRadius: "2px",
-        }}
-      >
-        {skill}
-      </span>
-    ))}
-</div>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {member.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-2 py-0.5"
+                      style={{
+                        fontFamily: "'Space Mono', monospace",
+                        fontSize: "10px",
+                        color: "#6b7a8d",
+                        background: "#111827",
+                        border: "1px solid rgba(0,212,255,0.12)",
+                        borderRadius: "2px",
+                      }}
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
 
                 {/* Social links */}
-                <div className="flex gap-3">
-                  {member.github && (
+<div
+  className="flex gap-3 pt-3 mt-3"
+  style={{
+    borderTop: "1px solid rgba(0,212,255,0.08)",
+  }}
+>                  {member.github && (
                     <a
                       href={member.github}
                       target="_blank"
@@ -268,7 +271,7 @@ fontSize: "clamp(0.75rem, 2vw, 1rem)",
                 className="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 bg-slate-800"
                 style={{ border: "2px solid rgba(0,212,255,0.25)" }}
               >
-                <img src={`${BASE_PATH}${a.img}`} alt={a.name} className="w-full h-full object-cover" style={{ filter: "grayscale(30%)" }} />
+                <img src={a.img} alt={a.name} className="w-full h-full object-cover" style={{ filter: "grayscale(30%)" }} />
               </div>
               <div>
                 <h3
