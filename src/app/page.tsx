@@ -11,14 +11,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-
-const BASE_PATH =
-  process.env.NODE_ENV === "production"
-    ? "/iotclubwebsite"
-    : "";
-
     
-
 const featuredNewsIds = [4, 3, 1];
 
 const HERO_IMG =
@@ -315,10 +308,10 @@ export default function HomePage() {
               >
 
                 <img
-  src={item.image}
-  className="w-full h-44 object-cover"
-  alt={item.title}
-/>
+                  src={item.image}
+                  className="w-full h-44 object-cover"
+                 alt={item.title}
+                  />
 
 
                 <div className="p-5">
