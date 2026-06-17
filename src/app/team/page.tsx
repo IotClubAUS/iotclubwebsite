@@ -126,7 +126,7 @@ const BASE_PATH =
                 <img
                   src={`${BASE_PATH}${member.img}`}
                   alt={member.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+className="w-full h-full object-cover object-center"
                   style={{ filter: "grayscale(30%)", opacity: 0.85 }}
                 />
                 <div
