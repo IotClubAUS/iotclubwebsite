@@ -188,6 +188,8 @@ export default function TeamPage() {
                   {member.github && (
                     <a
                       href={member.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="transition-colors"
                       style={{ color: "#6b7a8d" }}
                       onMouseEnter={(e) => (e.currentTarget.style.color = "#00d4ff")}
@@ -199,6 +201,8 @@ export default function TeamPage() {
                   {member.linkedin && (
                     <a
                       href={member.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="transition-colors"
                       style={{ color: "#6b7a8d" }}
                       onMouseEnter={(e) => (e.currentTarget.style.color = "#00d4ff")}
@@ -207,6 +211,9 @@ export default function TeamPage() {
                       <Linkedin size={15} />
                     </a>
                   )}
+                  
+                  
+                {/*}
                   {member.twitter && (
                     <a
                       href={member.twitter}
@@ -218,6 +225,10 @@ export default function TeamPage() {
                       <Twitter size={15} />
                     </a>
                   )}
+                  
+                */}
+
+                
                 </div>
               </div>
             </div>
