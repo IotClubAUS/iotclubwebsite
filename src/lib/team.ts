@@ -81,7 +81,7 @@ export const team = [
     role: "Activities Team",
     category:"Activities",
     bio: " ",
-    skills: ["", " ", " "],
+    skills: [" ", " ", " "],
     img:" ",
     
   },
@@ -91,7 +91,7 @@ export const team = [
     role: "Activities Team",
     category:"Activities",
     bio: " ",
-    skills: ["", " ", " "],
+    skills: [" ", " ", " "],
     img:" ",
     
   },
@@ -101,7 +101,7 @@ export const team = [
     role: "Activities Team",
     category:"Activities",
     bio: " ",
-    skills: ["", " ", " "],
+    skills: [" ", " ", " "],
     img:" ",
     
   },
@@ -111,7 +111,7 @@ export const team = [
     role: "Activities Team",
     category:"Activities",
     bio: " ",
-    skills: ["", " ", " "],
+    skills: [" ", " ", " "],
     img:" ",
     
   },
@@ -131,7 +131,7 @@ export const team = [
     role: "Activities Team",
     category:"Activities",
     bio: " ",
-    skills: ["", " ", " "],
+    skills: [" ", " ", " "],
     img:" ",
     
   },
