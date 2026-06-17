@@ -58,6 +58,11 @@ export const team = [
   },
 
 
+
+
+
+
+
   
             /* ACTIVITIES */
   {
@@ -78,7 +83,7 @@ export const team = [
     category:"Activities",
     bio: " ",
     skills: ["", " ", " "],
-    img:" ",
+    img:"/team/hashir_6 (1).webp",
     
   },
   {
@@ -142,7 +147,7 @@ export const team = [
     id: 12,
     name: "Adam Farag ",
     role: "Technical Coordinator",
-    category:"Technical",
+    category:["Technical","Executives"],
     bio: "Keeps the Discord alive, organizes socials, and makes sure every new member feels welcome from day one.",
     skills: ["Community", "Events", "Communications"],
     img:" ",
@@ -208,7 +213,7 @@ export const team = [
     id: 18,
     name: "Saachi Motwani",
     role: "PR Coordinator",
-    category: "Public Relations",
+    category: ["Public Relations","Executives"],
     bio: "Keeps the Discord alive, organizes socials, and makes sure every new member feels welcome from day one.",
     skills: ["Community", "Events", "Communications"],
     img:" ",
@@ -272,7 +277,7 @@ export const team = [
     id: 24,
     name: "Ahad Ali Suchedina",
     role: "Media Coordinator",
-    category:"Media",
+    category:["Media","Executives"],
     bio: "Part content creator, part hardware explorer. Turns random ideas into entertaining reels, experiments with microcontrollers, and believes the best projects start with curiosity and a little bit of chaos.",    
     skills: ["Public Speaking", "Video-Editing", "Embedded Systems"],
     img:" ",
