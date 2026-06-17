@@ -79,8 +79,7 @@ export const team = [
     bio: " ",
     skills: ["", " ", " "],
     img:" ",
-    github: "#",
-    twitter: "#",
+    
   },
   {
     id: 7,
@@ -90,8 +89,7 @@ export const team = [
     bio: " ",
     skills: ["", " ", " "],
     img:" ",
-    github: "#",
-    twitter: "#",
+    
   },
   {
     id: 8,
@@ -101,8 +99,7 @@ export const team = [
     bio: " ",
     skills: ["", " ", " "],
     img:" ",
-    github: "#",
-    twitter: "#",
+    
   },
   {
     id: 9,
@@ -112,8 +109,7 @@ export const team = [
     bio: " ",
     skills: ["", " ", " "],
     img:" ",
-    github: "#",
-    twitter: "#",
+    
   },
   {
     id: 10,
@@ -123,8 +119,7 @@ export const team = [
     bio: " ",
     skills: ["", " ", " "],
     img:" ",
-    github: "#",
-    twitter: "#",
+    
   },
   {
     id: 11,
@@ -134,8 +129,7 @@ export const team = [
     bio: " ",
     skills: ["", " ", " "],
     img:" ",
-    github: "#",
-    twitter: "#",
+    
   },
 
 
@@ -163,8 +157,7 @@ export const team = [
     bio: " ",
     skills: ["", " ", " "],
     img:" ",
-    github: "#",
-    twitter: "#",
+   
   },
   {
     id: 14,
@@ -174,8 +167,7 @@ export const team = [
     bio: " ",
     skills: ["", " ", " "],
     img:" ",
-    github: "#",
-    twitter: "#",
+    
   },
   {
     id: 15,
@@ -185,8 +177,7 @@ export const team = [
     bio: " ",
     skills: ["", " ", " "],
     img:" ",
-    github: "#",
-    twitter: "#",
+    
   },
   {
     id: 16,
@@ -196,8 +187,7 @@ export const team = [
     bio: " ",
     skills: ["", " ", " "],
     img:" ",
-    github: "#",
-    twitter: "#",
+    
   },
   {
     id: 17,
@@ -207,8 +197,7 @@ export const team = [
     bio: " ",
     skills: ["", " ", " "],
     img:" ",
-    github: "#",
-    twitter: "#",
+    
   },
   
 
@@ -234,8 +223,7 @@ export const team = [
     bio: " ",
     skills: ["", " ", " "],
     img:" ",
-    github: "#",
-    twitter: "#",
+    
   },
   {
     id: 20,
@@ -245,8 +233,7 @@ export const team = [
     bio: " ",
     skills: ["", " ", " "],
     img:" ",
-    github: "#",
-    twitter: "#",
+    
   },
   {
     id: 21,
@@ -256,8 +243,7 @@ export const team = [
     bio: " ",
     skills: ["", " ", " "],
     img:" ",
-    github: "#",
-    twitter: "#",
+    
   },
   {
     id: 22,
@@ -267,8 +253,7 @@ export const team = [
     bio: " ",
     skills: ["", " ", " "],
     img:" ",
-    github: "#",
-    twitter: "#",
+    
   },
   {
     id: 23,
@@ -278,8 +263,7 @@ export const team = [
     bio: " ",
     skills: ["", " ", " "],
     img:" ",
-    github: "#",
-    twitter: "#",
+    
   },
 
   
@@ -303,8 +287,7 @@ export const team = [
     bio: " ",
     skills: ["", " ", " "],
     img:" ",
-    github: "#",
-    twitter: "#",
+    
   },{
     id: 26,
     name: "Mumtahina Tasnia",
@@ -313,8 +296,7 @@ export const team = [
     bio: " ",
     skills: ["", " ", " "],
     img:" ",
-    github: "#",
-    twitter: "#",
+    
   },
   {
     id: 27,
@@ -324,8 +306,7 @@ export const team = [
     bio: " ",
     skills: ["", " ", " "],
     img:" ",
-    github: "#",
-    twitter: "#",
+   
   },
   {
     id: 28,
@@ -335,8 +316,7 @@ export const team = [
     bio: " ",
     skills: ["", " ", " "],
     img:" ",
-    github: "#",
-    twitter: "#",
+    
   },
   {
     id: 29,
@@ -346,8 +326,7 @@ export const team = [
     bio: " ",
     skills: ["", " ", " "],
     img:" ",
-    github: "#",
-    twitter: "#",
+    
   },
   {
     id: 30,
@@ -357,8 +336,7 @@ export const team = [
     bio: " ",
     skills: ["", " ", " "],
     img:" ",
-    github: "#",
-    twitter: "#",
+    
   },
 
 
