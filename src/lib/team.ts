@@ -1,6 +1,5 @@
 
 export const roles = [
-  "All",
   "Executives",
   "Activities",
   "Technical",
