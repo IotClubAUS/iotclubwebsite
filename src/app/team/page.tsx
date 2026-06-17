@@ -14,7 +14,7 @@ const [secretClicks, setSecretClicks] = useState(0);
   activeRole === "All"
     ? team
     : team.filter(
-        (member) => member.category === activeRole
+        (member) => member.category.includes(activeRole)
       );
         
 const handleSecretClick = (memberId: number) => {
@@ -147,30 +147,35 @@ onMouseLeave={(e) => {
 }}
             >
               {/* Photo */}
+{/* Photo */}
 <div
   className="h-56 overflow-hidden bg-slate-900 relative transition-all duration-500"
   style={{
     boxShadow:
-      secretClicks > 0 && member.id === 1
+      secretClicks > 0 && member.id === 5
         ? "0 0 12px rgba(0,212,255,0.08)"
         : "none",
   }}
   onClick={() => handleSecretClick(member.id)}
-> <img
-                  src={member.img}
-                  alt={member.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  style={{ filter: "grayscale(30%)", opacity: 0.85 }}
-                />
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "linear-gradient(to top, rgba(14,21,32,0.9) 0%, transparent 60%)",
-                  }}
-                />
-              </div>
+>
+  <img
+    src={member.img}
+    alt={member.name}
+    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+    style={{
+      filter: "grayscale(30%)",
+      opacity: 0.85,
+    }}
+  />
 
+  <div
+    className="absolute inset-0"
+    style={{
+      background:
+        "linear-gradient(to top, rgba(14,21,32,0.9) 0%, transparent 60%)",
+    }}
+  />
+</div>
               {/* Info */}
               <div className="p-5">
                 <h3
