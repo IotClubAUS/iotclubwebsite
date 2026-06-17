@@ -16,10 +16,7 @@ const tagColors: Record<string, string> = {
   Event: "#f472b6",
 };
 
-const BASE_PATH =
-  process.env.NODE_ENV === "production"
-    ? "/iotclubwebsite"
-    : "";
+
     
 export default function NewsPage() {
   const [activeTag, setActiveTag] = useState("All");
@@ -137,7 +134,7 @@ export default function NewsPage() {
               }
             >
              <img
-  src={`${BASE_PATH}${item.image}`}
+  src={item.image}
   alt={item.title}
   className="w-full h-60 md:h-auto object-cover"
   style={{ opacity: 0.75 }}
@@ -196,7 +193,7 @@ export default function NewsPage() {
                 }
               >
                 <img
-  src={`${BASE_PATH}${item.image}`}
+  src={item.image}
   alt={item.title}
   className="w-full h-40 object-cover"
   style={{ opacity: 0.7 }}
