@@ -62,8 +62,7 @@ export default function HomePage() {
     <main style={{ fontFamily: "Inter, sans-serif" }}>
 
       {/* HERO */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-
+<section className="relative min-h-[80vh] md:min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={HERO_IMG}
@@ -82,8 +81,7 @@ export default function HomePage() {
         </div>
 
 
-        <div className="relative max-w-6xl mx-auto px-6 py-32">
-
+<div className="relative max-w-6xl mx-auto px-6 py-20 md:py-32">
           <p
             className="mb-6 uppercase tracking-widest"
             style={{
@@ -128,8 +126,9 @@ export default function HomePage() {
 
 
           <button
-            onClick={()=>router.push("/contact")}
-            className="flex items-center gap-2 px-6 py-3"
+  onClick={()=>router.push("/contact")}
+  className="flex items-center justify-center gap-2 px-6 py-3 w-full sm:w-fit"
+
             style={{
               background:"#00d4ff",
               color:"#080c10",
@@ -187,8 +186,7 @@ export default function HomePage() {
 
       {/* PILLARS */}
 
-      <section className="max-w-6xl mx-auto px-6 py-24">
-
+<section className="max-w-6xl mx-auto px-6 py-16 md:py-24">
         <p
           className="uppercase tracking-widest mb-3"
           style={{
@@ -212,8 +210,7 @@ export default function HomePage() {
         </h2>
 
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-
+<div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {pillars.map((p)=>{
 
             const Icon=p.icon;
@@ -258,15 +255,13 @@ export default function HomePage() {
 
       {/* NEWS */}
 
-      <section
-        className="py-24"
+      <section className="py-16 md:py-24"
         style={{background:"#080c10"}}
       >
 
 <div className="max-w-6xl mx-auto px-6 md:px-0">
 
-          <div className="flex justify-between mb-10">
-
+<div className="flex flex-col gap-4 md:flex-row md:justify-between mb-10">
             <h2
               style={{
                 color:"#e8edf2",
@@ -305,17 +300,20 @@ export default function HomePage() {
 
 {allNews
   .filter((item) => featuredNewsIds.includes(item.id))
-  .map((item) => (              <article
-                key={item.id}
-                style={{
-                  background:"#0e1520",
-                  border:"1px solid rgba(0,212,255,.12)"
-                }}
-              >
+  .map((item) => (          
+    
+    <article
+  key={item.id}
+  className="overflow-hidden"
+  style={{
+    background:"#0e1520",
+    border:"1px solid rgba(0,212,255,.12)"
+  }}
+>
 
-               <img
+              <img
   src={`${BASE_PATH}${item.image}`}
-  className="w-full h-44 object-cover"
+  className="w-full h-36 md:h-44 object-cover"
   alt={item.title}
 />
 

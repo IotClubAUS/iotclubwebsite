@@ -121,8 +121,8 @@ export const team = [
     name: "Mohammad Samer Al Talleh",
     role: "Activities Team",
     category:"Activities",
-    bio: " ",
-    skills: ["", " ", " "],
+    bio: "I am a Mechanical Engineering major. I like cars.",
+    skills: ["Prototyping", "Research", "problem Solving"],
     img:" ",
     
   },
@@ -191,7 +191,7 @@ export const team = [
     category:"Technical",
     bio: "Mechanical engineering student that’ll turn ideas into models to build that almost always work on the first try, maybe.",
     skills: ["Robotics", "CAD", "3D-Printing"],
-    img:" ",
+    img:"/team/abdulsameen_16.webp",
     
   },
   {

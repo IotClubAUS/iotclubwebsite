@@ -21,8 +21,7 @@ export default function Footer() {
         fontFamily: "'Inter', sans-serif",
       }}
     >
-      <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
-
+<div className="max-w-6xl mx-auto px-6 py-10 md:py-12">
         {/* Brand */}
         <div>
           <div className="flex items-center gap-2 mb-4">
@@ -55,8 +54,7 @@ export default function Footer() {
               fontSize: "0.825rem",
               color: "#6b7a8d",
               lineHeight: 1.7,
-              maxWidth: "240px",
-            }}
+              maxWidth: "100%",            }}
           >
             A student community building connected devices, one sensor at a time.
           </p>
@@ -100,8 +98,7 @@ export default function Footer() {
           </div>
         </div>
 
-
-        {/* Navigation */}
+<div className="grid grid-cols-2 gap-4 mt-6">        {/* Navigation */}
         <div>
           <p className="mb-4 text-[#00d4ff] font-mono text-[10px] tracking-widest uppercase">
             Navigate
@@ -128,13 +125,13 @@ export default function Footer() {
             Contact
           </p>
 
-          <p className="text-[#6b7a8d] text-sm leading-relaxed">
-            Meetings every{" "}
+<p className="text-[#6b7a8d] text-sm leading-5">
+              Meetup every{" "}
             <strong className="text-[#e8edf2]">
-              Wednesday at 6 pm
+              Wed at 6 pm
             </strong>
             <br />
-            Engineering Building, Room 0037
+            ESB, Room 0037
             <br />
 
             <a
@@ -147,21 +144,21 @@ export default function Footer() {
         </div>
 
       </div>
-
+      </div>
 
       <div
-        className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between"
+        className="max-w-6xl mx-auto px-4 md:px-6 py-4 flex items-center justify-between gap-4"
         style={{
           borderTop: "1px solid rgba(0,212,255,0.06)",
         }}
       >
-        <p className="font-mono text-[10px] text-[#6b7a8d] tracking-wider">
-          © 2026 IoT Club
-        </p>
+        <p className="font-mono text-[9px] md:text-[10px] text-[#6b7a8d] tracking-wider whitespace-nowrap">
+  © 2026 IoT Club
+</p>
 
-        <p className="font-mono text-[10px] text-[rgba(0,212,255,0.3)]">
-          connect / build / deploy
-        </p>
+<p className="font-mono text-[9px] md:text-[10px] text-[rgba(0,212,255,0.3)] whitespace-nowrap">
+  connect / build / deploy
+</p>
       </div>
 
     </footer>

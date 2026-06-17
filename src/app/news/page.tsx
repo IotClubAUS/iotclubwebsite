@@ -53,7 +53,7 @@ export default function NewsPage() {
           <h1
             style={{
               fontFamily: "'Space Mono', monospace",
-              fontSize: "2.5rem",
+fontSize: "clamp(2rem, 6vw, 2.5rem)",
               color: "#e8edf2",
               textShadow: glow("#00d4ff", 12),
             }}
@@ -63,10 +63,11 @@ export default function NewsPage() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 py-12">
-    {/* FILTERS */}
-<div className="flex flex-wrap gap-2 mb-10">
-  {tags.map((tag) => {
+<div className="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-12">
+  
+      {/* FILTERS */}
+<div className="flex gap-2 mb-10 overflow-x-auto pb-2">
+    {tags.map((tag) => {
     const color = tagColors[tag] || "#00d4ff";
     const isActive = activeTag === tag;
 
@@ -125,7 +126,7 @@ export default function NewsPage() {
 
           return (
             <article
-              className="grid md:grid-cols-2 mb-8 group cursor-pointer"
+className="grid grid-cols-1 md:grid-cols-2 mb-8 group cursor-pointer"
               style={{
                 background: "#0e1520",
                 border: "1px solid rgba(0,212,255,0.12)",
@@ -141,11 +142,10 @@ export default function NewsPage() {
             <img
   src={`${BASE_PATH}${item.image}`}
   alt={item.title}
-  className="w-full h-60 md:h-auto object-cover"
+className="w-full h-48 md:h-auto object-cover"
   style={{ opacity: 0.75 }}
 />
-              <div className="p-8">
-                <span
+<div className="p-5 md:p-8">                <span
                   style={{
                     color,
                     fontFamily: "'Space Mono', monospace",
@@ -176,8 +176,8 @@ export default function NewsPage() {
         })()}
 
         {/* GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.slice(1).map((item) => {
+<div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6">
+            {filtered.slice(1).map((item) => {
             const color = tagColors[item.tag] || "#00d4ff";
 
             return (
@@ -199,7 +199,7 @@ export default function NewsPage() {
              <img
   src={`${BASE_PATH}${item.image}`}
   alt={item.title}
-  className="w-full h-40 object-cover"
+className="w-full h-28 md:h-40 object-cover"
   style={{ opacity: 0.7 }}
 />
 
@@ -220,17 +220,24 @@ export default function NewsPage() {
                   </div>
 
                   <h3
-                    style={{
-                      color: "#e8edf2",
-                      textShadow: glow(color, 6),
-                    }}
-                  >
+  className="text-sm md:text-base"
+  style={{
+    color: "#e8edf2",
+    textShadow: glow(color, 6),
+  }}
+>
                     {item.title}
                   </h3>
 
-                  <p style={{ color: "#6b7a8d", fontSize: "0.85rem" }}>
-                    {item.bio}
-                  </p>
+                  <p
+  className="hidden md:block"
+  style={{
+    color: "#6b7a8d",
+    fontSize: "0.85rem",
+  }}
+>
+  {item.bio}
+</p>
                 </div>
               </article>
             );
