@@ -310,7 +310,7 @@ export const team = [
   },
   {
     id: 28,
-    name: "Ali hussein",
+    name: "Ali Hussein",
     role: "Media Team",
     category:"Media",
     bio: " ",
