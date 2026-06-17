@@ -17,7 +17,7 @@ const BASE_PATH =
     ? "/iotclubwebsite"
     : "";
 
-    
+
 const featuredNewsIds = [4, 3, 1];
 
 const HERO_IMG =
@@ -347,7 +347,7 @@ export default function HomePage() {
                       color:"#6b7a8d"
                     }}
                   >
-                    {item.excerpt}
+                    {item.bio}
                   </p>
 
 

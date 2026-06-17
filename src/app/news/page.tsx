@@ -168,7 +168,7 @@ export default function NewsPage() {
                 </h2>
 
                 <p style={{ color: "#6b7a8d", marginTop: "10px" }}>
-                  {item.excerpt}
+                  {item.bio}
                 </p>
               </div>
             </article>
@@ -229,7 +229,7 @@ export default function NewsPage() {
                   </h3>
 
                   <p style={{ color: "#6b7a8d", fontSize: "0.85rem" }}>
-                    {item.excerpt}
+                    {item.bio}
                   </p>
                 </div>
               </article>
