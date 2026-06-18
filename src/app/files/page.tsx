@@ -32,7 +32,7 @@ export default function SecretPage() {
             fontSize: "2rem",
           }}
         >
-          Welcome to the hashir easter egg.
+          Welcome to hashirs easter egg.
         </h1>
 
         {count !== null && (
