@@ -155,8 +155,8 @@ export const team = [
     name: "Jana Shahin ",
     role: "Technical Team",
     category:"Technical",
-    bio: " ",
-    skills: [" ", " ", " "],
+    bio: "Sophomore computer engineering who loves to take things apart to see how they work.",
+    skills: ["Building Things", "Coding", "Communication"],
     img:" ",
    
   },
