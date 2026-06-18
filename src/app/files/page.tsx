@@ -1,14 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 
 export default function SecretPage() {
   const [count, setCount] = useState<number | null>(null);
 
   useEffect(() => {
     async function trackVisit() {
-      await supabase.rpc("increment_easter_egg");
+      const supabase = getSupabase();
+
+await supabase.rpc("increment_easter_egg");
 
       const { data } = await supabase
         .from("easter_egg_visits")
