@@ -12,10 +12,6 @@ import {
 } from "lucide-react";
 
     
-const BASE_PATH =
-  process.env.NODE_ENV === "production"
-    ? "/iotclubwebsite"
-    : "";
 
 
 const featuredNewsIds = [4, 3, 1];
@@ -312,7 +308,7 @@ export default function HomePage() {
 >
 
               <img
-  src={`${BASE_PATH}${item.image}`}
+  src={item.image}
   className="w-full h-36 md:h-44 object-cover"
   alt={item.title}
 />

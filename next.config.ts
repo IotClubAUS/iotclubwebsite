@@ -1,13 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
-
-  basePath: "/iotclubwebsite",
-  assetPrefix: "/iotclubwebsite/",
-
   images: {
-    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",

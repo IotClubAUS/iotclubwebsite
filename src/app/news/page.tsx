@@ -5,10 +5,7 @@ import { Tag } from "lucide-react";
 import { allNews } from "@/lib/news";
 
 
-const BASE_PATH =
-  process.env.NODE_ENV === "production"
-    ? "/iotclubwebsite"
-    : "";
+
 
     
 const tags = ["All", "Announcement", "Workshop", "Event", "Talk", "Project"];
@@ -140,7 +137,7 @@ className="grid grid-cols-1 md:grid-cols-2 mb-8 group cursor-pointer"
               }
             >
             <img
-  src={`${BASE_PATH}${item.image}`}
+  src={item.image}
   alt={item.title}
 className="w-full h-48 md:h-auto object-cover"
   style={{ opacity: 0.75 }}
@@ -197,7 +194,7 @@ className="w-full h-48 md:h-auto object-cover"
                 }
               >
              <img
-  src={`${BASE_PATH}${item.image}`}
+  src={item.image}
   alt={item.title}
 className="w-full h-28 md:h-40 object-cover"
   style={{ opacity: 0.7 }}
