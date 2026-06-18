@@ -218,7 +218,7 @@ size={15}
 className="text-[#00d4ff]"
 />
 
-ausracing@aus.edu
+iotclub@aus.edu
 
 </a>
 
