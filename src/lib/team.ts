@@ -132,7 +132,7 @@ export const team = [
     category:"Activities",
     bio: "I’ve been always told i’m a creative genius. Whenever presented with a question with 2 solutions, I always find a third that fits better. Can work with anyone anywhere anytime.",
     skills: ["Video-Editing", "AI-Prompting", "Project-Management"],
-    img:"/team/marwan.jpeg",
+    img:"/team/marwan_11.jpeg",
     
   },
 
@@ -147,7 +147,7 @@ export const team = [
     name: "Adam Farag ",
     role: "Technical Coordinator",
     category:["Technical","Executives"],
-    bio: "Keeps the Discord alive, organizes socials, and makes sure every new member feels welcome from day one.",
+    bio: " ",
     skills: ["Community", "Events", "Communications"],
     img:" ",
     github: "#",
@@ -213,7 +213,7 @@ export const team = [
     name: "Saachi Motwani",
     role: "PR Coordinator",
     category: ["Public Relations","Executives"],
-    bio: "Keeps the Discord alive, organizes socials, and makes sure every new member feels welcome from day one.",
+    bio: " ",
     skills: ["Community", "Events", "Communications"],
     img:" ",
     github: "#",
@@ -279,7 +279,7 @@ export const team = [
     category:["Media","Executives"],
     bio: "Part content creator, part hardware explorer. Turns random ideas into entertaining reels, experiments with microcontrollers, and believes the best projects start with curiosity and a little bit of chaos.",    
     skills: ["Public Speaking", "Video-Editing", "Embedded Systems"],
-    img:" ",
+    img:"/team/ahad_24.webp",
     linkedin: "https://www.linkedin.com/in/ahadali-suchedina-a5847b320/",
   },
   {
