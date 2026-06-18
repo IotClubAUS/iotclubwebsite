@@ -21,9 +21,21 @@ export default function Footer() {
         fontFamily: "'Inter', sans-serif",
       }}
     >
-<div className="max-w-6xl mx-auto px-6 py-10 md:py-12">
-        {/* Brand */}
-        <div>
+<div className="
+max-w-7xl
+mx-auto
+px-6
+py-10
+md:py-14
+grid
+grid-cols-1
+lg:grid-cols-[1fr_2fr]
+gap-10
+lg:gap-16
+">
+  
+     {/* Brand */}
+<div className="max-w-md">
           <div className="flex items-center gap-2 mb-4">
             <div
               className="w-7 h-7 flex items-center justify-center"
@@ -98,9 +110,20 @@ export default function Footer() {
           </div>
         </div>
 
-<div className="grid grid-cols-2 gap-4 mt-6">        {/* Navigation */}
-        <div>
-          <p className="mb-4 text-[#00d4ff] font-mono text-[10px] tracking-widest uppercase">
+  <div
+  className="
+  grid
+  grid-cols-2
+  gap-8
+  mt-6
+  lg:mt-0
+  w-full
+"
+>
+  
+    {/* Navigation */}
+<div className="lg:justify-self-center">
+            <p className="mb-4 text-[#00d4ff] font-mono text-[10px] tracking-widest uppercase">
             Navigate
           </p>
 
@@ -119,13 +142,13 @@ export default function Footer() {
         </div>
 
 
-        {/* Contact */}
-        <div>
-          <p className="mb-4 text-[#00d4ff] font-mono text-[10px] tracking-widest uppercase">
+         {/* Contact */}
+<div className="lg:justify-self-end">
+            <p className="mb-4 text-[#00d4ff] font-mono text-[10px] tracking-widest uppercase">
             Contact
           </p>
 
-<p className="text-[#6b7a8d] text-sm leading-5">
+              <p className="text-[#6b7a8d] text-sm leading-5">
               Meetup every{" "}
             <strong className="text-[#e8edf2]">
               Wed at 6 pm
@@ -146,12 +169,26 @@ export default function Footer() {
       </div>
       </div>
 
-      <div
-        className="max-w-6xl mx-auto px-4 md:px-6 py-4 flex items-center justify-between gap-4"
-        style={{
-          borderTop: "1px solid rgba(0,212,255,0.06)",
-        }}
-      >
+  <div
+style={{
+  borderTop: "1px solid rgba(0,212,255,0.06)",
+}}
+>
+  <div
+    className="
+    max-w-7xl
+    mx-auto
+    px-6
+    py-4
+    flex
+    flex-col
+    sm:flex-row
+    items-center
+    justify-between
+    gap-2
+    sm:gap-4
+    "
+  >
         <p className="font-mono text-[9px] md:text-[10px] text-[#6b7a8d] tracking-wider whitespace-nowrap">
   © 2026 IoT Club
 </p>
@@ -160,6 +197,7 @@ export default function Footer() {
   connect / build / deploy
 </p>
       </div>
+  </div>
 
     </footer>
   );
