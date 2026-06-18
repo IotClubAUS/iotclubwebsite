@@ -271,7 +271,7 @@ export default function HomePage() {
               News & Events
             </h2> 
             
-            <button
+             <button
   onClick={() => router.push("/news")}
   className="flex items-center gap-1 transition-all duration-200"
   style={{
