@@ -22,7 +22,7 @@ const HERO_IMG =
 
 
 const stats = [
-  ["20+", "Team Members"],
+  ["30+", "Team Members"],
   ["3", "Hackathon Wins"],
   ["40+", "Projects Built"],
   ["12", "Industry Partners"],
@@ -59,15 +59,20 @@ export default function HomePage() {
 className="
 min-h-screen
 bg-[#080c10]
-overflow-hidden
-"
+overflow-x-hidden"
 style={{
 fontFamily:"Inter, sans-serif"
 }}
 >
       {/* HERO */}
-<section className="relative min-h-[80vh] md:min-h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0">
+<section className="
+relative
+min-h-screen
+flex
+items-center
+overflow-hidden
+">
+          <div className="absolute inset-0">
           <img
             src={HERO_IMG}
             className="w-full h-full object-cover"
@@ -90,8 +95,9 @@ relative
 w-full
 max-w-7xl
 mx-auto
-px-6
-py-20
+px-5
+py-24
+sm:px-6
 md:py-32
 ">          <p
             className="mb-6 uppercase tracking-widest"
@@ -109,7 +115,7 @@ md:py-32
             className="mb-6"
             style={{
               fontFamily:"'Space Mono',monospace",
-              fontSize:"clamp(2.5rem,6vw,5rem)",
+fontSize:"clamp(2.4rem,11vw,5rem)",
               color:"#e8edf2",
               lineHeight:1.1
             }}
@@ -125,15 +131,20 @@ md:py-32
 
 
           <p
-            className="max-w-xl mb-10"
-            style={{
-              color:"#6b7a8d",
-              lineHeight:1.7
-            }}
-          >
-            A student community building IoT systems at the intersection of
-            hardware, software and the physical world.
-          </p>
+  className="
+    max-w-xl
+    mb-8
+    text-sm
+    sm:text-base
+  "
+  style={{
+    color:"#6b7a8d",
+    lineHeight:1.7
+  }}
+>
+  A student community building IoT systems at the intersection of
+  hardware, software and the physical world.
+</p>
 
 
           <button
@@ -149,7 +160,8 @@ md:py-32
     px-6
     py-3
     w-full
-    sm:w-fit
+sm:w-auto
+rounded-lg
     overflow-hidden
     transition-all
     duration-300
@@ -162,9 +174,16 @@ md:py-32
     fontWeight:700
   }}
 >
-  <span className="relative z-10 flex items-center gap-2">
-    Join The Club <ArrowRight size={14}/>
-  </span>
+  <span className="
+relative
+z-10
+flex
+items-center
+gap-2
+whitespace-nowrap
+">
+  Join The Club <ArrowRight size={14}/>
+</span>
 
   <span
     className="
@@ -181,7 +200,7 @@ md:py-32
 <div
 className="
 hidden
-lg:flex
+md:flex
 absolute
 right-0
 top-1/2
@@ -270,6 +289,58 @@ gap-4
 ))}
  
 </div>
+<div
+className="
+mt-6
+grid
+grid-cols-1
+gap-3
+md:hidden
+"
+>
+  {[
+    ["SYSTEM", "ONLINE"],
+    ["NETWORK", "MQTT / LoRa"],
+    ["NODES", "42 ACTIVE"],
+  ].map(([title, value]) => (
+    <div
+  key={title}
+  className="
+  p-4
+  rounded-xl
+  bg-[#0e1520]/80
+  border
+  border-cyan-400/20
+  backdrop-blur-xl
+  shadow-[0_0_20px_rgba(0,212,255,.05)]
+  transition-all
+  duration-300
+  "
+>
+      <p
+        className="
+        text-cyan-400
+        text-xs
+        font-mono
+        tracking-widest
+        "
+      >
+        {title}
+      </p>
+
+      <p
+        className="
+        text-white
+        font-mono
+        text-sm
+        mt-2
+        "
+      >
+        {value}
+      </p>
+    </div>
+  ))}
+</div>
 </div>
 
       </section>
@@ -287,7 +358,8 @@ gap-4
         }}
       >
 
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="max-w-6xl mx-auto px-6 grid grid-cols-2
+sm:grid-cols-4 gap-6">
 
           {stats.map(([num,label])=>(
 <div
@@ -386,7 +458,8 @@ fontFamily:"'Space Mono',monospace"
       className="
         group
         relative
-        p-6
+p-5
+sm:p-6
         rounded-xl
         overflow-hidden
         transition-all
@@ -465,8 +538,12 @@ fontFamily:"'Space Mono',monospace"
         style={{background:"#080c10"}}
       >
 
-<div className="max-w-6xl mx-auto px-6 md:px-0">
-
+<div className="
+max-w-6xl
+mx-auto
+px-5
+sm:px-6
+">
 <div className="flex flex-col gap-4 md:flex-row md:justify-between mb-10">
             <h2
               style={{
@@ -531,7 +608,8 @@ hover:shadow-[0_20px_50px_rgba(0,212,255,.15)]
 src={item.image}
 className="
 w-full
-h-36
+h-40
+sm:h-44
 md:h-44
 object-cover
 group-hover:scale-110
@@ -598,7 +676,8 @@ border-cyan-400/10
 
 <h2
 className="
-text-4xl
+text-3xl
+sm:text-4xl
 text-white
 mb-5
 "
@@ -623,7 +702,8 @@ Join a community creating real-world IoT systems.
 <button
 onClick={()=>router.push("/contact")}
 className="
-px-8
+px-6
+sm:px-8
 py-3
 bg-cyan-400
 text-black
