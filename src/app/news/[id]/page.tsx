@@ -14,10 +14,13 @@ const tagColors: Record<string, string> = {
 export default async function NewsDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+
+  const { id } = await params;
+
   const item = allNews.find(
-    (news) => news.id.toString() === params.id
+    (news) => news.id.toString() === id
   );
 
   if (!item) {
