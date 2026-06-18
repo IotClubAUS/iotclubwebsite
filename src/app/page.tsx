@@ -55,8 +55,16 @@ export default function HomePage() {
   const router = useRouter();
 
   return (
-    <main style={{ fontFamily: "Inter, sans-serif" }}>
-
+<main
+className="
+min-h-screen
+bg-[#080c10]
+overflow-hidden
+"
+style={{
+fontFamily:"Inter, sans-serif"
+}}
+>
       {/* HERO */}
 <section className="relative min-h-[80vh] md:min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
@@ -77,8 +85,15 @@ export default function HomePage() {
         </div>
 
 
-<div className="relative max-w-6xl mx-auto px-6 py-20 md:py-32">
-          <p
+<div className="
+relative
+w-full
+max-w-7xl
+mx-auto
+px-6
+py-20
+md:py-32
+">          <p
             className="mb-6 uppercase tracking-widest"
             style={{
               fontFamily:"'Space Mono',monospace",
@@ -122,20 +137,140 @@ export default function HomePage() {
 
 
           <button
+          
   onClick={()=>router.push("/contact")}
-  className="flex items-center justify-center gap-2 px-6 py-3 w-full sm:w-fit"
+  className="
+    group
+    relative
+    flex
+    items-center
+    justify-center
+    gap-2
+    px-6
+    py-3
+    w-full
+    sm:w-fit
+    overflow-hidden
+    transition-all
+    duration-300
+    hover:shadow-[0_0_25px_rgba(0,212,255,0.6)]
+  "
+  style={{
+    background:"#00d4ff",
+    color:"#080c10",
+    fontFamily:"'Space Mono',monospace",
+    fontWeight:700
+  }}
+>
+  <span className="relative z-10 flex items-center gap-2">
+    Join The Club <ArrowRight size={14}/>
+  </span>
 
-            style={{
-              background:"#00d4ff",
-              color:"#080c10",
-              fontFamily:"'Space Mono',monospace",
-              fontWeight:700
-            }}
-          >
-            Join The Club <ArrowRight size={14}/>
-          </button>
+  <span
+    className="
+      absolute
+      inset-0
+      bg-white/20
+      translate-x-[-120%]
+      group-hover:translate-x-[120%]
+      transition-transform
+      duration-700
+    "
+  />
+</button>
+<div
+className="
+hidden
+lg:flex
+absolute
+right-0
+top-1/2
+-translate-y-1/2
+flex-col
+gap-4
+"
+>
 
-        </div>
+{[
+  ["SYSTEM", "ONLINE"],
+  ["NETWORK", "MQTT / LoRa / WiFi"],
+  ["NODES", "42 ACTIVE DEVICES"]
+].map(([title, value]) => (<div
+  key={title}
+  className="
+  w-56
+  p-5
+  rounded-xl
+  bg-[#0e1520]/80
+  border
+  border-cyan-400/20
+  backdrop-blur-xl
+  shadow-[0_0_40px_rgba(0,212,255,.08)]
+  transition-all
+  hover:border-cyan-400/50
+  "
+>
+  <p
+    className="
+    text-cyan-400
+    text-xs
+    font-mono
+    tracking-widest
+    "
+  >
+    {title}
+  </p>
+
+
+  {title === "SYSTEM" ? (
+    <div
+      className="
+      flex
+      items-center
+      gap-2
+      mt-2
+      "
+    >
+      <span
+        className="
+        w-2.5
+        h-2.5
+        rounded-full
+        bg-green-400
+        shadow-[0_0_12px_rgba(34,197,94,.9)]
+        animate-pulse
+        "
+      />
+
+      <p
+        className="
+        text-white
+        font-mono
+        text-sm
+        "
+      >
+        {value}
+      </p>
+    </div>
+  ) : (
+    <p
+      className="
+      text-white
+      font-mono
+      text-sm
+      mt-2
+      "
+    >
+      {value}
+    </p>
+  )}
+
+</div>
+
+))}
+ 
+</div>
+</div>
 
       </section>
 
@@ -155,18 +290,35 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6">
 
           {stats.map(([num,label])=>(
-            <div key={label} className="text-center">
-
+<div
+key={label}
+className="
+group
+text-center
+p-5
+rounded-xl
+border
+border-transparent
+hover:border-cyan-400/20
+hover:bg-cyan-400/5
+transition-all
+duration-300
+"
+>
               <h3
-                style={{
-                  color:"#00d4ff",
-                  fontSize:"2rem",
-                  fontFamily:"'Space Mono',monospace"
-                }}
-              >
-                {num}
-              </h3>
-
+className="
+group-hover:scale-110
+transition-transform
+duration-300
+"
+style={{
+color:"#00d4ff",
+fontSize:"2rem",
+fontFamily:"'Space Mono',monospace"
+}}
+>
+{num}
+</h3>
               <p style={{color:"#6b7a8d"}}>
                 {label}
               </p>
@@ -180,74 +332,132 @@ export default function HomePage() {
 
 
 
-      {/* PILLARS */}
+     {/* PILLARS */}
 
 <section className="max-w-6xl mx-auto px-6 py-16 md:py-24">
-        <p
-          className="uppercase tracking-widest mb-3"
-          style={{
-            color:"#00d4ff",
-            fontSize:"11px"
-          }}
+
+  <p
+    className="
+      uppercase
+      tracking-widest
+      mb-3
+      text-xs
+    "
+    style={{
+      color:"#00d4ff"
+    }}
+  >
+    What We Do
+  </p>
+
+
+  <h2
+    className="
+      mb-12
+      text-3xl
+    "
+    style={{
+      color:"#e8edf2",
+      fontFamily:"'Space Mono',monospace"
+    }}
+  >
+    From sensor to system.
+  </h2>
+
+
+  <div className="
+    grid
+    grid-cols-1
+    sm:grid-cols-2
+    lg:grid-cols-4
+    gap-6
+  ">
+
+
+  {pillars.map((p)=>{
+
+    const Icon = p.icon;
+
+
+    return (
+
+      <div
+      key={p.title}
+      className="
+        group
+        relative
+        p-6
+        rounded-xl
+        overflow-hidden
+        transition-all
+        duration-300
+        hover:-translate-y-2
+        hover:shadow-[0_10px_40px_rgba(0,212,255,.15)]
+      "
+      style={{
+        background:"#0e1520",
+        border:"1px solid rgba(0,212,255,.12)"
+      }}
+      >
+
+        <div
+        className="
+          absolute
+          inset-0
+          bg-cyan-400/5
+          opacity-0
+          group-hover:opacity-100
+          transition
+        "
+        />
+
+
+        <Icon
+        size={28}
+        color="#00d4ff"
+        className="
+          relative
+          group-hover:scale-110
+          transition
+        "
+        />
+
+
+        <h3
+        className="
+          relative
+          mt-5
+          mb-2
+        "
+        style={{
+          color:"#e8edf2",
+          fontFamily:"'Space Mono',monospace"
+        }}
         >
-          What We Do
+          {p.title}
+        </h3>
+
+
+        <p
+        className="relative"
+        style={{
+          color:"#6b7a8d"
+        }}
+        >
+          {p.desc}
         </p>
 
 
-        <h2
-          className="mb-12"
-          style={{
-            color:"#e8edf2",
-            fontFamily:"'Space Mono',monospace",
-            fontSize:"2rem"
-          }}
-        >
-          From sensor to system.
-        </h2>
+      </div>
+
+    );
+
+  })}
 
 
-<div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-          {pillars.map((p)=>{
+  </div>
 
-            const Icon=p.icon;
-
-            return (
-              <div
-                key={p.title}
-                className="p-6"
-                style={{
-                  background:"#0e1520",
-                  border:"1px solid rgba(0,212,255,.12)"
-                }}
-              >
-
-                <Icon color="#00d4ff"/>
-
-                <h3
-                  className="mt-5 mb-2"
-                  style={{
-                    color:"#e8edf2",
-                    fontFamily:"'Space Mono',monospace"
-                  }}
-                >
-                  {p.title}
-                </h3>
-
-                <p style={{color:"#6b7a8d"}}>
-                  {p.desc}
-                </p>
-
-              </div>
-            )
-
-          })}
-
-        </div>
-
-      </section>
-
-
-
+</section>
 
       {/* NEWS */}
 
@@ -299,18 +509,35 @@ export default function HomePage() {
   .map((item) => (          
     
     <article
-  key={item.id}
-  className="overflow-hidden"
+key={item.id}
+onClick={()=>router.push(`/news/${item.id}`)}
+className="
+group
+overflow-hidden
+cursor-pointer
+rounded-xl
+transition-all
+duration-300
+hover:-translate-y-2
+hover:shadow-[0_20px_50px_rgba(0,212,255,.15)]
+"
   style={{
     background:"#0e1520",
     border:"1px solid rgba(0,212,255,.12)"
   }}
 >
 
-              <img
-  src={item.image}
-  className="w-full h-36 md:h-44 object-cover"
-  alt={item.title}
+            <img
+src={item.image}
+className="
+w-full
+h-36
+md:h-44
+object-cover
+group-hover:scale-110
+transition-transform
+duration-500
+"
 />
 
 
@@ -359,7 +586,57 @@ export default function HomePage() {
 
       </section>
 
+<section
+className="
+py-20
+text-center
+border-t
+border-cyan-400/10
+"
+>
 
+
+<h2
+className="
+text-4xl
+text-white
+mb-5
+"
+style={{
+fontFamily:"'Space Mono',monospace"
+}}
+>
+Build the future with us.
+</h2>
+
+
+<p
+className="
+text-gray-400
+mb-8
+"
+>
+Join a community creating real-world IoT systems.
+</p>
+
+
+<button
+onClick={()=>router.push("/contact")}
+className="
+px-8
+py-3
+bg-cyan-400
+text-black
+font-bold
+hover:shadow-[0_0_30px_rgba(0,212,255,.6)]
+transition
+"
+>
+Join AUS IoT Club →
+</button>
+
+
+</section>
     </main>
   );
 }
