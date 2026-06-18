@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Tag } from "lucide-react";
 import { allNews } from "@/lib/news";
 
-
+import { useRouter } from "next/navigation";
 
 
     
@@ -27,6 +27,8 @@ export default function NewsPage() {
     activeTag === "All"
       ? allNews
       : allNews.filter((n) => n.tag === activeTag);
+
+      const router = useRouter();
 
   const glow = (color: string, strength = 10) =>
     `0 0 ${strength}px ${color}55`;
@@ -122,7 +124,9 @@ fontSize: "clamp(2rem, 6vw, 2.5rem)",
           const color = tagColors[item.tag] || "#00d4ff";
 
           return (
-            <article
+<article
+onClick={() => router.push(`/news/${item.id}`)}
+
 className="grid grid-cols-1 md:grid-cols-2 mb-8 group cursor-pointer"
               style={{
                 background: "#0e1520",
@@ -178,8 +182,10 @@ className="w-full h-48 md:h-auto object-cover"
             const color = tagColors[item.tag] || "#00d4ff";
 
             return (
-              <article
-                key={item.id}
+<article
+key={item.id}
+onClick={() => router.push(`/news/${item.id}`)}
+
                 className="group cursor-pointer"
                 style={{
                   background: "#0e1520",
