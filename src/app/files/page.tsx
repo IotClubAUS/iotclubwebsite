@@ -84,7 +84,7 @@ useEffect(() => {
     const now = Date.now();
 
     // slower spawn rate (change 120 to adjust speed)  higher number--> slower
-    if (now - lastSpawn < 0.1) return;
+    if (now - lastSpawn < 1) return;
 
     lastSpawn = now;
 
