@@ -79,36 +79,48 @@ setTimeout(() => {
 useEffect(() => {
   let lastSpawn = 0;
 
-  function handleMouse(e: MouseEvent) {
-
+  function spawnImage(x: number, y: number) {
     const now = Date.now();
 
-    // slower spawn rate (change 120 to adjust speed)  higher number--> slower
-    if (now - lastSpawn < 1) return;
+    // slower on all devices
+    if (now - lastSpawn < 120) return;
 
     lastSpawn = now;
 
-
     const newImg = {
       id: now,
-      x: e.clientX,
-      y: e.clientY,
+      x,
+      y,
       rotate: Math.random() * 360,
     };
 
-
     setMouseImgs((prev) => [
-      ...prev.slice(-3), // max 4 images
+      ...prev.slice(-3),
       newImg,
     ]);
-
 
     setTimeout(() => {
       setMouseImgs((prev) =>
         prev.filter((img) => img.id !== newImg.id)
       );
     }, 800);
+  }
 
+
+  function handleMouse(e: MouseEvent) {
+    spawnImage(e.clientX, e.clientY);
+  }
+
+
+  function handleTouch(e: TouchEvent) {
+    const touch = e.touches[0];
+
+    if (touch) {
+      spawnImage(
+        touch.clientX,
+        touch.clientY
+      );
+    }
   }
 
 
@@ -117,12 +129,23 @@ useEffect(() => {
     handleMouse
   );
 
+  window.addEventListener(
+    "touchmove",
+    handleTouch
+  );
 
-  return () =>
+
+  return () => {
     window.removeEventListener(
       "mousemove",
       handleMouse
     );
+
+    window.removeEventListener(
+      "touchmove",
+      handleTouch
+    );
+  };
 
 }, []);
 
@@ -138,7 +161,7 @@ useEffect(() => {
     right-8
     top-1/2
     -translate-y-1/2
-    w-72
+w-24 md:w-72
     animate-bounce
     z-50
     "
@@ -152,7 +175,7 @@ useEffect(() => {
     left-8
     top-1/2
     -translate-y-1/2
-    w-72
+w-24 md:w-72
     animate-bounce
     z-50
     "
