@@ -275,7 +275,7 @@ export default function HomePage() {
   onClick={() => router.push("/news")}
   className="flex items-center gap-1 transition-all duration-200"
   style={{
-    color: "#00d4ff",
+    color:  "#00d4ff",
     fontFamily: "'Space Mono', monospace",
     fontSize: "12px",
     letterSpacing: "0.08em",

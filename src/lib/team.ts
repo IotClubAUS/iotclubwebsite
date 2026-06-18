@@ -259,7 +259,7 @@ export const team = [
   },
   {
     id: 23,
-    name: "",
+    name: " ",
     role: "PR Team",
     category:"Public Relations",
     bio: " ",
@@ -321,7 +321,7 @@ export const team = [
   },
   {
     id: 29,
-    name: "",
+    name: " ",
     role: "Media Team",
     category:"Media",
     bio: " ",
@@ -331,7 +331,7 @@ export const team = [
   },
   {
     id: 30,
-    name: "",
+    name: " ",
     role: "Media Team",
     category:"Media",
     bio: " ",
