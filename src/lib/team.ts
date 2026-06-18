@@ -132,7 +132,7 @@ export const team = [
     category:"Activities",
     bio: "I’ve been always told i’m a creative genius. Whenever presented with a question with 2 solutions, I always find a third that fits better. Can work with anyone anywhere anytime.",
     skills: ["Video-Editing", "AI-Prompting", "Project-Management"],
-    img:"/team/marwan.jpg",
+    img:"/team/marwan.jpeg",
     
   },
 
@@ -287,9 +287,9 @@ export const team = [
     name: "Eyad Wafa",
     role: "Media Team",
     category:"Media",
-    bio: " ",
-    skills: [" ", " ", " "],
-    img:" ",
+    bio: "Creative designer who enjoys turning ideas into visuals. Handles media, creates unique designs, and knows how to make content stand out. Spends way too much time perfecting details in Photoshop, but the results are worth it.",
+    skills: ["Photoshop", "Videography", "Creativity "],
+    img:"/team/eyad_25.webp",
     
   },{
     id: 26,
