@@ -132,7 +132,7 @@ export const team = [
     category:"Activities",
     bio: "I’ve been always told i’m a creative genius. Whenever presented with a question with 2 solutions, I always find a third that fits better. Can work with anyone anywhere anytime.",
     skills: ["Video-Editing", "AI-Prompting", "Project-Management"],
-    img:"/team/marwan_11.jpeg",
+    img:"/team/marwan_11.webp",
     
   },
 
