@@ -148,7 +148,7 @@ export const team = [
     category:["Technical","Executives"],
     bio: "Sophomore in Computer Engineering. Can't touch an electronic without taking it apart and putting it back together (most of the time). Always with a screwdriver, soldering iron, or drum sticks.",
     skills: ["Hardware Mods and Repair", "Embedded", "Music Composition"],
-    img:"/team/adam-12.webp",
+    img:"/team/adam_12.webp",
     github: "https://github.com/adamantiumexo",
   },
   {
