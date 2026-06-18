@@ -130,9 +130,9 @@ export const team = [
     name: "Marwan Saied",
     role: "Activities Team",
     category:"Activities",
-    bio: " ",
-    skills: [" ", " ", " "],
-    img:" ",
+    bio: "I’ve been always told i’m a creative genius. Whenever presented with a question with 2 solutions, I always find a third that fits better. Can work with anyone anywhere anytime.",
+    skills: ["Video-Editing", "AI-Prompting", "Project-Management"],
+    img:"/team/marwan.jpg",
     
   },
 
