@@ -30,8 +30,7 @@ export const team = [
     bio: "I’m a Computer Engineering major passionate about software development and hardware innovation. I help lead the IoT club's operations, hands-on projects, and tech strategy.",
     skills: ["AI integration", "computer vision", "Algorithm Problem Solving ","Circuits and systems"],
     img:" ",
-    github: "#",
-    twitter: "#",
+    linkedin:"https://www.linkedin.com/in/alielatly",
   },
   {
     id: 3,
