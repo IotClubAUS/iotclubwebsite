@@ -158,7 +158,7 @@ useEffect(() => {
     src="/files/file_1.webp"
     className="
     fixed
-    right-8
+right-2 md:right-8
     top-1/2
     -translate-y-1/2
 w-24 md:w-72
@@ -172,11 +172,11 @@ w-24 md:w-72
     src="/files/file_1.webp"
     className="
     fixed
-    left-8
+left-2 md:left-8
     top-1/2
     -translate-y-1/2
 w-24 md:w-72
-    animate-bounce
+animate-bounce
     z-50
     "
   />
@@ -196,8 +196,8 @@ w-24 md:w-72
     z-50
     "
     style={{
-  left: img.x,
-  top: img.y,
+  left: img.x - 16,
+  top: img.y - 16,
   transform:`rotate(${img.rotate}deg)`,
   transition:"all .8s ease-out",
   opacity:1,
