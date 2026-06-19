@@ -313,8 +313,8 @@ export const team = [
     name: "Ali Hussein",
     role: "Media Team",
     category:"Media",
-    bio: " ",
-    skills: [" ", " ", " "],
+    bio: "Aspiring Mechanical Engineer with a passion for creativity, communication, and teamwork. I enjoy creating engaging content, learning new skills, and contributing to impactful projects. Also a cat lover.",
+    skills: ["Video Editing", "Teamwork", "Problem solving"],
     img:" ",
     
   },
