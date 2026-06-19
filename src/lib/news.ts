@@ -37,7 +37,7 @@ export const allNews = [
     date: "2026-05-15",
     tag: "Event",
     title: "IoT Club WoW event",
-    bio:"Upgraded greenhouse monitoring system with LoRa sensors and React dashboard across 3 zones.",
+    bio:"Welcoming new students to AUS in Fall'26 Week of Welcome!",
     info:" ",
     image: "/news/wow_poster.webp",
     author: "IoT Admin",
