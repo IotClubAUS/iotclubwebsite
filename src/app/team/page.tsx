@@ -209,7 +209,9 @@ fontSize: window.innerWidth < 768 ? "0.85rem" : "1rem",
                 {/* Skills */}
                 <div className="flex flex-wrap gap-2 mb-4">
   {member.skills.map((skill, index) => (
+
     <span
+    
       key={skill}
       className={index >= 2 ? "hidden md:inline-block px-2 py-0.5" : "px-2 py-0.5"}
       style={{
