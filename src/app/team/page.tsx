@@ -178,15 +178,15 @@ style={{
 </div>
               {/* Info */}
 <div className="p-3 md:p-5">
-                  <h3
-                  style={{
-                    fontFamily: "'Space Mono', monospace",
-fontSize: window.innerWidth < 768 ? "0.85rem" : "1rem",
-                    fontWeight: 700,
-                    color: "#e8edf2",
-                    marginBottom: "2px",
-                  }}
-                >
+                 <h3
+  className="text-sm md:text-base"
+  style={{
+    fontFamily: "'Space Mono', monospace",
+    fontWeight: 700,
+    color: "#e8edf2",
+    marginBottom: "2px",
+  }}
+>
                   {member.name}
                 </h3>
                 <p
@@ -211,7 +211,7 @@ fontSize: window.innerWidth < 768 ? "0.85rem" : "1rem",
   {member.skills.map((skill, index) => (
 
     <span
-    
+
       key={skill}
       className={index >= 2 ? "hidden md:inline-block px-2 py-0.5" : "px-2 py-0.5"}
       style={{
