@@ -49,7 +49,7 @@ export const team = [
     category:"Executives",
     bio: " ",
     skills: [" ", " ", "Procrastinator"],
-    img:" ",
+    img:"/team/default_0.webp",
     github: "#",
     linkedin: "#",
   },
@@ -80,7 +80,7 @@ export const team = [
     category:"Activities",
     bio: " ",
     skills: [" ", " ", " "],
-    img:" ",
+    img:"/team/default_0.webp",
     
   },
   {
@@ -90,7 +90,7 @@ export const team = [
     category:"Activities",
     bio: " ",
     skills: [" ", " ", " "],
-    img:" ",
+    img:"/team/default_0.webp",
     
   },
   {
@@ -100,7 +100,7 @@ export const team = [
     category:"Activities",
     bio: " ",
     skills: [" ", " ", " "],
-    img:" ",
+    img:"/team/default_0.webp",
     
   },
   {
@@ -110,7 +110,7 @@ export const team = [
     category:"Activities",
     bio: " ",
     skills: [" ", " ", " "],
-    img:" ",
+    img:"/team/default_0.webp",
     
   },
   {
@@ -120,7 +120,7 @@ export const team = [
     category:"Activities",
     bio: "I am a Mechanical Engineering major. I like cars.",
     skills: ["Prototyping", "Research", "problem Solving"],
-    img:" ",
+    img:"/team/default_0.webp",
     
   },
   {
@@ -157,7 +157,7 @@ export const team = [
     category:"Technical",
     bio: "Sophomore computer engineering who loves to take things apart to see how they work.",
     skills: ["Building Things", "Coding", "Communication"],
-    img:" ",
+    img:"/team/default_0.webp",
    
   },
   {
@@ -167,7 +167,7 @@ export const team = [
     category:"Technical",
     bio: " ",
     skills: [" ", " ", " "],
-    img:" ",
+    img:"/team/default_0.webp",
     
   },
   {
@@ -177,7 +177,7 @@ export const team = [
     category:"Technical",
     bio: " ",
     skills: [" ", " ", " "],
-    img:" ",
+    img:"/team/default_0.webp",
     
   },
   {
@@ -197,7 +197,7 @@ export const team = [
     category:"Technical",
     bio: " ",
     skills: [" ", " ", " "],
-    img:" ",
+    img:"/team/default_0.webp",
     
   },
   
@@ -223,7 +223,7 @@ export const team = [
     category:"Public Relations",
     bio: " ",
     skills: [" ", " ", " "],
-    img:" ",
+    img:"/team/default_0.webp",
     
   },
   {
@@ -233,7 +233,7 @@ export const team = [
     category:"Public Relations",
     bio: " ",
     skills: [" ", " ", " "],
-    img:" ",
+    img:"/team/default_0.webp",
     
   },
   {
@@ -243,7 +243,7 @@ export const team = [
     category:"Public Relations",
     bio: " ",
     skills: [" ", " ", " "],
-    img:" ",
+    img:"/team/default_0.webp",
     
   },
   {
@@ -253,7 +253,7 @@ export const team = [
     category:"Public Relations",
     bio: " ",
     skills: [" ", " ", " "],
-    img:" ",
+    img:"/team/default_0.webp",
     
   },
   {
@@ -263,7 +263,7 @@ export const team = [
     category:"Public Relations",
     bio: " ",
     skills: [" ", " ", " "],
-    img:" ",
+    img:"/team/default_0.webp",
     
   },
 
@@ -325,7 +325,7 @@ export const team = [
     category:"Media",
     bio: " ",
     skills: [" ", " ", " "],
-    img:" ",
+    img:"/team/default_0.webp",
     
   },
   {
@@ -335,7 +335,7 @@ export const team = [
     category:"Media",
     bio: " ",
     skills: [" ", " ", " "],
-    img:" ",
+    img:"/team/default_0.webp",
     
   },
 
