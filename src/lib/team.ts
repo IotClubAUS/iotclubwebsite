@@ -293,8 +293,8 @@ export const team = [
     name: "Mumtahina Tasnia",
     role: "Media Team",
     category:"Media",
-    bio: " ",
-    skills: ["Python ", "Data Analysis", "Content Creation"],
+    bio: "An engineering student striving to make it out in one piece. A firm believer in 'Work smart, not hard,' though results may vary. Side quests include studying, gaming, and pretending I know what I'm doing.",
+    skills: ["Gaming", "Eating", "Content Creation"],
     img:"/team/mumtahina_26.webp",
     
   },
