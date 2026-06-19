@@ -67,7 +67,7 @@ export const team = [
     name: "Hashir Hameed",
     role: "Activities Coordinator",
     category:["Activities","Executives"],
-    bio:"Enjoys designing and building systems that turn ideas into reality. Loves exploring how hardware, software, and creativity come together to create practical solutions.",
+    bio:"Enjoys designing and building systems that turn ideas into reality. Loves exploring how hardware, software, and creativity come together to create practical solutions. Loves Food too.",
     skills: ["Typescript", "Next.js", "C++"],
     img:"/team/hashir_6.webp",
     github: "https://github.com/hashir-hameed",
