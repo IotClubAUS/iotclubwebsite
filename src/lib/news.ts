@@ -39,8 +39,7 @@ export const allNews = [
     title: "IoT Club WoW event",
     bio:"Upgraded greenhouse monitoring system with LoRa sensors and React dashboard across 3 zones.",
     info:" ",
-    image:
-      "https://images.unsplash.com/photo-1562408590-e32931084e23?w=800&h=500&fit=crop&auto=format",
+    image: "/news/wow_poster.webp",
     author: "IoT Admin",
     readTime: "4 min read",
   },
