@@ -48,7 +48,7 @@ export const team = [
     role: "Executive Director",
     category:"Executives",
     bio: " ",
-    skills: [" ", " ", " "],
+    skills: [" ", " ", "Procrastinator"],
     img:" ",
     github: "#",
     linkedin: "#",

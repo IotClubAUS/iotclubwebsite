@@ -1,5 +1,5 @@
 "use client";
-
+import EventCountdown from "@/app/components/EventCountdown";
 import { allNews } from "@/lib/news";
 import { useRouter } from "next/navigation";
 import {
@@ -20,37 +20,39 @@ const HERO_IMG =
   "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&h=900&fit=crop&auto=format";
 
 
-
 const stats = [
-  ["30+", "Team Members"],
-  ["3", "Hackathon Wins"],
-  ["40+", "Projects Built"],
-  ["12", "Industry Partners"],
+["32+","ENGINEERS"],
+["40+","SYSTEMS BUILT"],
+["12","PARTNERS"],
+["03","HACKATHON WINS"],
 ];
 
 const pillars = [
   {
+        number:"1",
     icon: Cpu,
     title: "Hardware Hacking",
     desc: "Arduino, ESP32, Raspberry Pi and embedded systems.",
   },
   {
+        number:"2",
     icon: Radio,
     title: "Connectivity",
     desc: "MQTT, LoRa, Zigbee and wireless communication.",
   },
   {
+        number:"3",
     icon: Layers,
     title: "Data & Cloud",
     desc: "Dashboards, APIs and IoT infrastructure.",
   },
   {
+    number:"4",
     icon: Zap,
     title: "Real Impact",
     desc: "Smart campus and sustainability projects.",
   },
 ];
-
 export default function HomePage() {
   const router = useRouter();
 
@@ -65,6 +67,8 @@ fontFamily:"Inter, sans-serif"
 }}
 >
       {/* HERO */}
+      
+
 <section className="
 relative
 min-h-screen
@@ -72,8 +76,100 @@ flex
 items-center
 overflow-hidden
 ">
-          <div className="absolute inset-0">
-          <img
+
+  <div
+className="
+absolute
+right-[20%]
+top-1/2
+hidden
+lg:block
+"
+>
+<div
+className="
+relative
+w-80
+h-80
+rounded-full
+border
+border-cyan-400/20
+flex
+items-center
+justify-center
+animate-pulse
+"
+>
+
+
+<div
+className="
+absolute
+w-56
+h-56
+rounded-full
+border
+border-cyan-400/30
+"
+/>
+
+
+<div
+className="
+w-32
+h-32
+rounded-3xl
+bg-[#0e1520]
+border
+border-cyan-400/40
+shadow-[0_0_80px_rgba(0,212,255,.5)]
+flex
+flex-col
+items-center
+justify-center
+"
+>
+
+<Cpu
+size={42}
+color="#00d4ff"
+/>
+
+<p
+className="
+text-[10px]
+text-cyan-400
+font-mono
+mt-2
+tracking-widest
+"
+>
+IOT CORE
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+  <div
+className="
+absolute
+inset-0
+opacity-[0.08]
+"
+style={{
+backgroundImage:
+"linear-gradient(#00d4ff 1px,transparent 1px),linear-gradient(90deg,#00d4ff 1px,transparent 1px)",
+backgroundSize:"50px 50px"
+}}
+/>
+<div className="
+absolute
+inset-0
+z-0
+">          <img
             src={HERO_IMG}
             className="w-full h-full object-cover"
             style={{ opacity: 0.2 }}
@@ -115,18 +211,21 @@ md:py-32
             className="mb-6"
             style={{
               fontFamily:"'Space Mono',monospace",
-fontSize:"clamp(2.4rem,11vw,5rem)",
+fontSize:"clamp(3rem,10vw,6.5rem)",
               color:"#e8edf2",
               lineHeight:1.1
             }}
           >
-            Connect.
-            <br/>
-            <span style={{color:"#00d4ff"}}>
-              Build.
-            </span>
-            <br/>
-            Deploy.
+           CONNECT.
+<br/>
+
+<span style={{color:"#00d4ff"}}>
+BUILD.
+</span>
+
+<br/>
+
+DEPLOY.
           </h1>
 
 
@@ -142,8 +241,9 @@ fontSize:"clamp(2.4rem,11vw,5rem)",
     lineHeight:1.7
   }}
 >
-  A student community building IoT systems at the intersection of
-  hardware, software and the physical world.
+A student-powered engineering community building
+connected systems through embedded hardware,
+software, and intelligent automation.
 </p>
 
 
@@ -182,7 +282,7 @@ items-center
 gap-2
 whitespace-nowrap
 ">
-  Join The Club <ArrowRight size={14}/>
+Start Building  <ArrowRight size={14}/>
 </span>
 
   <span
@@ -345,64 +445,64 @@ md:hidden
 
       </section>
 
-
-
-      {/* STATS */}
-
-      <section
-        className="py-10"
-        style={{
-          background:"#0e1520",
-          borderTop:"1px solid rgba(0,212,255,.12)",
-          borderBottom:"1px solid rgba(0,212,255,.12)"
-        }}
-      >
-
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-2
-sm:grid-cols-4 gap-6">
-
-          {stats.map(([num,label])=>(
-<div
-key={label}
+<section
 className="
-group
+max-w-5xl
+mx-auto
+px-6
+py-20
 text-center
-p-5
-rounded-xl
-border
-border-transparent
-hover:border-cyan-400/20
-hover:bg-cyan-400/5
-transition-all
-duration-300
 "
 >
-              <h3
+
+
+<p
 className="
-group-hover:scale-110
-transition-transform
-duration-300
+text-cyan-400
+font-mono
+text-xs
+tracking-[0.3em]
 "
-style={{
-color:"#00d4ff",
-fontSize:"2rem",
-fontFamily:"'Space Mono',monospace"
-}}
 >
-{num}
-</h3>
-              <p style={{color:"#6b7a8d"}}>
-                {label}
-              </p>
-
-            </div>
-          ))}
-
-        </div>
-
-      </section>
+OUR MISSION
+</p>
 
 
+<h2
+className="
+mt-5
+text-3xl
+md:text-5xl
+text-white
+font-mono
+"
+>
+
+Turning student ideas
+into connected reality.
+
+</h2>
+
+
+<p
+className="
+mt-6
+text-gray-400
+max-w-2xl
+mx-auto
+"
+>
+
+We design intelligent systems that connect
+hardware, software, and people to solve
+real-world problems.
+
+</p>
+
+
+</section>
+
+<EventCountdown/>
 
      {/* PILLARS */}
 
@@ -433,8 +533,8 @@ fontFamily:"'Space Mono',monospace"
       fontFamily:"'Space Mono',monospace"
     }}
   >
-    From sensor to system.
-  </h2>
+From hardware
+to intelligence.  </h2>
 
 
   <div className="
@@ -455,22 +555,22 @@ fontFamily:"'Space Mono',monospace"
 
       <div
       key={p.title}
-      className="
-        group
-        relative
-p-5
-sm:p-6
-        rounded-xl
-        overflow-hidden
-        transition-all
-        duration-300
-        hover:-translate-y-2
-        hover:shadow-[0_10px_40px_rgba(0,212,255,.15)]
-      "
-      style={{
-        background:"#0e1520",
-        border:"1px solid rgba(0,212,255,.12)"
-      }}
+     
+     className="
+group
+relative
+p-6
+rounded-2xl
+bg-gradient-to-br
+from-white/[0.08]
+to-white/[0.02]
+border
+border-white/10
+backdrop-blur-xl
+hover:border-cyan-400/50
+transition-all
+duration-500
+"
       >
 
         <div
@@ -485,15 +585,21 @@ sm:p-6
         />
 
 
-        <Icon
-        size={28}
-        color="#00d4ff"
-        className="
-          relative
-          group-hover:scale-110
-          transition
-        "
-        />
+        <p
+className="
+text-cyan-400
+font-mono
+text-xs
+mb-5
+"
+>
+{p.number} / MODULE</p>
+
+
+<Icon
+size={28}
+color="#00d4ff"
+/>
 
 
         <h3
@@ -546,13 +652,13 @@ sm:px-6
 ">
 <div className="flex flex-col gap-4 md:flex-row md:justify-between mb-10">
             <h2
-              style={{
-                color:"#e8edf2",
-                fontFamily:"'Space Mono',monospace"
-              }}
-            >
-              News & Events
-            </h2> 
+  style={{
+    color:"#e8edf2",
+    fontFamily:"'Space Mono',monospace"
+  }}
+>
+  News & Events
+</h2>
             
              <button
   onClick={() => router.push("/news")}
@@ -592,8 +698,9 @@ className="
 group
 overflow-hidden
 cursor-pointer
-rounded-xl
-transition-all
+rounded-2xl
+bg-white/[0.03]
+backdrop-blur-xltransition-all
 duration-300
 hover:-translate-y-2
 hover:shadow-[0_20px_50px_rgba(0,212,255,.15)]
@@ -685,8 +792,8 @@ style={{
 fontFamily:"'Space Mono',monospace"
 }}
 >
-Build the future with us.
-</h2>
+Ready to build
+the next connected system?</h2>
 
 
 <p
@@ -717,6 +824,8 @@ Join AUS IoT Club →
 
 
 </section>
+
+
     </main>
   );
 }
