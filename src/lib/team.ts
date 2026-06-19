@@ -50,7 +50,7 @@ export const team = [
     bio: "I have Solutions to Problems that Dont Exist. Founder, Director, Engineer, Honestly just Everything You Could Ask For. 🍕",
     skills: ["Sleep", "Procrastination", "Wasting Time"],
     img:"/team/arsh_4.webp",
-    linkedin: "#",
+    linkedin:"https://www.linkedin.com/in/mohammed-arsh-khan",
   },
 
 
