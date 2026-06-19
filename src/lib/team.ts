@@ -294,8 +294,8 @@ export const team = [
     role: "Media Team",
     category:"Media",
     bio: " ",
-    skills: [" ", " ", " "],
-    img:" ",
+    skills: ["Python ", "Data Analysis", "Content Creation"],
+    img:"/team/mumtahina_26.webp",
     
   },
   {
