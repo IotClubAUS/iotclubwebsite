@@ -120,8 +120,8 @@ const handleSecretClick = (memberId: number) => {
   })}
 </div>
         {/* Core team grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
-{filteredTeam.map((member) => (            
+<div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-20">
+  {filteredTeam.map((member) => (            
   
   
   <div
@@ -147,9 +147,10 @@ onMouseLeave={(e) => {
 }}
             >
               {/* Photo */}
-<div
-  className="h-56 overflow-hidden bg-slate-900 relative transition-all duration-500"
-  style={{
+
+<div className="h-32 md:h-56 overflow-hidden bg-slate-900 relative transition-all duration-500"
+
+style={{
     boxShadow:
       secretClicks > 0 && member.id === 5
         ? "0 0 12px rgba(0,212,255,0.08)"
@@ -176,11 +177,11 @@ onMouseLeave={(e) => {
   />
 </div>
               {/* Info */}
-              <div className="p-5">
-                <h3
+<div className="p-3 md:p-5">
+                  <h3
                   style={{
                     fontFamily: "'Space Mono', monospace",
-                    fontSize: "1rem",
+fontSize: window.innerWidth < 768 ? "0.85rem" : "1rem",
                     fontWeight: 700,
                     color: "#e8edf2",
                     marginBottom: "2px",
@@ -200,30 +201,30 @@ onMouseLeave={(e) => {
                 >
                   {member.role}
                 </p>
-                <p className="mb-4" style={{ fontSize: "0.825rem", color: "#6b7a8d", lineHeight: 1.6 }}>
+<p className="hidden md:block mb-4"                
+                style={{ fontSize: "0.825rem", color: "#6b7a8d", lineHeight: 1.6 }}>
                   {member.bio}
                 </p>
 
                 {/* Skills */}
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {member.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-2 py-0.5"
-                      style={{
-                        fontFamily: "'Space Mono', monospace",
-                        fontSize: "10px",
-                        color: "#6b7a8d",
-                        background: "#111827",
-                        border: "1px solid rgba(0,212,255,0.12)",
-                        borderRadius: "2px",
-                      }}
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-
+  {member.skills.map((skill, index) => (
+    <span
+      key={skill}
+      className={index >= 2 ? "hidden md:inline-block px-2 py-0.5" : "px-2 py-0.5"}
+      style={{
+        fontFamily: "'Space Mono', monospace",
+        fontSize: "10px",
+        color: "#6b7a8d",
+        background: "#111827",
+        border: "1px solid rgba(0,212,255,0.12)",
+        borderRadius: "2px",
+      }}
+    >
+      {skill}
+    </span>
+  ))}
+</div>
                 {/* Social links */}
 <div
   className="flex gap-3 pt-3 mt-3"
