@@ -303,9 +303,9 @@ export const team = [
     name: "Zeina Alaya",
     role: "Media Team",
     category:"Media",
-    bio: " ",
-    skills: [" ", " ", " "],
-    img:" ",
+    bio: "Passionate about anything tech and art. Sweet tooth. Video games are good for you",
+    skills: ["Motion graphics ", "Illustration", "Mii-making"],
+    img:"/team/zeina_27.webp",
    
   },
   {
