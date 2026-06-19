@@ -17,7 +17,7 @@ export const allNews = [
     title: "Arduino-101 — Recap",
     bio:"We have Successfully hosted our inaugural event entitled, 'The Arduino-101 Workshop'. This beginner-friendly virtual session introduced students to the fundamentals of hardware and microcontroller programming.",
     info:" ",
-    image: " ",
+    image: "/news/arduino_poster.webp",
     author: "IoT Admin",
     readTime: "3 min read",
   },
