@@ -217,22 +217,22 @@ export const team = [
   },
   {
     id: 19,
-    name: " ",
+    name: "Noor Hazem Seif",
     role: "PR Team",
     category:"Public Relations",
-    bio: " ",
-    skills: [" ", " ", " "],
-    img:"/team/default_0.webp",
+    bio: "Computer Science student at AUS with a strong background in leadership, communications, and event management. Currently serving as PR Officer for multiple student organizations alongside experience with large teams, managing outreach initiatives, and coordinating high-impact events. Passionate about building meaningful connections and creating engaging experiences for diverse communities.",
+    skills: ["Communication", "Public Relations", "Content Creation"],
+    img:"/team/noor_19.webp",
     
   },
   {
     id: 20,
-    name: " ",
+    name: "Saarah Jaleel Padiyath",
     role: "PR Team",
     category:"Public Relations",
-    bio: " ",
-    skills: [" ", " ", " "],
-    img:"/team/default_0.webp",
+    bio: "A mechanical engineering major who loves to ask the who, what, when, where and how of anything related to aircrafts. When I’m not experimenting with Arduinos, I’m probably busy yapping about the WNBA.",
+    skills: ["Public Speaking", "Python", "AutoCAD"],
+    img:"/team/saarah_20.webp",
     
   },
   {
