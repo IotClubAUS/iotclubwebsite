@@ -220,7 +220,7 @@ export const team = [
     name: "Noor Hazem Seif",
     role: "PR Team",
     category:"Public Relations",
-    bio: "Computer Science student at AUS with a strong background in leadership, communications, and event management. Currently serving as PR Officer for multiple student organizations with experience in managing outreach initiatives and coordinating high-impact events. Passionate about building meaningful connections and creating engaging experiences for diverse communities.",
+    bio: "Computer Science student at AUS with a strong background in leadership, communications, and event management. Passionate about building meaningful connections and creating engaging experiences for diverse communities.",
     skills: ["Communication", "Public Relations", "Content Creation"],
     img:"/team/noor_19.webp",
     
