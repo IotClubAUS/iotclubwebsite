@@ -135,16 +135,16 @@ hover:-translate-y-1
             style={{
               textShadow: "0 0 8px rgba(255,255,255,.3)",
               background: APPLICATIONS_OPEN
-                ? "#22c55e"
+                ? "#15d4ff"
                 : "#ef4444",
-              color: "#fff",
+              color: "#080c10",
               fontFamily: "'Space Mono', monospace",
               letterSpacing: ".1em",
               textTransform: "uppercase",
               fontWeight: 700,
               borderRadius: "6px",
               boxShadow: APPLICATIONS_OPEN
-                ? "0 0 25px rgba(34,197,94,.45)"
+                ? "0 0 25px rgba(0,212,255,.15)"
                 : "0 0 25px rgba(239,68,68,.45)",
               pointerEvents: APPLICATIONS_OPEN ? "auto" : "none",
             }}
@@ -284,8 +284,8 @@ border: "1px solid rgba(0,212,255,.15)",
         </div>
       </div>
     </section>
-
-    {/* FINAL CTA */}
+{/*
+    {/* FINAL CTA 
     <section className="pb-24 px-6">
       <div
         className="max-w-5xl mx-auto text-center p-12"
@@ -346,8 +346,10 @@ hover:-translate-y-1
           Join The Club
         </a>
       </div>
-      
+     
     </section>
+
+    */}
  </div>
 </div>
 );
