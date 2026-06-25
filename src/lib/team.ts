@@ -107,9 +107,9 @@ export const team = [
     name: "Vanishri Shekhawat",
     role: "Activities Team",
     category:"Activities",
-    bio: " ",
-    skills: [" ", " ", " "],
-    img:"/team/default_0.webp",
+    bio: "A sophomore Electrical Engineering student and a member of the Activities Subcommittee at the IoT Club. With a background in AI research and a passion for Arduino and robotics, I enjoy organizing hands-on events focused on Arduino programming.",
+    skills: ["Python ", "Arduino", "Public Speaking"],
+    img:"/team/vani_9.webp",
     
   },
   {
