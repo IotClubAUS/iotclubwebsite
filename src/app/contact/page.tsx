@@ -1,269 +1,354 @@
 "use client";
 
-import { CheckCircle, Terminal, Users, Wrench } from "lucide-react";
-import { ChangeEvent, FormEvent, useState } from "react";
 
-const perks = [
-  { icon: Terminal, title: "Access to Club Hardware Lab", desc: "Oscilloscopes, soldering stations, 3D printers, a full shelf of dev boards." },
-  { icon: Users, title: "Mentorship Program", desc: "Get paired with an experienced member who's been where you are." },
-  { icon: Wrench, title: "Free Workshop Entry", desc: "Every official club workshop is free for members — usually $30–60 outside." },
-  { icon: CheckCircle, title: "GitHub Org & Discord Access", desc: "Collaborate on projects, see what's being built, jump in anywhere." },
+const APPLICATIONS_OPEN = true;
+
+const APPLICATION_URL = "https://docs.google.com/forms/d/e/1FAIpQLScUt5c1mp8MHQNj48T8zeBMvSxqnkjAa-ycJI_FVEb6udqawg/viewform?usp=sharing&ouid=115100477030477821907";
+
+const DEADLINE = "June 30, 2026 • 11:59 PM (UAE time)";
+
+
+
+const reasons = [
+  {
+    title: "Hands-On Hardware",
+    desc: "Build real systems using microcontrollers, sensors, robotics, and embedded devices.",
+  },
+  {
+    title: "Project Teams",
+ desc: "Gain practical experience through workshops, team projects, and technical challenges."  },
+  {
+    title: "Industry Exposure",
+    desc: "Connect with engineers, alumni, and technology companies.",
+  },
+  {
+    title: "Leadership Opportunities",
+    desc: "Lead workshops, events, and technical initiatives.",
+  },
 ];
 
 export default function JoinPage() {
-  const [form, setForm] = useState({ name: "", email: "", major: "", experience: "", motivation: "" });
-  const [submitted, setSubmitted] = useState(false);
+  
 
 
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
 
- 
+    return (
+  <div
+    style={{
+      fontFamily: "'Inter', sans-serif",
+      minHeight: "100vh",
+      background:
+        "radial-gradient(circle at top, rgba(0,212,255,.08), transparent 45%)",
+    }}
+  >
+    <div
+  style={{
+    position: "fixed",
+    inset: 0,
+    backgroundImage: `
+      linear-gradient(rgba(0,212,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,.03) 1px, transparent 1px)
+    `,
+    backgroundSize: "40px 40px",
+    pointerEvents: "none",
+    zIndex: 0,
+  }}
+/>
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
+<div
+  style={{
+    position: "fixed",
+    inset: 0,
+    backgroundImage: `
+      linear-gradient(rgba(0,212,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,.03) 1px, transparent 1px)
+    `,
+    backgroundSize: "40px 40px",
+    pointerEvents: "none",
+    zIndex: 0,
+  }}
+/>
 
-  return (
-    <div style={{ fontFamily: "'Inter', sans-serif", minHeight: "100vh" }}>
-      {/* Header */}
-      <div
-        className="pt-28 pb-16 px-6"
-        style={{ borderBottom: "1px solid rgba(0,212,255,0.1)" }}
-      >
-        <div className="max-w-6xl mx-auto">
-          <p
-            className="mb-3 tracking-widest uppercase"
-            style={{ fontFamily: "'Space Mono', monospace", fontSize: "11px", color: "#00d4ff" }}
-          >
-            — Apply
-          </p>
-          <h1
-            style={{ fontFamily: "'Space Mono', monospace", fontSize: "2.5rem", color: "#e8edf2", lineHeight: 1.1 }}
-          >
-            Join the Club
-          </h1>
-          <p className="mt-4 max-w-xl" style={{ color: "#6b7a8d", lineHeight: 1.7 }}>
-            No prior experience required. We welcome everyone from curious beginners to seasoned embedded devs.
-          </p>
-        </div>
-      </div>
+<div className="relative z-10">
+  
+      {/* HERO */}
+    <section className="pt-32 pb-24 px-6">
+      <div className="max-w-6xl mx-auto text-center">
+        <p
+          style={{
+            fontFamily: "'Space Mono', monospace",
+            color: "#00d4ff",
+            letterSpacing: ".2em",
+            textTransform: "uppercase",
+            fontSize: "12px",
+          }}
+        >
+          Internet of Things Club
+        </p>
 
-      <div className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-2 gap-16">
-        {/* Perks */}
-        <div>
-          <h2
-            className="mb-8"
-            style={{ fontFamily: "'Space Mono', monospace", fontSize: "1.3rem", color: "#e8edf2" }}
-          >
-            What you get
-          </h2>
-          <div className="flex flex-col gap-5">
-            {perks.map((p) => {
-              const Icon = p.icon;
-              return (
-                <div key={p.title} className="flex gap-4 items-start">
-                  <div
-                    className="w-10 h-10 flex items-center justify-center flex-shrink-0"
-                    style={{ background: "rgba(0,212,255,0.1)", borderRadius: "4px", border: "1px solid rgba(0,212,255,0.2)" }}
-                  >
-                    <Icon size={16} style={{ color: "#00d4ff" }} />
-                  </div>
-                  <div>
-                    <h3 style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.875rem", color: "#e8edf2", fontWeight: 700 }}>
-                      {p.title}
-                    </h3>
-                    <p className="mt-1" style={{ fontSize: "0.825rem", color: "#6b7a8d", lineHeight: 1.6 }}>
-                      {p.desc}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+        <h1
+          className="mt-6"
+          style={{
+            fontFamily: "'Space Mono', monospace",
+            fontSize: "clamp(3rem,8vw,5.5rem)",
+color: "#e8edf2",
+textShadow:
+  "0 0 20px rgba(0,212,255,.15), 0 0 40px rgba(0,212,255,.1)",
+              lineHeight: 1,
+          }}
+        >
+          Build The
+          <br />
+          Future.
+        </h1>
 
-          <div
-            className="mt-12 p-6"
+        <p
+          className="mx-auto mt-8 max-w-3xl"
+          style={{
+            color: "#6b7a8d",
+            fontSize: "1.1rem",
+            lineHeight: 1.8,
+          }}
+        >
+          Join a community of builders creating intelligent devices,
+autonomous systems, and connected technologies that solve
+real-world problems.
+        </p>
+
+        <div className="mt-12">
+          <a
+            href={APPLICATION_URL}
+            target="_blank"
+            rel="noreferrer"
+className="
+inline-flex
+items-center
+justify-center
+px-10
+py-4
+transition-all
+duration-300
+hover:scale-105
+hover:-translate-y-1
+"
             style={{
-              background: "rgba(0,212,255,0.05)",
-              border: "1px solid rgba(0,212,255,0.2)",
-              borderRadius: "4px",
+              textShadow: "0 0 8px rgba(255,255,255,.3)",
+              background: APPLICATIONS_OPEN
+                ? "#22c55e"
+                : "#ef4444",
+              color: "#fff",
+              fontFamily: "'Space Mono', monospace",
+              letterSpacing: ".1em",
+              textTransform: "uppercase",
+              fontWeight: 700,
+              borderRadius: "6px",
+              boxShadow: APPLICATIONS_OPEN
+                ? "0 0 25px rgba(34,197,94,.45)"
+                : "0 0 25px rgba(239,68,68,.45)",
+              pointerEvents: APPLICATIONS_OPEN ? "auto" : "none",
             }}
           >
-            <p
-              style={{ fontFamily: "'Space Mono', monospace", fontSize: "11px", letterSpacing: "0.1em", textTransform: "uppercase", color: "#00d4ff", marginBottom: "0.5rem" }}
-            >
-              Membership Fee
-            </p>
-            <p style={{ fontSize: "2rem", fontFamily: "'Space Mono', monospace", fontWeight: 700, color: "#e8edf2" }}>
-              $0 / semester
-            </p>
-            <p className="mt-2" style={{ fontSize: "0.825rem", color: "#6b7a8d" }}>
-              Covers lab materials, snacks at meetings, and the club's hardware fund. No fee in your first semester.
-            </p>
-          </div>
-        </div>
-
-        {/* Application form */}
-        <div>
-          {submitted ? (
-            <div
-              className="h-full flex flex-col items-center justify-center text-center p-10"
-              style={{ background: "#0e1520", border: "1px solid rgba(0,212,255,0.25)", borderRadius: "4px" }}
-            >
-              <div
-                className="w-16 h-16 flex items-center justify-center rounded-full mb-6"
-                style={{ background: "rgba(0,212,255,0.1)", border: "1px solid rgba(0,212,255,0.4)" }}
-              >
-                <CheckCircle size={28} style={{ color: "#00d4ff" }} />
-              </div>
-              <h2 style={{ fontFamily: "'Space Mono', monospace", fontSize: "1.25rem", color: "#e8edf2", marginBottom: "0.75rem" }}>
-                Application received!
-              </h2>
-              <p style={{ color: "#6b7a8d", lineHeight: 1.7 }}>
-                We'll review your application and reach out to <strong style={{ color: "#e8edf2" }}>{form.email}</strong> within 5 business days. Check your spam folder too.
-              </p>
-            </div>
-          ) : (
-            <form
-              onSubmit={handleSubmit}
-              className="flex flex-col gap-5"
-              style={{ background: "#0e1520", border: "1px solid rgba(0,212,255,0.12)", borderRadius: "4px", padding: "2rem" }}
-            >
-              <h2
-                style={{ fontFamily: "'Space Mono', monospace", fontSize: "1rem", color: "#e8edf2", marginBottom: "0.5rem" }}
-              >
-                Apply for membership
-              </h2>
-
-              {[
-                { name: "name", label: "Full Name", type: "text", placeholder: "Ada Lovelace" },
-                { name: "email", label: "Email Address", type: "email", placeholder: "ada@university.edu" },
-                { name: "major", label: "Major / Program", type: "text", placeholder: "e.g. Computer Engineering" },
-              ].map((field) => (
-                <div key={field.name}>
-                  <label
-                    htmlFor={field.name}
-                    style={{ fontFamily: "'Space Mono', monospace", fontSize: "11px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#6b7a8d", display: "block", marginBottom: "6px" }}
-                  >
-                    {field.label}
-                  </label>
-                  <input
-                    id={field.name}
-                    name={field.name}
-                    type={field.type}
-                    placeholder={field.placeholder}
-                    value={form[field.name as keyof typeof form]}
-                    onChange={handleChange}
-                    required
-                    style={{
-                      width: "100%",
-                      background: "#111827",
-                      border: "1px solid rgba(0,212,255,0.15)",
-                      borderRadius: "2px",
-                      padding: "0.625rem 0.875rem",
-                      color: "#e8edf2",
-                      fontSize: "0.875rem",
-                      outline: "none",
-                      fontFamily: "'Inter', sans-serif",
-                    }}
-                    onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(0,212,255,0.5)")}
-                    onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(0,212,255,0.15)")}
-                  />
-                </div>
-              ))}
-
-              <div>
-                <label
-                  htmlFor="experience"
-                  style={{ fontFamily: "'Space Mono', monospace", fontSize: "11px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#6b7a8d", display: "block", marginBottom: "6px" }}
-                >
-                  Experience Level
-                </label>
-                <select
-                  id="experience"
-                  name="experience"
-                  value={form.experience}
-                  onChange={handleChange}
-                  required
-                  style={{
-                    width: "100%",
-                    background: "#111827",
-                    border: "1px solid rgba(0,212,255,0.15)",
-                    borderRadius: "2px",
-                    padding: "0.625rem 0.875rem",
-                    color: form.experience ? "#e8edf2" : "#6b7a8d",
-                    fontSize: "0.875rem",
-                    outline: "none",
-                    fontFamily: "'Inter', sans-serif",
-                    cursor: "pointer",
-                  }}
-                >
-                  <option value="" disabled>Select your level</option>
-                  <option value="beginner">Beginner — little to no hardware experience</option>
-                  <option value="intermediate">Intermediate — built a few projects</option>
-                  <option value="advanced">Advanced — comfortable with embedded systems</option>
-                </select>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="motivation"
-                  style={{ fontFamily: "'Space Mono', monospace", fontSize: "11px", letterSpacing: "0.08em", textTransform: "uppercase", color: "#6b7a8d", display: "block", marginBottom: "6px" }}
-                >
-                  Why do you want to join? (2–3 sentences)
-                </label>
-                <textarea
-                  id="motivation"
-                  name="motivation"
-                  value={form.motivation}
-                  onChange={handleChange}
-                  required
-                  rows={4}
-                  placeholder="Tell us what excites you about IoT and what you'd like to build."
-                  style={{
-                    width: "100%",
-                    background: "#111827",
-                    border: "1px solid rgba(0,212,255,0.15)",
-                    borderRadius: "2px",
-                    padding: "0.625rem 0.875rem",
-                    color: "#e8edf2",
-                    fontSize: "0.875rem",
-                    outline: "none",
-                    resize: "vertical",
-                    fontFamily: "'Inter', sans-serif",
-                    lineHeight: 1.6,
-                  }}
-                  onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(0,212,255,0.5)")}
-                  onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(0,212,255,0.15)")}
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full py-3 mt-2 transition-all duration-200 hover:brightness-110"
-                style={{
-                  background: "#00d4ff",
-                  color: "#080c10",
-                  fontFamily: "'Space Mono', monospace",
-                  fontSize: "13px",
-                  letterSpacing: "0.1em",
-                  textTransform: "uppercase",
-                  fontWeight: 700,
-                  borderRadius: "2px",
-                  border: "none",
-                  cursor: "pointer",
-                }}
-              >
-                Submit Application
-              </button>
-            </form>
-          )}
+            {APPLICATIONS_OPEN
+              ? "Apply Now"
+              : "Applications Closed"}
+          </a>
         </div>
       </div>
-    </div>
-  );
+    </section>
+
+    {/* APPLICATION STATUS */}
+    <section className="px-6">
+      <div
+        className="max-w-5xl mx-auto p-8 md:p-10"
+        style={{
+          position: "relative",
+overflow: "hidden",
+          background: APPLICATIONS_OPEN
+            ? "rgba(34,197,94,.06)"
+            : "rgba(239,68,68,.06)",
+          border: APPLICATIONS_OPEN
+            ? "1px solid rgba(34,197,94,.3)"
+            : "1px solid rgba(239,68,68,.3)",
+          borderRadius: "12px",
+          boxShadow: APPLICATIONS_OPEN
+            ? "0 0 40px rgba(34,197,94,.12)"
+            : "0 0 40px rgba(239,68,68,.12)",
+        }}
+      >
+        <div
+  style={{
+    position: "absolute",
+    inset: 0,
+    background:
+      "linear-gradient(90deg, transparent, rgba(255,255,255,.03), transparent)",
+    pointerEvents: "none",
+  }}
+/>
+        <h2
+          style={{
+            fontFamily: "'Space Mono', monospace",
+            color: APPLICATIONS_OPEN
+              ? "#22c55e"
+              : "#ef4444",
+          }}
+        >
+          {APPLICATIONS_OPEN
+            ? "🟢 Applications Open"
+            : "🔴 Applications Closed"}
+        </h2>
+
+        <p
+          className="mt-4"
+          style={{ color: "#e8edf2" }}
+        >
+          Fall 2026 Recruitment Cycle
+        </p>
+
+        <p
+          className="mt-2"
+          style={{ color: "#6b7a8d" }}
+        >
+          Deadline: {DEADLINE}
+        </p>
+      </div>
+    </section>
+
+    
+
+    
+
+    {/* WHY JOIN */}
+{/* WHY JOIN */}
+<section className="px-6 pt-28 pb-24">
+        <div className="max-w-6xl mx-auto">
+      <h2
+  className="mb-10"
+  style={{
+    fontFamily: "'Space Mono', monospace",
+    color: "#e8edf2",
+    fontSize: "2rem",
+  }}
+>
+  <span style={{ color: "#00d4ff" }}>
+    //
+  </span>{" "}
+  Why Join?
+</h2>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {reasons.map((reason) => (
+            <div
+  key={reason.title}
+  className="
+    group
+    p-6
+    transition-all
+    duration-300
+    hover:-translate-y-2
+  "
+              style={{
+                
+                background: "#0e1520",
+border: "1px solid rgba(0,212,255,.15)",
+                borderRadius: "10px",
+                cursor: "default",
+                boxShadow: "0 0 0 rgba(0,212,255,0)",
+              }}
+            >
+             <h3
+  className="
+  transition-all
+  duration-300
+  group-hover:text-cyan-300
+  "
+  style={{
+    color: "#00d4ff",
+    fontFamily: "'Space Mono', monospace",
+  }}
+>
+                {reason.title}
+              </h3>
+
+              <p
+                className="mt-3"
+                style={{
+                  color: "#6b7a8d",
+                  lineHeight: 1.7,
+                }}
+              >
+                {reason.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* FINAL CTA */}
+    <section className="pb-24 px-6">
+      <div
+        className="max-w-5xl mx-auto text-center p-12"
+        style={{
+          background: "#0e1520",
+          border: "1px solid rgba(0,212,255,.15)",
+          borderRadius: "12px",
+          boxShadow:
+  "0 0 40px rgba(0,212,255,.08)",
+        }}
+      >
+        <h2
+          style={{
+            fontFamily: "'Space Mono', monospace",
+            fontSize: "2rem",
+            color: "#e8edf2",
+          }}
+        >
+          Ready to Build?
+        </h2>
+
+        <p
+          className="mt-5"
+          style={{
+            color: "#6b7a8d",
+            maxWidth: "700px",
+            marginInline: "auto",
+            lineHeight: 1.8,
+          }}
+        >
+          Join a community of builders, innovators, and engineers creating the next generation of connected systems.
+        </p>
+
+        <a
+          href={APPLICATION_URL}
+          target="_blank"
+          rel="noreferrer"
+className="
+inline-block
+mt-8
+px-10
+py-4
+transition-all
+duration-300
+hover:scale-105
+hover:-translate-y-1
+"          style={{
+            background: "#00d4ff",
+            color: "#080c10",
+            fontWeight: 700,
+            borderRadius: "6px",
+            fontFamily: "'Space Mono', monospace",
+            textTransform: "uppercase",
+            boxShadow:
+  "0 0 25px rgba(0,212,255,.25)",
+          }}
+        >
+          Join The Club
+        </a>
+      </div>
+      
+    </section>
+ </div>
+</div>
+);
 }
