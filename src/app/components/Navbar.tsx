@@ -167,32 +167,41 @@ background:"rgba(8,12,16,.98)"
 links.map(link=>(
 
 <button
+  key={link.href}
+  className="block w-full text-left px-6 py-4 transition-all duration-300"
+  style={{
+    fontFamily: "'Space Mono', monospace",
+    fontSize: "12px",
+    letterSpacing: "0.1em",
+    textTransform: "uppercase",
 
-key={link.href}
+    color:
+      pathname === link.href
+        ? "#00d4ff"
+        : "#6b7a8d",
 
-className="block w-full text-left px-6 py-4"
+    textShadow:
+      pathname === link.href
+        ? "0 0 8px rgba(0,212,255,.8), 0 0 20px rgba(0,212,255,.5)"
+        : "none",
 
-style={{
-fontFamily:"'Space Mono', monospace",
-fontSize:"12px",
-letterSpacing:"0.1em",
-textTransform:"uppercase",
-color:"#6b7a8d"
-}}
+    borderLeft:
+      pathname === link.href
+        ? "3px solid #00d4ff"
+        : "3px solid transparent",
 
-onClick={()=>{
-
-router.push(link.href);
-setMenuOpen(false);
-
-}}
-
+    background:
+      pathname === link.href
+        ? "rgba(0,212,255,.06)"
+        : "transparent",
+  }}
+  onClick={() => {
+    router.push(link.href);
+    setMenuOpen(false);
+  }}
 >
-
-{link.label}
-
+  {link.label}
 </button>
-
 ))
 }
 
