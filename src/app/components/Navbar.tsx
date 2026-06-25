@@ -86,27 +86,34 @@ links.map(link=>(
 <li key={link.href}>
 
 <button
-onClick={()=>router.push(link.href)}
+  onClick={() => router.push(link.href)}
+  className="relative transition-all duration-300"
+  style={{
+    fontFamily: "'Space Mono', monospace",
+    fontSize: "12px",
+    letterSpacing: "0.1em",
+    textTransform: "uppercase",
+    color: pathname === link.href ? "#00d4ff" : "#6b7a8d",
 
-style={{
-fontFamily:"'Space Mono', monospace",
-fontSize:"12px",
-letterSpacing:"0.1em",
-textTransform:"uppercase",
-color:
-pathname===link.href
-?
-"#00d4ff"
-:
-"#6b7a8d"
-}}
+    textShadow:
+      pathname === link.href
+        ? "0 0 8px rgba(0,212,255,.8), 0 0 20px rgba(0,212,255,.5)"
+        : "none",
+  }}
 >
+  {link.label}
 
-{link.label}
-
-
+  {pathname === link.href && (
+    <span
+      className="absolute left-0 -bottom-2 h-[2px] w-full"
+      style={{
+        background: "#00d4ff",
+        boxShadow:
+          "0 0 8px rgba(0,212,255,.8), 0 0 16px rgba(0,212,255,.6)",
+      }}
+    />
+  )}
 </button>
-
 </li>
 
 ))
