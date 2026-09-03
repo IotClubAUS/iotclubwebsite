@@ -22,6 +22,7 @@ export const team = [
     github: "#",
     linkedin: "https://www.linkedin.com/in/adam-serhan/",
   },
+  
   {
     id: 2,
     name: "Ali Elatly",
@@ -84,7 +85,7 @@ export const team = [
   },
   {
     id: 7,
-    name: "Mada Salamah",
+    name: "Younis Sherif",
     role: "Activities Team",
     category:"Activities",
     bio: " ",
@@ -161,7 +162,7 @@ export const team = [
   },
   {
     id: 14,
-    name: "Zaineh Hatamleh ",
+    name: " ",
     role: "Technical Team",
     category:"Technical",
     bio: " ",
@@ -171,7 +172,7 @@ export const team = [
   },
   {
     id: 15,
-    name: "Salahaldeen Jamhour ",
+    name: " ",
     role: "Technical Team",
     category:"Technical",
     bio: " ",
@@ -217,12 +218,12 @@ export const team = [
   },
   {
     id: 19,
-    name: "Noor Hazem Seif",
+    name: "Mohammed Kayed",
     role: "PR Team",
     category:"Public Relations",
-    bio: "Computer Science student at AUS with a strong background in leadership, communications, and event management. Passionate about building meaningful connections and creating engaging experiences for diverse communities.",
-    skills: ["Communication", "Public Relations", "Content Creation"],
-    img:"/team/noor_19.webp",
+    bio: " ",
+    skills: [" ", " ", " "],
+    img:"/team/default_0.webp",
     
   },
   {
@@ -237,7 +238,7 @@ export const team = [
   },
   {
     id: 21,
-    name: " ",
+    name: "Sanad Mqateef",
     role: "PR Team",
     category:"Public Relations",
     bio: " ",
@@ -247,7 +248,7 @@ export const team = [
   },
   {
     id: 22,
-    name: " ",
+    name: "Omar Khan",
     role: "PR Team",
     category:"Public Relations",
     bio: " ",
@@ -319,7 +320,7 @@ export const team = [
   },
   {
     id: 29,
-    name: " ",
+    name: "Partapuriya M. Achint",
     role: "Media Team",
     category:"Media",
     bio: " ",
@@ -329,7 +330,7 @@ export const team = [
   },
   {
     id: 30,
-    name: " ",
+    name: "Rushda Zoya",
     role: "Media Team",
     category:"Media",
     bio: " ",
@@ -337,7 +338,15 @@ export const team = [
     img:"/team/default_0.webp",
     
   },
-
+  { id: 31,
+    name: "Yusuf Nakhawa",
+    role: "Media Team",
+    category:"Media",
+    bio: " ",
+    skills: [" ", " ", " "],
+    img:"/team/default_0.webp",
+    
+  },
 
 
 ];

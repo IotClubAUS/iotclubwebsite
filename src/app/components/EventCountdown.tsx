@@ -5,11 +5,11 @@ import { ArrowRight, Radio } from "lucide-react";
 
 
 const EVENT_DATE = new Date(
-  "2026-09-25T15:00:00+04:00"
+  "2026-09-15T09:00:00+04:00"
 ).getTime();
 
 
-// YYYY MM  DD   time   zone
+// YYYY MM   DD   time   zone
 
 function calculateTime(){
 
@@ -187,7 +187,7 @@ md:text-xl
 
 {/* NAME of event*/}
 
-Week of Welcome Event
+Club Fair
 
 
 
@@ -223,7 +223,7 @@ strokeLinejoin="round"
 
 
 <span>
-AUS student Center</span>
+AUS Student Center</span>
 
 
 </div>
