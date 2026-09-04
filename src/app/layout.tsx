@@ -4,7 +4,7 @@ import "../styles/global.css";
 import { Providers } from "./providers";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import loadingpage from "./components/loadingpage";
+import Globalloader from "./components/loadingpage/loadingpage";
 
 
 export const metadata: Metadata = {
@@ -37,7 +37,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body>
         <Providers>
-          <loadingpage>
+          <Globalloader>
             <div className="min-h-screen flex flex-col">
               <Navbar />
 
@@ -47,7 +47,7 @@ export default function RootLayout({
 
               <Footer />
             </div>
-          </loadingpage>
+          </Globalloader>
         </Providers>
       </body>
     </html>
