@@ -4,6 +4,7 @@ import "../styles/global.css";
 import { Providers } from "./providers";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import loadingpage from "./components/loadingpage";
 
 
 export const metadata: Metadata = {
@@ -36,15 +37,17 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body>
         <Providers>
-          <div className="min-h-screen flex flex-col">
-            <Navbar />
+          <loadingpage>
+            <div className="min-h-screen flex flex-col">
+              <Navbar />
 
-            <main className="flex-1">
-              {children}
-            </main>
+              <main className="flex-1">
+                {children}
+              </main>
 
-            <Footer />
-          </div>
+              <Footer />
+            </div>
+          </loadingpage>
         </Providers>
       </body>
     </html>

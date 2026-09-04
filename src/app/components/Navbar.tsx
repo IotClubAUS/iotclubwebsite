@@ -16,6 +16,7 @@ export default function Navbar() {
   const links = [
     { href:"/", label:"Home" },
     { href:"/news", label:"News" },
+    { href:"/media", label:"Media" },
     { href:"/team", label:"Team" },
     { href:"/contact", label:"Join Us" },
   ];
