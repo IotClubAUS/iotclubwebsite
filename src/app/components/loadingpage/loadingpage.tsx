@@ -7,17 +7,25 @@ export default function GlobalLoader({
 }: {
   children: React.ReactNode;
 }) {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Only run in the browser
-    const hasVisited = sessionStorage.getItem("hasVisited");
+    // Detect how the page was loaded
+    const navigation = performance.getEntriesByType(
+      "navigation"
+    )[0] as PerformanceNavigationTiming;
 
-    if (hasVisited === "true") {
+    const isRefresh = navigation?.type === "reload";
+
+    // Show loader only on an actual browser refresh
+    if (!isRefresh) {
       setLoading(false);
       return;
     }
+
+    setLoading(true);
+    setProgress(0);
 
     let currentProgress = 0;
 
@@ -30,7 +38,6 @@ export default function GlobalLoader({
         clearInterval(interval);
 
         setTimeout(() => {
-          sessionStorage.setItem("hasVisited", "true");
           setLoading(false);
         }, 300);
       }
@@ -52,8 +59,10 @@ export default function GlobalLoader({
       }}
     >
       <div className="w-full max-w-xs flex flex-col items-center">
+
         {/* ROUTER */}
         <div className="relative mb-6 flex flex-col items-center">
+
           {/* Signal waves */}
           <div className="relative flex items-center justify-center h-10 w-24">
             <span
@@ -71,6 +80,7 @@ export default function GlobalLoader({
                 width: "44px",
                 height: "22px",
                 top: "8px",
+                boxShadow: "0 -4px 10px rgba(37,99,235,0.3)",
               }}
             />
 
@@ -90,7 +100,8 @@ export default function GlobalLoader({
             style={{
               background: "#ffffff",
               border: "2px solid #2563eb",
-              boxShadow: "0 4px 20px rgba(37, 99, 235, 0.15)",
+              boxShadow:
+                "0 4px 20px rgba(37, 99, 235, 0.15)",
             }}
           >
             {/* Antennas */}
@@ -107,6 +118,7 @@ export default function GlobalLoader({
             {/* Eyes */}
             <div className="flex gap-1.5">
               <div className="w-2.5 h-2.5 bg-blue-600 rounded-full animate-bounce" />
+
               <div
                 className="w-2.5 h-2.5 bg-blue-600 rounded-full animate-bounce"
                 style={{ animationDelay: "0.15s" }}
@@ -175,3 +187,4 @@ export default function GlobalLoader({
     </div>
   );
 }
+
