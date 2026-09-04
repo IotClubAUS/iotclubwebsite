@@ -42,7 +42,7 @@ export default function GlobalLoader({
       <div
         className="fixed inset-0 z-50 flex flex-col items-center justify-center p-6"
         style={{
-          background: "#f8fafc",
+          background: "#154d74",
           fontFamily: "'Space Mono', monospace",
         }}
       >
