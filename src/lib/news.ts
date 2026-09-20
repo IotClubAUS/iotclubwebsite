@@ -44,3 +44,15 @@ export const allNews = [
     readTime: "4 min read",
   },
 ];
+ {
+    id: 4,
+    date: "2026-09-5",
+    tag: "Event",
+    title: "INSPIRE hackathon: Engineering the Invisible",
+    bio:"Arduino hackathon in collaboration with IEEE ",
+    info:" ",
+    image: "/news/wow_poster.webp",
+    author: "IoT Admin",
+    readTime: "6 min read",
+  },
+];
