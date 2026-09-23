@@ -55,7 +55,7 @@ export const allNews = [
     author: "IoT Admin",
     readTime: "6 min read",
   },
-  {
+   {
     id: 6,
     date: "2026-09-15",
     tag: "Event",
