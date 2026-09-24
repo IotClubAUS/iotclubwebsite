@@ -91,16 +91,7 @@ export default function AuthGate({ onLogin }: AuthGateProps) {
           </button>
         </form>
 
-        <div className="mt-6 pt-4 border-t border-slate-800 text-xs text-slate-400 space-y-1">
-          <p className="font-semibold text-slate-300 mb-2">Default Passwords:</p>
-          <ul className="text-[11px] space-y-1 font-mono text-indigo-300">
-            <li>• Executives: <span className="text-white">exec2026password</span></li>
-            <li>• Technical: <span className="text-white">tech2026password</span></li>
-            <li>• Activities: <span className="text-white">act2026password</span></li>
-            <li>• PR: <span className="text-white">pr2026password</span></li>
-            <li>• Media: <span className="text-white">media2026password</span></li>
-          </ul>
-        </div>
+        
       </div>
     </div>
   );
