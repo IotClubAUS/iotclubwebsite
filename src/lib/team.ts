@@ -23,7 +23,7 @@ export const team = [
     linkedin: "https://www.linkedin.com/in/adam-serhan/",
   },
   
-  {
+  /*{
     id: 2,
     name: "Ali Elatly",
     role: "Vice-President",
@@ -32,7 +32,7 @@ export const team = [
     skills: ["AI integration", "computer vision", "Algorithm Problem Solving ","Circuits and systems"],
     img:"/team/ali_2.webp",
     linkedin:"https://www.linkedin.com/in/alielatly",
-  },
+  },*/
   {
     id: 3,
     name: "Aseil AlShazly",
@@ -43,7 +43,7 @@ export const team = [
     img:"/team/aseil_3.webp",
     linkedin: "https://www.linkedin.com/in/aseil-alshazly-2b43153b2",
   },
-  {
+ /* {
     id: 4,
     name: "Mohammed Arsh",
     role: "Executive Director",
@@ -52,7 +52,7 @@ export const team = [
     skills: ["Sleep", "Procrastination", "Wasting Time"],
     img:"/team/arsh_4.webp",
     linkedin:"https://www.linkedin.com/in/mohammed-arsh-khan",
-  },
+  },*/
 
 
 
@@ -64,14 +64,13 @@ export const team = [
             /* ACTIVITIES */
   {
     id: 5,
-    name: "Hashir Hameed",
-    role: "Activities Coordinator",
-    category:["Activities","Executives"],
-    bio:"Enjoys designing and building systems that turn ideas into reality. Loves exploring how hardware, software, and creativity come together to create practical solutions.",
-    skills: ["Food","Typescript", "Next.js", "C++"],
-    img:"/team/hashir_6.webp",
-    github: "https://github.com/hashir-hameed",
-    linkedin: "https://linkedin.com/in/hashirhameed",
+    name: "Marwan Saied",
+    role: "Activities Team",
+    category:"Activities",
+    bio: "I’ve been always told i’m a creative genius. Whenever presented with a question with 2 solutions, I always find a third that fits better. Can work with anyone anywhere anytime.",
+    skills: ["Video-Editing", "AI-Prompting", "Project-Management"],
+    img:"/team/marwan_11.webp",
+    
   },
   {
     id: 6,
@@ -125,12 +124,12 @@ export const team = [
   },
   {
     id: 11,
-    name: "Marwan Saied",
+    name: " ",
     role: "Activities Team",
     category:"Activities",
-    bio: "I’ve been always told i’m a creative genius. Whenever presented with a question with 2 solutions, I always find a third that fits better. Can work with anyone anywhere anytime.",
-    skills: ["Video-Editing", "AI-Prompting", "Project-Management"],
-    img:"/team/marwan_11.webp",
+    bio: " ",
+    skills: [" ", " ", " "],
+    img:"/team/default_0.webp",
     
   },
 
