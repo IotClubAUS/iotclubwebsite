@@ -2,8 +2,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { supabase } from '@/lib/supabase';
 import { team } from '@/lib/team';
-import { INITIAL_TASKS } from '@/lib/tasks';
 import { Task, Member, RoleCategory, Priority, UserSession } from '@/lib/types';
 import AuthGate from '../components/AuthGate';
 import TaskModal from '../components/TaskModal';
@@ -26,19 +26,38 @@ export default function TasksPage() {
 
   const validMembers = (team as Member[]).filter((m) => m.name.trim().length > 0);
 
+  // Load user session locally
   useEffect(() => {
     const savedSession = localStorage.getItem('iot_user_session');
     if (savedSession) setSession(JSON.parse(savedSession));
-
-    const savedTasks = localStorage.getItem('iot_club_tasks');
-    setTasks(savedTasks ? JSON.parse(savedTasks) : INITIAL_TASKS);
   }, []);
 
+  // 🌐 UNIVERSAL REAL-TIME SYNC WITH SUPABASE
   useEffect(() => {
-    if (tasks.length > 0) {
-      localStorage.setItem('iot_club_tasks', JSON.stringify(tasks));
-    }
-  }, [tasks]);
+    // Initial fetch from Supabase
+    const fetchTasks = async () => {
+      const { data, error } = await supabase.from('tasks').select('*');
+      if (data && !error) setTasks(data as Task[]);
+    };
+
+    fetchTasks();
+
+    // Subscribe to live database changes
+    const channel = supabase
+      .channel('schema-db-changes')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'tasks' },
+        () => {
+          fetchTasks(); // Refetch updated task list when any user makes a change
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, []);
 
   const handleLogin = (userSession: UserSession) => {
     setSession(userSession);
@@ -59,47 +78,41 @@ export default function TasksPage() {
     return `https://api.dicebear.com/7.x/avataaars/svg?seed=${member?.name || 'IoT'}`;
   };
 
-  const toggleChecklist = (taskId: string, checkId: string) => {
-    setTasks((prev) =>
-      prev.map((t) => {
-        if (t.id !== taskId) return t;
-        return {
-          ...t,
-          checklist: t.checklist.map((c) =>
-            c.id === checkId ? { ...c, completed: !c.completed } : c
-          ),
-        };
-      })
+  // Toggle checklist item in Supabase
+  const toggleChecklist = async (taskId: string, checkId: string) => {
+    const task = tasks.find((t) => t.id === taskId);
+    if (!task) return;
+
+    const updatedChecklist = task.checklist.map((c) =>
+      c.id === checkId ? { ...c, completed: !c.completed } : c
     );
+
+    await supabase.from('tasks').update({ checklist: updatedChecklist }).eq('id', taskId);
   };
 
-  // 1. Committee submits task for review
-  const submitForApproval = (taskId: string) => {
-    setTasks((prev) =>
-      prev.map((t) => (t.id === taskId ? { ...t, status: 'review' as const } : t))
-    );
+  // Submit task for review
+  const submitForApproval = async (taskId: string) => {
+    await supabase.from('tasks').update({ status: 'review' }).eq('id', taskId);
   };
 
-  // 2. Admin Approves -> status becomes 'done', awarding points
-  const approveTask = (taskId: string) => {
-    setTasks((prev) =>
-      prev.map((t) => (t.id === taskId ? { ...t, status: 'done' as const } : t))
-    );
+  // Admin Approve task
+  const approveTask = async (taskId: string) => {
+    await supabase.from('tasks').update({ status: 'done' }).eq('id', taskId);
   };
 
-  // 3. Admin Rejects -> status goes back to 'todo'
-  const rejectTask = (taskId: string) => {
-    setTasks((prev) =>
-      prev.map((t) => (t.id === taskId ? { ...t, status: 'todo' as const } : t))
-    );
+  // Admin Reject task
+  const rejectTask = async (taskId: string) => {
+    await supabase.from('tasks').update({ status: 'todo' }).eq('id', taskId);
   };
 
-  const deleteTask = (taskId: string) => {
+  // Admin Delete task
+  const deleteTask = async (taskId: string) => {
     if (session?.role !== 'admin') return;
-    setTasks((prev) => prev.filter((t) => t.id !== taskId));
+    await supabase.from('tasks').delete().eq('id', taskId);
   };
 
-  const handleCreateTask = (taskData: {
+  // Admin Create new task
+  const handleCreateTask = async (taskData: {
     title: string;
     category: RoleCategory;
     assigneeId: number;
@@ -108,6 +121,7 @@ export default function TasksPage() {
     priority: Priority;
     checklistText: string;
   }) => {
+    const taskId = `t_${Date.now()}`;
     const checklistItems = taskData.checklistText
       .split(',')
       .map((str) => str.trim())
@@ -115,7 +129,7 @@ export default function TasksPage() {
       .map((text, idx) => ({ id: `c_${Date.now()}_${idx}`, text, completed: false }));
 
     const newTask: Task = {
-      id: `t_${Date.now()}`,
+      id: taskId,
       title: taskData.title,
       category: taskData.category,
       assigneeId: taskData.assigneeId,
@@ -126,7 +140,7 @@ export default function TasksPage() {
       checklist: checklistItems,
     };
 
-    setTasks((prev) => [newTask, ...prev]);
+    await supabase.from('tasks').insert([newTask]);
     setIsModalOpen(false);
   };
 
@@ -140,7 +154,6 @@ export default function TasksPage() {
 
   const isAdmin = session.role === 'admin' || session.committeeCategory === 'Executives';
 
-  // Task filtering for view
   const visibleTasks = tasks.filter((t) => {
     if (isAdmin) {
       if (selectedAdminTab === 'ALL') return true;
@@ -153,7 +166,6 @@ export default function TasksPage() {
   const pendingReviewTasks = visibleTasks.filter((t) => t.status === 'review');
   const completedTasks = visibleTasks.filter((t) => t.status === 'done');
 
-  // Dynamic Leaderboard (Points credited only when status === 'done')
   const leaderboard = validMembers
     .map((member) => {
       const doneTasks = tasks.filter((t) => t.assigneeId === member.id && t.status === 'done');
@@ -205,7 +217,7 @@ export default function TasksPage() {
         </div>
       </header>
 
-      {/* Admin Committee Tabs */}
+      {/* Admin Tabs */}
       {isAdmin && (
         <div className="mb-6 flex flex-wrap gap-2 border-b border-slate-800/80 pb-4">
           <span className="text-xs font-semibold text-slate-400 self-center mr-2">Filter View:</span>
@@ -225,12 +237,11 @@ export default function TasksPage() {
         </div>
       )}
 
-      {/* Main Layout Grid */}
+      {/* Main Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Tasks Columns */}
         <div className="lg:col-span-2 space-y-8">
           
-          {/* SECTION 1: PENDING APPROVAL (Requires Admin Approval) */}
+          {/* Pending Approval Section */}
           {pendingReviewTasks.length > 0 && (
             <div className="space-y-4 bg-amber-950/20 border border-amber-900/50 p-4 rounded-2xl">
               <h2 className="text-sm font-bold text-amber-400 uppercase tracking-wider flex items-center justify-between">
@@ -308,7 +319,7 @@ export default function TasksPage() {
             </div>
           )}
 
-          {/* SECTION 2: ACTIVE WORK */}
+          {/* Active Tasks */}
           <div className="space-y-4">
             <h2 className="text-sm font-bold text-slate-300 uppercase tracking-wider">
               Active Work ({activeTasks.length})
@@ -410,7 +421,7 @@ export default function TasksPage() {
             )}
           </div>
 
-          {/* SECTION 3: COMPLETED & APPROVED TASKS */}
+          {/* Approved Tasks */}
           {completedTasks.length > 0 && (
             <div className="space-y-4 pt-4 border-t border-slate-800/80">
               <h2 className="text-sm font-bold text-emerald-400 uppercase tracking-wider">
@@ -513,7 +524,7 @@ export default function TasksPage() {
         </div>
       </div>
 
-      {/* Task Creation Modal */}
+      {/* Task Modal */}
       {isModalOpen && (
         <TaskModal
           members={validMembers}
