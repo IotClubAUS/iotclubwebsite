@@ -1,7 +1,7 @@
 // src/app/tasks/page.tsx
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { supabase } from '@/lib/supabase';
 import { team } from '@/lib/team';
 import { Task, Member, RoleCategory, Priority, UserSession } from '@/lib/types';
@@ -24,32 +24,39 @@ export default function TasksPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedAdminTab, setSelectedAdminTab] = useState<RoleCategory | 'ALL'>('ALL');
 
-  const validMembers = (team as Member[]).filter((m) => m.name.trim().length > 0);
+  const validMembers = useMemo(
+    () => (team as Member[]).filter((m) => m.name.trim().length > 0),
+    []
+  );
 
-  // Load user session locally
+  // Load local user session
   useEffect(() => {
     const savedSession = localStorage.getItem('iot_user_session');
-    if (savedSession) setSession(JSON.parse(savedSession));
+    if (savedSession) {
+      try {
+        setSession(JSON.parse(savedSession));
+      } catch (e) {
+        console.error('Failed to parse session:', e);
+      }
+    }
   }, []);
 
-  // 🌐 UNIVERSAL REAL-TIME SYNC WITH SUPABASE
-  useEffect(() => {
-    // Initial fetch from Supabase
-    const fetchTasks = async () => {
-      const { data, error } = await supabase.from('tasks').select('*');
-      if (data && !error) setTasks(data as Task[]);
-    };
+  const fetchTasks = useCallback(async () => {
+    const { data, error } = await supabase.from('tasks').select('*');
+    if (data && !error) setTasks(data as Task[]);
+  }, []);
 
+  // Universal Real-Time Sync
+  useEffect(() => {
     fetchTasks();
 
-    // Subscribe to live database changes
     const channel = supabase
       .channel('schema-db-changes')
       .on(
         'postgres_changes',
         { event: '*', schema: 'public', table: 'tasks' },
         () => {
-          fetchTasks(); // Refetch updated task list when any user makes a change
+          fetchTasks();
         }
       )
       .subscribe();
@@ -57,7 +64,7 @@ export default function TasksPage() {
     return () => {
       supabase.removeChannel(channel);
     };
-  }, []);
+  }, [fetchTasks]);
 
   const handleLogin = (userSession: UserSession) => {
     setSession(userSession);
@@ -69,16 +76,16 @@ export default function TasksPage() {
     localStorage.removeItem('iot_user_session');
   };
 
-  const getMember = (id: number) => validMembers.find((m) => m.id === id);
+  const getMember = useCallback((id: number) => validMembers.find((m) => m.id === id), [validMembers]);
 
   const getAvatar = (member?: Member) => {
-    if (member?.img && member.img.trim().length > 1 && member.img !== "/team/default_0.webp") {
+    if (member?.img && member.img.trim().length > 1 && member.img !== '/team/default_0.webp') {
       return member.img;
     }
     return `https://api.dicebear.com/7.x/avataaars/svg?seed=${member?.name || 'IoT'}`;
   };
 
-  // Toggle checklist item in Supabase
+  // Optimistic Toggle Checklist Item
   const toggleChecklist = async (taskId: string, checkId: string) => {
     const task = tasks.find((t) => t.id === taskId);
     if (!task) return;
@@ -87,31 +94,45 @@ export default function TasksPage() {
       c.id === checkId ? { ...c, completed: !c.completed } : c
     );
 
-    await supabase.from('tasks').update({ checklist: updatedChecklist }).eq('id', taskId);
+    setTasks((prev) =>
+      prev.map((t) => (t.id === taskId ? { ...t, checklist: updatedChecklist } : t))
+    );
+
+    const { error } = await supabase
+      .from('tasks')
+      .update({ checklist: updatedChecklist })
+      .eq('id', taskId);
+
+    if (error) fetchTasks();
   };
 
-  // Submit task for review
   const submitForApproval = async (taskId: string) => {
+    setTasks((prev) =>
+      prev.map((t) => (t.id === taskId ? { ...t, status: 'review' } : t))
+    );
     await supabase.from('tasks').update({ status: 'review' }).eq('id', taskId);
   };
 
-  // Admin Approve task
   const approveTask = async (taskId: string) => {
+    setTasks((prev) =>
+      prev.map((t) => (t.id === taskId ? { ...t, status: 'done' } : t))
+    );
     await supabase.from('tasks').update({ status: 'done' }).eq('id', taskId);
   };
 
-  // Admin Reject task
   const rejectTask = async (taskId: string) => {
+    setTasks((prev) =>
+      prev.map((t) => (t.id === taskId ? { ...t, status: 'todo' } : t))
+    );
     await supabase.from('tasks').update({ status: 'todo' }).eq('id', taskId);
   };
 
-  // Admin Delete task
   const deleteTask = async (taskId: string) => {
     if (session?.role !== 'admin') return;
+    setTasks((prev) => prev.filter((t) => t.id !== taskId));
     await supabase.from('tasks').delete().eq('id', taskId);
   };
 
-  // Admin Create new task
   const handleCreateTask = async (taskData: {
     title: string;
     category: RoleCategory;
@@ -121,7 +142,7 @@ export default function TasksPage() {
     priority: Priority;
     checklistText: string;
   }) => {
-    const taskId = `t_${Date.now()}`;
+    const taskId = typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : `t_${Date.now()}`;
     const checklistItems = taskData.checklistText
       .split(',')
       .map((str) => str.trim())
@@ -140,9 +161,36 @@ export default function TasksPage() {
       checklist: checklistItems,
     };
 
+    setTasks((prev) => [...prev, newTask]);
     await supabase.from('tasks').insert([newTask]);
     setIsModalOpen(false);
   };
+
+  const isAdmin = session?.role === 'admin' || session?.committeeCategory === 'Executives';
+
+  const visibleTasks = useMemo(() => {
+    return tasks.filter((t) => {
+      if (isAdmin) {
+        if (selectedAdminTab === 'ALL') return true;
+        return t.category === selectedAdminTab;
+      }
+      return t.category === session?.committeeCategory || t.category === 'General';
+    });
+  }, [tasks, isAdmin, selectedAdminTab, session]);
+
+  const activeTasks = useMemo(() => visibleTasks.filter((t) => t.status === 'todo' || t.status === 'in_progress'), [visibleTasks]);
+  const pendingReviewTasks = useMemo(() => visibleTasks.filter((t) => t.status === 'review'), [visibleTasks]);
+  const completedTasks = useMemo(() => visibleTasks.filter((t) => t.status === 'done'), [visibleTasks]);
+
+  const leaderboard = useMemo(() => {
+    return validMembers
+      .map((member) => {
+        const doneTasks = tasks.filter((t) => t.assigneeId === member.id && t.status === 'done');
+        const totalPoints = doneTasks.reduce((acc, curr) => acc + curr.points, 0);
+        return { ...member, totalPoints, doneCount: doneTasks.length };
+      })
+      .sort((a, b) => b.totalPoints - a.totalPoints);
+  }, [validMembers, tasks]);
 
   if (!session) {
     return (
@@ -151,28 +199,6 @@ export default function TasksPage() {
       </div>
     );
   }
-
-  const isAdmin = session.role === 'admin' || session.committeeCategory === 'Executives';
-
-  const visibleTasks = tasks.filter((t) => {
-    if (isAdmin) {
-      if (selectedAdminTab === 'ALL') return true;
-      return t.category === selectedAdminTab;
-    }
-    return t.category === session.committeeCategory || t.category === 'General';
-  });
-
-  const activeTasks = visibleTasks.filter((t) => t.status === 'todo' || t.status === 'in_progress');
-  const pendingReviewTasks = visibleTasks.filter((t) => t.status === 'review');
-  const completedTasks = visibleTasks.filter((t) => t.status === 'done');
-
-  const leaderboard = validMembers
-    .map((member) => {
-      const doneTasks = tasks.filter((t) => t.assigneeId === member.id && t.status === 'done');
-      const totalPoints = doneTasks.reduce((acc, curr) => acc + curr.points, 0);
-      return { ...member, totalPoints, doneCount: doneTasks.length };
-    })
-    .sort((a, b) => b.totalPoints - a.totalPoints);
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 p-6 pt-24 max-w-6xl mx-auto font-sans">
