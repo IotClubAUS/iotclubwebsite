@@ -25,13 +25,13 @@ export const team = [
   
   /*{
     id: 2,
-    name: "Ali Elatly",
+    name: "Sif Aldin",
     role: "Vice-President",
     category:"Executives",
-    bio: "I’m a Computer Engineering major passionate about software development and hardware innovation. I help lead the IoT club's operations, hands-on projects, and tech strategy.",
-    skills: ["AI integration", "computer vision", "Algorithm Problem Solving ","Circuits and systems"],
-    img:"/team/ali_2.webp",
-    linkedin:"https://www.linkedin.com/in/alielatly",
+    bio: " ",
+    skills: [" ", " ", "   ","  "],
+    img:"/team/ ",
+    linkedin:" ",
   },*/
   {
     id: 3,
@@ -45,13 +45,13 @@ export const team = [
   },
  /* {
     id: 4,
-    name: "Mohammed Arsh",
-    role: "Executive Director",
+    name: "Hala ",
+    role: "Executive Assisstant",
     category:"Executives",
-    bio: "I have Solutions to Problems that Dont Exist. Founder, Director, Engineer, Honestly just Everything You Could Ask For. 🍕",
-    skills: ["Sleep", "Procrastination", "Wasting Time"],
-    img:"/team/arsh_4.webp",
-    linkedin:"https://www.linkedin.com/in/mohammed-arsh-khan",
+    bio: " ",
+    skills: [" ", " ", " "],
+    img:"/team/ ",
+    linkedin:" ",
   },*/
 
 
@@ -65,7 +65,7 @@ export const team = [
   {
     id: 5,
     name: "Marwan Saied",
-    role: "Activities Team",
+    role: "Activities Coordinator",
     category:"Activities",
     bio: "I’ve been always told i’m a creative genius. Whenever presented with a question with 2 solutions, I always find a third that fits better. Can work with anyone anywhere anytime.",
     skills: ["Video-Editing", "AI-Prompting", "Project-Management"],
@@ -74,7 +74,7 @@ export const team = [
   },
   {
     id: 6,
-    name: "Shafie hashi",
+    name: " ",
     role: "Activities Team",
     category:"Activities",
     bio: " ",
@@ -217,7 +217,7 @@ export const team = [
   },
   {
     id: 19,
-    name: "Mohammed Kayed",
+    name: " ",
     role: "PR Team",
     category:"Public Relations",
     bio: " ",
@@ -237,7 +237,7 @@ export const team = [
   },
   {
     id: 21,
-    name: "Sanad Mqateef",
+    name: " ",
     role: "PR Team",
     category:"Public Relations",
     bio: " ",
@@ -247,7 +247,7 @@ export const team = [
   },
   {
     id: 22,
-    name: "Omar Khan",
+    name: "Omer Khan",
     role: "PR Team",
     category:"Public Relations",
     bio: " ",
@@ -268,33 +268,35 @@ export const team = [
 
   
             /* MEDIA */
+
   {
     id: 24,
-    name: "Ahad Ali Suchedina",
+    name: "Eyad Wafa",
     role: "Media Coordinator",
     category:["Media","Executives"],
-    bio: "Part content creator, part hardware explorer. Turns random ideas into entertaining reels, experiments with microcontrollers, and believes the best projects start with curiosity and a little bit of chaos.",    
-    skills: ["Public Speaking", "Video-Editing", "Embedded Systems"],
-    img:"/team/ahad_24.webp",
-    linkedin: "https://www.linkedin.com/in/ahadali-suchedina-a5847b320/",
-  },
-  {
-    id: 25,
-    name: "Eyad Wafa",
-    role: "Media Team",
-    category:"Media",
     bio: "Creative designer who enjoys turning ideas into visuals. Handles media, creates unique designs, and knows how to make content stand out. Spends way too much time perfecting details in Photoshop, but the results are worth it.",
     skills: ["Photoshop", "Videography", "Creativity "],
     img:"/team/eyad_25.webp",
     
-  },{
-    id: 26,
-    name: "Mumtahina Tasnia",
+  },
+    {
+    id: 25,
+    name: "  ",
     role: "Media Team",
     category:"Media",
-    bio: "An engineering student striving to make it out in one piece. A firm believer in 'Work smart, not hard,' though results may vary. Side quests include studying, gaming, and pretending I know what I'm doing.",
-    skills: ["Content Creation","python", "Eating" ],
-    img:"/team/mumtahina_26.webp",
+    bio: "null",    
+    skills: [" ", " ", " "],
+    img:"/team/.webp",
+    linkedin: " ",
+  },
+  {
+    id: 26,
+    name: " ",
+    role: "Media Team",
+    category:"Media",
+    bio: " ",
+    skills: [" "," ", " " ],
+    img:"/team/.webp",
     
   },
   {
@@ -309,11 +311,11 @@ export const team = [
   },
   {
     id: 28,
-    name: "Ali Hussein",
+    name: " ",
     role: "Media Team",
     category:"Media",
-    bio: "Aspiring Mechanical Engineer with a passion for creativity, communication, and teamwork. I enjoy creating engaging content, learning new skills, and contributing to impactful projects. Also a cat lover.",
-    skills: ["Video Editing", "Teamwork", "Problem solving"],
+    bio: " ",
+    skills: [" ", " ", " "],
     img:" ",
     
   },
