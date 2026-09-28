@@ -23,7 +23,7 @@ export const team = [
     linkedin: "https://www.linkedin.com/in/adam-serhan/",
   },
   
-  /*{
+  {
     id: 2,
     name: "Sif Aldin",
     role: "Vice-President",
@@ -32,7 +32,7 @@ export const team = [
     skills: [" ", " ", "   ","  "],
     img:"/team/ ",
     linkedin:" ",
-  },*/
+  },
   {
     id: 3,
     name: "Aseil AlShazly",
@@ -43,7 +43,7 @@ export const team = [
     img:"/team/aseil_3.webp",
     linkedin: "https://www.linkedin.com/in/aseil-alshazly-2b43153b2",
   },
- /* {
+ {
     id: 4,
     name: "Hala ",
     role: "Executive Assisstant",
@@ -52,8 +52,17 @@ export const team = [
     skills: [" ", " ", " "],
     img:"/team/ ",
     linkedin:" ",
-  },*/
-
+  },
+{
+    id: 100,
+    name: "Rawan  ",
+    role: "Internal Coordinator",
+    category:"Executives",
+    bio: " ",
+    skills: [" ", " ", " "],
+    img:"/team/ ",
+    linkedin:" ",
+  },
 
 
 
