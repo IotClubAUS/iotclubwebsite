@@ -1,62 +1,353 @@
-// src/app/tasks/page.tsx
 'use client';
 
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
 import { team } from '@/lib/team';
-import { Task, Member, RoleCategory, Priority, UserSession } from '@/lib/types';
-import AuthGate from '../components/AuthGate';
-import TaskModal from '../components/TaskModal';
 
-const ADMIN_TABS: (RoleCategory | 'ALL')[] = [
-  'ALL',
-  'General',
-  'Technical',
-  'Activities',
-  'Public Relations',
-  'Media',
-  'Executives',
+type EventType =
+  | 'Club'
+  | 'Workshop'
+  | 'Meeting'
+  | 'Competition'
+  | 'Social'
+  | 'Deadline'
+  | 'Other';
+
+type CalendarEvent = {
+  id: string;
+  title: string;
+  date: string;
+  endDate?: string;
+  startTime?: string;
+  endTime?: string;
+  location?: string;
+  description?: string;
+  type: EventType;
+};
+
+type TaskStatus = 'todo' | 'in_progress' | 'review' | 'done';
+
+type Task = {
+  id: string;
+  title: string;
+  category: string;
+  assigneeId?: string | null;
+  dueDate?: string | null;
+  points?: number | null;
+  priority?: string | null;
+  status: TaskStatus;
+  checklist?: {
+    id: string;
+    title: string;
+    completed: boolean;
+  }[];
+};
+
+type Member = {
+  id: string;
+  name: string;
+  role?: string;
+  committeeCategory?: string;
+  avatar?: string;
+};
+
+/* =========================================================
+   EVENTS
+   ========================================================= */
+
+const EVENTS: CalendarEvent[] = [
+  {
+    id: 'club-fair',
+    title: 'IoT Club Fair',
+    date: '2026-09-15',
+    endDate: '2026-09-16',
+    startTime: '10:00',
+    endTime: '16:00',
+    location: 'Main Building Rotunda',
+    description:
+      'Come visit the IoT Club booth for interactive challenges, robots, trivia, prizes, and more.',
+    type: 'Club',
+  },
+  
+  {
+    id: 'Besomi TinyML workshop',
+    title: 'Besomi TinyML workshop Workshop',
+    date: '2026-10-05',
+    startTime: '17:00',
+    endTime: '19:00',
+    location: 'TBD',
+    description: 'Hands-on IoT workshop for club members.',
+    type: 'Workshop',
+  },
+  {
+    id: 'carnival-1',
+    title: 'CARNIVAL',
+    date: '2026-11-18',
+    startTime: '15:00',
+    endTime: '19:00',
+    location: 'Football Field',
+    description: 'Media planning, content creation, and upcoming campaigns.',
+    type: 'Social',
+  },
+  {
+    id: 'carnival-2',
+    title: 'CARNIVAL',
+    date: '2026-11-19',
+    startTime: '15:00',
+    endTime: '19:00',
+    location: 'Football Field',
+    description: 'Media planning, content creation, and upcoming campaigns.',
+    type: 'Social',
+  },
+  
+  
 ];
 
-export default function TasksPage() {
-  const [session, setSession] = useState<UserSession | null>(null);
-  const [tasks, setTasks] = useState<Task[]>([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedAdminTab, setSelectedAdminTab] = useState<RoleCategory | 'ALL'>('ALL');
+/* =========================================================
+   BLACKOUT DATES
+   =========================================================
+   Add any dates here that should be shown in RED.
 
-  const validMembers = useMemo(
-    () => (team as Member[]).filter((m) => m.name.trim().length > 0),
-    []
+   Format:
+   YYYY-MM-DD
+
+   You can add as many as you want.
+   ========================================================= */
+
+const BLACKOUT_DATES = [
+  {
+    date: '2026-11-24',
+    title: 'NO CLUB ACTIVITIES',
+  },
+  {
+    date: '2026-11-25',
+    title: 'NO CLUB ACTIVITIES',
+  },
+  {
+    date: '2026-11-26',
+    title: 'NO CLUB ACTIVITIES',
+  },
+   {
+    date: '2026-11-27',
+    title: 'NO CLUB ACTIVITIES',
+  },
+   {
+    date: '2026-11-28',
+    title: 'NO CLUB ACTIVITIES',
+  },
+   {
+    date: '2026-11-29',
+    title: 'NO CLUB ACTIVITIES',
+  },
+   {
+    date: '2026-11-26',
+    title: 'NO CLUB ACTIVITIES',
+  },
+  {
+    date: '2026-10-06',
+    title: 'NO CLUB ACTIVITIES',
+  },
+  {
+    date: '2026-10-13',
+    title: 'NO CLUB ACTIVITIES',
+  },
+  {
+    date: '2026-10-22',
+    title: 'NO CLUB ACTIVITIES',
+  },
+  
+  {
+    date: '2026-10-14',
+    title: 'NO CLUB ACTIVITIES',
+  },
+];
+
+/* =========================================================
+   HELPERS
+   ========================================================= */
+
+function getDateKey(date: Date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+
+  return `${year}-${month}-${day}`;
+}
+
+function getTodayKey() {
+  return getDateKey(new Date());
+}
+
+function getBlackoutDate(dateKey: string) {
+  return BLACKOUT_DATES.find(
+    (blackout) => blackout.date === dateKey
+  );
+}
+
+function formatDate(dateString?: string | null) {
+  if (!dateString) return 'No date';
+
+  const date = new Date(`${dateString}T00:00:00`);
+
+  return date.toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  });
+}
+
+function formatTime(time?: string | null) {
+  if (!time) return '';
+
+  const [hours, minutes] = time.split(':');
+  const hour = Number(hours);
+
+  const suffix = hour >= 12 ? 'PM' : 'AM';
+  const displayHour = hour % 12 || 12;
+
+  return `${displayHour}:${minutes} ${suffix}`;
+}
+
+function getEventColor(type: EventType) {
+  switch (type) {
+    case 'Workshop':
+      return 'bg-cyan-500/15 border-cyan-500/30 text-cyan-300';
+
+    case 'Meeting':
+      return 'bg-purple-500/15 border-purple-500/30 text-purple-300';
+
+    case 'Competition':
+      return 'bg-orange-500/15 border-orange-500/30 text-orange-300';
+
+    case 'Social':
+      return 'bg-pink-500/15 border-pink-500/30 text-pink-300';
+
+    case 'Deadline':
+      return 'bg-red-500/15 border-red-500/30 text-red-300';
+
+    case 'Club':
+      return 'bg-blue-500/15 border-blue-500/30 text-blue-300';
+
+    default:
+      return 'bg-slate-500/15 border-slate-500/30 text-slate-300';
+  }
+}
+
+function getPriorityColor(priority?: string | null) {
+  switch (priority?.toLowerCase()) {
+    case 'high':
+      return 'text-red-400 bg-red-500/10 border-red-500/20';
+
+    case 'medium':
+      return 'text-yellow-400 bg-yellow-500/10 border-yellow-500/20';
+
+    case 'low':
+      return 'text-green-400 bg-green-500/10 border-green-500/20';
+
+    default:
+      return 'text-slate-400 bg-slate-500/10 border-slate-500/20';
+  }
+}
+
+function getTaskStatusLabel(status: TaskStatus) {
+  switch (status) {
+    case 'todo':
+      return 'To Do';
+
+    case 'in_progress':
+      return 'In Progress';
+
+    case 'review':
+      return 'Review';
+
+    case 'done':
+      return 'Done';
+
+    default:
+      return status;
+  }
+}
+
+/* =========================================================
+   MAIN PAGE
+   ========================================================= */
+
+export default function HomePage() {
+  const today = new Date();
+
+  const [currentDate, setCurrentDate] = useState(
+    new Date(today.getFullYear(), today.getMonth(), 1)
   );
 
-  // Load local user session
+  const [selectedEvent, setSelectedEvent] =
+    useState<CalendarEvent | null>(null);
+
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [loadingTasks, setLoadingTasks] = useState(true);
+
+  /* =========================================================
+     FETCH TASKS
+     ========================================================= */
+
   useEffect(() => {
-    const savedSession = localStorage.getItem('iot_user_session');
-    if (savedSession) {
-      try {
-        setSession(JSON.parse(savedSession));
-      } catch (e) {
-        console.error('Failed to parse session:', e);
+    let mounted = true;
+
+    async function loadTasks() {
+      setLoadingTasks(true);
+
+      const { data, error } = await supabase
+        .from('tasks')
+        .select('*')
+        .order('dueDate', { ascending: true });
+
+      if (error) {
+        console.error('Error loading tasks:', error);
+
+        if (mounted) {
+          setTasks([]);
+          setLoadingTasks(false);
+        }
+
+        return;
+      }
+
+      if (mounted) {
+        setTasks((data as Task[]) || []);
+        setLoadingTasks(false);
       }
     }
+
+    loadTasks();
+
+    return () => {
+      mounted = false;
+    };
   }, []);
 
-  const fetchTasks = useCallback(async () => {
-    const { data, error } = await supabase.from('tasks').select('*');
-    if (data && !error) setTasks(data as Task[]);
-  }, []);
+  /* =========================================================
+     REALTIME TASK UPDATES
+     ========================================================= */
 
-  // Universal Real-Time Sync
   useEffect(() => {
-    fetchTasks();
-
     const channel = supabase
-      .channel('schema-db-changes')
+      .channel('homepage-task-updates')
       .on(
         'postgres_changes',
-        { event: '*', schema: 'public', table: 'tasks' },
-        () => {
-          fetchTasks();
+        {
+          event: '*',
+          schema: 'public',
+          table: 'tasks',
+        },
+        async () => {
+          const { data, error } = await supabase
+            .from('tasks')
+            .select('*')
+            .order('dueDate', { ascending: true });
+
+          if (!error) {
+            setTasks((data as Task[]) || []);
+          }
         }
       )
       .subscribe();
@@ -64,500 +355,717 @@ export default function TasksPage() {
     return () => {
       supabase.removeChannel(channel);
     };
-  }, [fetchTasks]);
+  }, []);
 
-  const handleLogin = (userSession: UserSession) => {
-    setSession(userSession);
-    localStorage.setItem('iot_user_session', JSON.stringify(userSession));
-  };
+  /* =========================================================
+     CALENDAR CALCULATIONS
+     ========================================================= */
 
-  const handleLogout = () => {
-    setSession(null);
-    localStorage.removeItem('iot_user_session');
-  };
+  const calendarDays = useMemo(() => {
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
 
-  const getMember = useCallback((id: number) => validMembers.find((m) => m.id === id), [validMembers]);
+    const firstDay = new Date(year, month, 1);
+    const startDay = firstDay.getDay();
 
-  const getAvatar = (member?: Member) => {
-    if (member?.img && member.img.trim().length > 1 && member.img !== '/team/default_0.webp') {
-      return member.img;
+    const daysInMonth = new Date(
+      year,
+      month + 1,
+      0
+    ).getDate();
+
+    const previousMonthDays = new Date(
+      year,
+      month,
+      0
+    ).getDate();
+
+    const days = [];
+
+    for (let i = startDay - 1; i >= 0; i--) {
+      const day = previousMonthDays - i;
+
+      days.push({
+        date: new Date(year, month - 1, day),
+        isCurrentMonth: false,
+      });
     }
-    return `https://api.dicebear.com/7.x/avataaars/svg?seed=${member?.name || 'IoT'}`;
-  };
 
-  // Optimistic Toggle Checklist Item
-  const toggleChecklist = async (taskId: string, checkId: string) => {
-    const task = tasks.find((t) => t.id === taskId);
-    if (!task) return;
+    for (let day = 1; day <= daysInMonth; day++) {
+      days.push({
+        date: new Date(year, month, day),
+        isCurrentMonth: true,
+      });
+    }
 
-    const updatedChecklist = task.checklist.map((c) =>
-      c.id === checkId ? { ...c, completed: !c.completed } : c
-    );
+    while (days.length < 42) {
+      const day = days.length - (startDay + daysInMonth) + 1;
 
-    setTasks((prev) =>
-      prev.map((t) => (t.id === taskId ? { ...t, checklist: updatedChecklist } : t))
-    );
+      days.push({
+        date: new Date(year, month + 1, day),
+        isCurrentMonth: false,
+      });
+    }
 
-    const { error } = await supabase
-      .from('tasks')
-      .update({ checklist: updatedChecklist })
-      .eq('id', taskId);
+    return days;
+  }, [currentDate]);
 
-    if (error) fetchTasks();
-  };
+  const monthTitle = currentDate.toLocaleDateString('en-US', {
+    month: 'long',
+    year: 'numeric',
+  });
 
-  const submitForApproval = async (taskId: string) => {
-    setTasks((prev) =>
-      prev.map((t) => (t.id === taskId ? { ...t, status: 'review' } : t))
-    );
-    await supabase.from('tasks').update({ status: 'review' }).eq('id', taskId);
-  };
+  /* =========================================================
+     EVENTS FOR DATE
+     ========================================================= */
 
-  const approveTask = async (taskId: string) => {
-    setTasks((prev) =>
-      prev.map((t) => (t.id === taskId ? { ...t, status: 'done' } : t))
-    );
-    await supabase.from('tasks').update({ status: 'done' }).eq('id', taskId);
-  };
+  function getEventsForDate(date: Date) {
+    const dateKey = getDateKey(date);
 
-  const rejectTask = async (taskId: string) => {
-    setTasks((prev) =>
-      prev.map((t) => (t.id === taskId ? { ...t, status: 'todo' } : t))
-    );
-    await supabase.from('tasks').update({ status: 'todo' }).eq('id', taskId);
-  };
-
-  const deleteTask = async (taskId: string) => {
-    if (session?.role !== 'admin') return;
-    setTasks((prev) => prev.filter((t) => t.id !== taskId));
-    await supabase.from('tasks').delete().eq('id', taskId);
-  };
-
-  const handleCreateTask = async (taskData: {
-    title: string;
-    category: RoleCategory;
-    assigneeId: number;
-    dueDate: string;
-    points: number;
-    priority: Priority;
-    checklistText: string;
-  }) => {
-    const taskId = typeof crypto !== 'undefined' && crypto.randomUUID ? crypto.randomUUID() : `t_${Date.now()}`;
-    const checklistItems = taskData.checklistText
-      .split(',')
-      .map((str) => str.trim())
-      .filter((str) => str.length > 0)
-      .map((text, idx) => ({ id: `c_${Date.now()}_${idx}`, text, completed: false }));
-
-    const newTask: Task = {
-      id: taskId,
-      title: taskData.title,
-      category: taskData.category,
-      assigneeId: taskData.assigneeId,
-      dueDate: taskData.dueDate,
-      points: taskData.points,
-      priority: taskData.priority,
-      status: 'todo',
-      checklist: checklistItems,
-    };
-
-    setTasks((prev) => [...prev, newTask]);
-    await supabase.from('tasks').insert([newTask]);
-    setIsModalOpen(false);
-  };
-
-  const isAdmin = session?.role === 'admin' || session?.committeeCategory === 'Executives';
-
-  const visibleTasks = useMemo(() => {
-    return tasks.filter((t) => {
-      if (isAdmin) {
-        if (selectedAdminTab === 'ALL') return true;
-        return t.category === selectedAdminTab;
+    return EVENTS.filter((event) => {
+      if (!event.endDate) {
+        return event.date === dateKey;
       }
-      return t.category === session?.committeeCategory || t.category === 'General';
+
+      return dateKey >= event.date && dateKey <= event.endDate;
     });
-  }, [tasks, isAdmin, selectedAdminTab, session]);
+  }
 
-  const activeTasks = useMemo(() => visibleTasks.filter((t) => t.status === 'todo' || t.status === 'in_progress'), [visibleTasks]);
-  const pendingReviewTasks = useMemo(() => visibleTasks.filter((t) => t.status === 'review'), [visibleTasks]);
-  const completedTasks = useMemo(() => visibleTasks.filter((t) => t.status === 'done'), [visibleTasks]);
+  /* =========================================================
+     TASK DATA
+     ========================================================= */
 
-  const leaderboard = useMemo(() => {
-    return validMembers
-      .map((member) => {
-        const doneTasks = tasks.filter((t) => t.assigneeId === member.id && t.status === 'done');
-        const totalPoints = doneTasks.reduce((acc, curr) => acc + curr.points, 0);
-        return { ...member, totalPoints, doneCount: doneTasks.length };
+  const activeTasks = useMemo(() => {
+    return tasks
+      .filter(
+        (task) =>
+          task.status !== 'done'
+      )
+      .sort((a, b) => {
+        if (!a.dueDate && !b.dueDate) return 0;
+        if (!a.dueDate) return 1;
+        if (!b.dueDate) return -1;
+
+        return (
+          new Date(a.dueDate).getTime() -
+          new Date(b.dueDate).getTime()
+        );
       })
-      .sort((a, b) => b.totalPoints - a.totalPoints);
-  }, [validMembers, tasks]);
+      .slice(0, 7);
+  }, [tasks]);
 
-  if (!session) {
-    return (
-      <div className="pt-20 min-h-screen bg-slate-950">
-        <AuthGate onLogin={handleLogin} />
-      </div>
+  function getMember(memberId?: string | null): Member | undefined {
+    if (!memberId) return undefined;
+
+    return (team as Member[]).find(
+      (member) => member.id === memberId
     );
   }
 
+  /* =========================================================
+     MONTH NAVIGATION
+     ========================================================= */
+
+  function goToPreviousMonth() {
+    setCurrentDate(
+      new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth() - 1,
+        1
+      )
+    );
+  }
+
+  function goToNextMonth() {
+    setCurrentDate(
+      new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth() + 1,
+        1
+      )
+    );
+  }
+
+  function goToToday() {
+    const now = new Date();
+
+    setCurrentDate(
+      new Date(
+        now.getFullYear(),
+        now.getMonth(),
+        1
+      )
+    );
+  }
+
+  /* =========================================================
+     RENDER
+     ========================================================= */
+
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 p-6 pt-24 max-w-6xl mx-auto font-sans">
-      {/* Header */}
-      <header className="mb-6 border-b border-slate-800 pb-5 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="text-xs font-bold tracking-widest text-indigo-400 uppercase bg-indigo-950 px-2 py-0.5 rounded border border-indigo-800">
-              {session.committeeCategory} Portal
-            </span>
-            <span
-              className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded border ${
-                isAdmin
-                  ? 'bg-amber-950 text-amber-400 border-amber-800'
-                  : 'bg-emerald-950 text-emerald-400 border-emerald-800'
-              }`}
-            >
-              {isAdmin ? 'Executive Admin' : 'Committee Member'}
-            </span>
+    <main className="min-h-screen bg-[#020617] text-white">
+      {/* =====================================================
+          HEADER
+          ===================================================== */}
+
+      <header className="border-b border-slate-800 bg-slate-950/80 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-[1600px] items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-cyan-400">
+              AUS IoT Club
+            </p>
+
+            <h1 className="mt-1 text-xl font-bold sm:text-2xl">
+              Club Calendar
+            </h1>
           </div>
-          <h1 className="text-2xl font-extrabold text-white">
-            {isAdmin ? 'Executive Oversight Portal' : `${session.committeeCategory} & General Tasks`}
-          </h1>
-        </div>
 
-        <div className="flex items-center gap-3">
-          {isAdmin && (
-            <button
-              onClick={() => setIsModalOpen(true)}
-              className="bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium px-4 py-2 rounded-lg transition shadow-lg shadow-indigo-600/20"
+          <nav className="flex items-center gap-2">
+            <Link
+              href="/tasks"
+              className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-xs font-semibold text-slate-200 transition hover:border-cyan-500/50 hover:bg-slate-800 sm:px-4 sm:text-sm"
             >
-              + Create Task
-            </button>
-          )}
-
-          <button
-            onClick={handleLogout}
-            className="text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-2 rounded-lg border border-slate-700"
-          >
-            Sign Out
-          </button>
+              Tasks
+            </Link>
+          </nav>
         </div>
       </header>
 
-      {/* Admin Tabs */}
-      {isAdmin && (
-        <div className="mb-6 flex flex-wrap gap-2 border-b border-slate-800/80 pb-4">
-          <span className="text-xs font-semibold text-slate-400 self-center mr-2">Filter View:</span>
-          {ADMIN_TABS.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setSelectedAdminTab(tab)}
-              className={`text-xs px-3 py-1.5 rounded-lg border transition ${
-                selectedAdminTab === tab
-                  ? 'bg-indigo-600 text-white border-indigo-500 font-semibold shadow-md'
-                  : 'bg-slate-900 text-slate-400 border-slate-800 hover:border-slate-700'
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-      )}
+      {/* =====================================================
+          CONTENT
+          ===================================================== */}
 
-      {/* Main Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 space-y-8">
-          
-          {/* Pending Approval Section */}
-          {pendingReviewTasks.length > 0 && (
-            <div className="space-y-4 bg-amber-950/20 border border-amber-900/50 p-4 rounded-2xl">
-              <h2 className="text-sm font-bold text-amber-400 uppercase tracking-wider flex items-center justify-between">
-                <span>⏳ Pending Admin Approval ({pendingReviewTasks.length})</span>
-                <span className="text-[10px] text-amber-500/80 font-normal normal-case">
-                  Points awarded upon approval
-                </span>
-              </h2>
+      <div className="mx-auto max-w-[1600px] px-3 py-4 sm:px-6 lg:px-8 lg:py-6">
+        <div className="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1fr)_290px]">
+          {/* =================================================
+              CALENDAR
+              ================================================= */}
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {pendingReviewTasks.map((task) => {
-                  const assignee = getMember(task.assigneeId);
-                  return (
-                    <div
-                      key={task.id}
-                      className="bg-slate-900 border border-amber-800/60 rounded-xl p-4 flex flex-col justify-between shadow-lg"
-                    >
-                      <div>
-                        <div className="flex justify-between items-center mb-2">
-                          <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-800">
-                            {task.category} • Under Review
-                          </span>
-                          <span className="text-xs font-bold text-amber-400">
-                            +{task.points} pts
-                          </span>
-                        </div>
+          <section className="min-w-0 overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/70 shadow-2xl">
+            {/* Calendar header */}
 
-                        <h3 className="text-sm font-semibold text-white mb-1">{task.title}</h3>
-                        <p className="text-[11px] text-slate-400 mb-3">Submitted by {assignee?.name}</p>
+            <div className="flex flex-col gap-3 border-b border-slate-800 px-4 py-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <h2 className="text-lg font-bold sm:text-xl">
+                  {monthTitle}
+                </h2>
 
-                        <ul className="text-xs text-slate-400 space-y-1 mb-4">
-                          {task.checklist.map((c) => (
-                            <li key={c.id} className="flex items-center gap-1.5 text-slate-300">
-                              <span className="text-emerald-400 font-bold">✓</span> {c.text}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                <p className="mt-1 text-xs text-slate-500">
+                  Club events, workshops, meetings, and deadlines
+                </p>
+              </div>
 
-                      <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
-                        <div className="flex items-center gap-2">
-                          <img
-                            src={getAvatar(assignee)}
-                            alt={assignee?.name || 'Member'}
-                            className="w-6 h-6 rounded-full bg-slate-800 object-cover"
-                          />
-                          <span className="text-xs text-slate-300 font-medium">{assignee?.name}</span>
-                        </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={goToToday}
+                  className="rounded-lg border border-slate-700 bg-slate-900 px-3 py-2 text-xs font-semibold text-slate-300 transition hover:border-cyan-500/50 hover:text-white"
+                >
+                  Today
+                </button>
 
-                        {isAdmin ? (
-                          <div className="flex gap-2">
-                            <button
-                              onClick={() => rejectTask(task.id)}
-                              className="text-[11px] px-2.5 py-1 bg-red-950 hover:bg-red-900 text-red-300 rounded border border-red-800 transition"
-                            >
-                              ✕ Reject
-                            </button>
-                            <button
-                              onClick={() => approveTask(task.id)}
-                              className="text-[11px] font-bold px-3 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded shadow transition"
-                            >
-                              ✓ Approve
-                            </button>
-                          </div>
-                        ) : (
-                          <span className="text-[10px] text-amber-400 italic bg-amber-950/60 px-2 py-1 rounded">
-                            Awaiting Admin
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  );
-                })}
+                <button
+                  onClick={goToPreviousMonth}
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-700 bg-slate-900 text-slate-300 transition hover:border-cyan-500/50 hover:text-white"
+                  aria-label="Previous month"
+                >
+                  ←
+                </button>
+
+                <button
+                  onClick={goToNextMonth}
+                  className="flex h-9 w-9 items-center justify-center rounded-lg border border-slate-700 bg-slate-900 text-slate-300 transition hover:border-cyan-500/50 hover:text-white"
+                  aria-label="Next month"
+                >
+                  →
+                </button>
               </div>
             </div>
-          )}
 
-          {/* Active Tasks */}
-          <div className="space-y-4">
-            <h2 className="text-sm font-bold text-slate-300 uppercase tracking-wider">
-              Active Work ({activeTasks.length})
-            </h2>
+            {/* =================================================
+                WEEK DAYS
+                ================================================= */}
 
-            {activeTasks.length === 0 ? (
-              <div className="bg-slate-900/50 border border-slate-800/80 rounded-xl p-8 text-center text-slate-500 text-xs">
-                No active tasks pending. All caught up!
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {activeTasks.map((task) => {
-                  const assignee = getMember(task.assigneeId);
-                  const allChecklistDone =
-                    task.checklist.length > 0 && task.checklist.every((c) => c.completed);
+            <div className="grid grid-cols-7 border-b border-slate-800">
+              {[
+                'Sun',
+                'Mon',
+                'Tue',
+                'Wed',
+                'Thu',
+                'Fri',
+                'Sat',
+              ].map((day) => (
+                <div
+                  key={day}
+                  className="border-r border-slate-800 px-1 py-2 text-center text-[9px] font-bold uppercase tracking-wider text-slate-500 last:border-r-0 sm:text-[10px]"
+                >
+                  {day}
+                </div>
+              ))}
+            </div>
+
+            {/* =================================================
+                CALENDAR GRID
+                ================================================= */}
+
+            <div className="grid grid-cols-7">
+              {calendarDays.map(
+                ({ date, isCurrentMonth }, index) => {
+                  const dateKey = getDateKey(date);
+                  const isToday =
+                    dateKey === getTodayKey();
+
+                  const blackout =
+                    getBlackoutDate(dateKey);
+
+                  const events =
+                    getEventsForDate(date);
 
                   return (
                     <div
-                      key={task.id}
-                      className="bg-slate-900 border border-slate-800 rounded-xl p-4 flex flex-col justify-between hover:border-slate-700 transition"
+                      key={`${dateKey}-${index}`}
+                      className={`
+                        relative min-h-[78px]
+                        border-r border-b p-1
+                        transition
+                        sm:min-h-[92px]
+                        lg:min-h-[105px]
+
+                        ${
+                          blackout
+                            ? 'border-red-900/70 bg-red-950/40'
+                            : isCurrentMonth
+                            ? 'border-slate-800 bg-slate-950/30'
+                            : 'border-slate-800 bg-slate-950/70'
+                        }
+
+                        ${
+                          isToday && !blackout
+                            ? 'bg-indigo-950/30'
+                            : ''
+                        }
+                      `}
                     >
-                      <div>
-                        <div className="flex justify-between items-center mb-3">
-                          <span
-                            className={`text-[10px] font-semibold uppercase px-2 py-0.5 rounded border ${
-                              task.category === 'General'
-                                ? 'bg-sky-950 text-sky-300 border-sky-800'
-                                : 'bg-slate-800 text-indigo-300 border-slate-700'
-                            }`}
-                          >
-                            {task.category}
-                          </span>
-                          <div className="flex items-center gap-2">
-                            <span className="text-xs font-bold text-amber-400 bg-amber-950/40 px-2 py-0.5 rounded border border-amber-800/50">
-                              +{task.points} pts
-                            </span>
-                            {isAdmin && (
-                              <button
-                                onClick={() => deleteTask(task.id)}
-                                className="text-slate-500 hover:text-red-400 text-xs px-1"
-                                title="Delete Task"
-                              >
-                                ✕
-                              </button>
-                            )}
-                          </div>
-                        </div>
+                      {/* Date number */}
 
-                        <h3 className="text-sm font-semibold text-white mb-1">{task.title}</h3>
-                        <p className="text-[11px] text-slate-400 mb-3">Due: {task.dueDate}</p>
+                      <div className="mb-1 flex items-center justify-between">
+                        <span
+                          className={`
+                            flex h-6 w-6 items-center justify-center
+                            rounded-full text-[10px] font-semibold
 
-                        <div className="space-y-1.5 mb-4">
-                          {task.checklist.map((item) => (
-                            <label
-                              key={item.id}
-                              className="flex items-start gap-2 text-xs text-slate-300 cursor-pointer select-none"
-                            >
-                              <input
-                                type="checkbox"
-                                checked={item.completed}
-                                onChange={() => toggleChecklist(task.id, item.id)}
-                                className="mt-0.5 rounded bg-slate-800 border-slate-700 text-indigo-500 focus:ring-0"
-                              />
-                              <span className={item.completed ? 'line-through text-slate-500' : ''}>
-                                {item.text}
-                              </span>
-                            </label>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="pt-3 border-t border-slate-800 flex justify-between items-center gap-2">
-                        <div className="flex items-center gap-2">
-                          <img
-                            src={getAvatar(assignee)}
-                            alt={assignee?.name || 'Member'}
-                            className="w-6 h-6 rounded-full bg-slate-800 object-cover"
-                          />
-                          <span className="text-xs text-slate-300 font-medium truncate max-w-[100px]">
-                            {assignee ? assignee.name : 'Unassigned'}
-                          </span>
-                        </div>
-
-                        <button
-                          onClick={() => submitForApproval(task.id)}
-                          className={`text-xs font-bold px-3 py-1.5 rounded-lg border transition shadow-lg ${
-                            allChecklistDone
-                              ? 'bg-amber-600 hover:bg-amber-500 text-white border-amber-500 shadow-amber-900/30 animate-pulse'
-                              : 'bg-indigo-950 hover:bg-indigo-600 text-indigo-300 hover:text-white border-indigo-800'
-                          }`}
+                            ${
+                              isToday && !blackout
+                                ? 'bg-cyan-500 text-slate-950'
+                                : blackout
+                                ? 'text-red-300'
+                                : isCurrentMonth
+                                ? 'text-slate-300'
+                                : 'text-slate-700'
+                            }
+                          `}
                         >
-                          Submit for Approval
-                        </button>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
+                          {date.getDate()}
+                        </span>
 
-          {/* Approved Tasks */}
-          {completedTasks.length > 0 && (
-            <div className="space-y-4 pt-4 border-t border-slate-800/80">
-              <h2 className="text-sm font-bold text-emerald-400 uppercase tracking-wider">
-                Approved & Completed ({completedTasks.length})
-              </h2>
+                        {/* Today indicator */}
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {completedTasks.map((task) => {
-                  const assignee = getMember(task.assigneeId);
-                  return (
-                    <div
-                      key={task.id}
-                      className="bg-slate-900/60 border border-emerald-950/60 rounded-xl p-4 flex flex-col justify-between opacity-85 hover:opacity-100 transition"
-                    >
-                      <div>
-                        <div className="flex justify-between items-center mb-2">
-                          <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-400 border border-emerald-900/40">
-                            {task.category} • Approved
+                        {isToday && !blackout && (
+                          <span className="hidden text-[7px] font-bold uppercase tracking-wider text-cyan-400 sm:block">
+                            Today
                           </span>
-                          <span className="text-xs font-bold text-emerald-400">
-                            +{task.points} pts credited
-                          </span>
-                        </div>
-
-                        <h3 className="text-sm font-semibold text-slate-300 line-through mb-1">
-                          {task.title}
-                        </h3>
+                        )}
                       </div>
 
-                      <div className="pt-2 border-t border-slate-800/60 flex justify-between items-center">
-                        <div className="flex items-center gap-2">
-                          <img
-                            src={getAvatar(assignee)}
-                            alt={assignee?.name || 'Member'}
-                            className="w-5 h-5 rounded-full bg-slate-800 object-cover"
-                          />
-                          <span className="text-xs text-slate-400">{assignee?.name}</span>
-                        </div>
+                      {/* =================================================
+                          BLACKOUT BADGE
+                          ================================================= */}
 
-                        {isAdmin && (
+                      {blackout && (
+                        <div className="mb-1 rounded border border-red-900/70 bg-red-950/70 px-1 py-1">
+                          <p className="truncate text-[7px] font-bold uppercase tracking-wide text-red-400 sm:text-[8px]">
+                            {blackout.title}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* =================================================
+                          EVENTS
+                          ================================================= */}
+
+                      <div className="space-y-1">
+                        {events.slice(0, 3).map((event) => (
                           <button
-                            onClick={() => rejectTask(task.id)}
-                            className="text-[10px] text-slate-500 hover:text-slate-300 underline"
+                            key={event.id}
+                            onClick={() =>
+                              setSelectedEvent(event)
+                            }
+                            className={`
+                              block w-full truncate rounded
+                              border px-1 py-1 text-left
+                              text-[7px] font-semibold
+                              transition
+                              sm:text-[8px]
+
+                              ${getEventColor(event.type)}
+
+                              ${
+                                blackout
+                                  ? 'opacity-60'
+                                  : 'hover:brightness-125'
+                              }
+                            `}
                           >
-                            Re-open
+                            {event.title}
                           </button>
+                        ))}
+
+                        {events.length > 3 && (
+                          <p className="px-1 text-[7px] text-slate-500">
+                            +{events.length - 3} more
+                          </p>
                         )}
                       </div>
                     </div>
                   );
-                })}
+                }
+              )}
+            </div>
+
+            {/* =================================================
+                LEGEND
+                ================================================= */}
+
+            <div className="flex flex-wrap items-center gap-3 border-t border-slate-800 px-4 py-3">
+              <div className="flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded-full bg-cyan-500" />
+                <span className="text-[10px] text-slate-500">
+                  Today
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded bg-red-500" />
+                <span className="text-[10px] text-slate-500">
+                  No Club Activities
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded bg-cyan-400" />
+                <span className="text-[10px] text-slate-500">
+                  Workshop
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded bg-purple-400" />
+                <span className="text-[10px] text-slate-500">
+                  Meeting
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <span className="h-2.5 w-2.5 rounded bg-orange-400" />
+                <span className="text-[10px] text-slate-500">
+                  Competition
+                </span>
               </div>
             </div>
-          )}
-        </div>
+          </section>
 
-        {/* Live Leaderboard */}
-        <div className="space-y-4">
-          <h2 className="text-sm font-bold text-slate-300 uppercase tracking-wider">
-            Live Leaderboard
-          </h2>
-          <div className="bg-slate-900 border border-slate-800 rounded-xl p-4 divide-y divide-slate-800/60 max-h-[600px] overflow-y-auto">
-            {leaderboard.map((member, idx) => (
-              <div
-                key={member.id}
-                className="py-3 first:pt-0 last:pb-0 flex items-center justify-between"
-              >
-                <div className="flex items-center gap-3">
-                  <span
-                    className={`text-xs font-bold w-4 ${
-                      idx === 0
-                        ? 'text-amber-400'
-                        : idx === 1
-                        ? 'text-slate-300'
-                        : idx === 2
-                        ? 'text-amber-600'
-                        : 'text-slate-600'
-                    }`}
-                  >
-                    #{idx + 1}
-                  </span>
-                  <img
-                    src={getAvatar(member)}
-                    alt={member.name}
-                    className="w-8 h-8 rounded-full bg-slate-800 object-cover"
-                  />
-                  <div>
-                    <p className="text-xs font-semibold text-white">{member.name}</p>
-                    <p className="text-[10px] text-slate-400">{member.role}</p>
-                  </div>
-                </div>
+          {/* =====================================================
+              TASK SIDEBAR
+              ===================================================== */}
 
-                <div className="text-right">
-                  <p className="text-xs font-bold text-amber-400">{member.totalPoints} pts</p>
-                  <p className="text-[10px] text-slate-500">{member.doneCount} approved</p>
-                </div>
+          <aside className="h-fit rounded-2xl border border-slate-800 bg-slate-950/70">
+            <div className="flex items-center justify-between border-b border-slate-800 px-4 py-4">
+              <div>
+                <h2 className="text-sm font-bold">
+                  Live Tasks
+                </h2>
+
+                <p className="mt-1 text-[10px] text-slate-500">
+                  Current club tasks
+                </p>
               </div>
-            ))}
-          </div>
+
+              <Link
+                href="/tasks"
+                className="text-[10px] font-semibold text-cyan-400 hover:text-cyan-300"
+              >
+                View all
+              </Link>
+            </div>
+
+            <div className="p-3">
+              {loadingTasks ? (
+                <div className="space-y-2">
+                  {[1, 2, 3].map((item) => (
+                    <div
+                      key={item}
+                      className="h-20 animate-pulse rounded-xl border border-slate-800 bg-slate-900/50"
+                    />
+                  ))}
+                </div>
+              ) : activeTasks.length === 0 ? (
+                <div className="rounded-xl border border-dashed border-slate-800 px-4 py-8 text-center">
+                  <p className="text-xs font-semibold text-slate-400">
+                    No active tasks
+                  </p>
+
+                  <p className="mt-1 text-[10px] text-slate-600">
+                    Everything is currently completed.
+                  </p>
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  {activeTasks.map((task) => {
+                    const assignee = getMember(
+                      task.assigneeId
+                    );
+
+                    return (
+                      <Link
+                        key={task.id}
+                        href="/tasks"
+                        className="block rounded-xl border border-slate-800 bg-slate-900/40 p-3 transition hover:border-cyan-500/30 hover:bg-slate-900/80"
+                      >
+                        {/* Task title */}
+
+                        <div className="flex items-start justify-between gap-2">
+                          <p className="line-clamp-2 text-xs font-semibold text-slate-200">
+                            {task.title}
+                          </p>
+
+                          {task.points != null && (
+                            <span className="shrink-0 text-[9px] font-bold text-cyan-400">
+                              +{task.points}
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Category */}
+
+                        <div className="mt-2 flex flex-wrap items-center gap-1">
+                          {task.category && (
+                            <span className="rounded border border-slate-700 bg-slate-950 px-1.5 py-0.5 text-[8px] font-semibold text-slate-400">
+                              {task.category}
+                            </span>
+                          )}
+
+                          {task.priority && (
+                            <span
+                              className={`
+                                rounded border px-1.5 py-0.5
+                                text-[8px] font-semibold
+                                ${getPriorityColor(
+                                  task.priority
+                                )}
+                              `}
+                            >
+                              {task.priority}
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Bottom info */}
+
+                        <div className="mt-2 flex items-center justify-between gap-2">
+                          <span className="truncate text-[9px] text-slate-500">
+                            {assignee?.name ||
+                              'Unassigned'}
+                          </span>
+
+                          <span className="shrink-0 text-[9px] text-slate-600">
+                            {task.dueDate
+                              ? formatDate(
+                                  task.dueDate
+                                )
+                              : 'No due date'}
+                          </span>
+                        </div>
+
+                        {/* Status */}
+
+                        <div className="mt-2">
+                          <span className="text-[8px] font-semibold uppercase tracking-wider text-slate-600">
+                            {getTaskStatusLabel(
+                              task.status
+                            )}
+                          </span>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
+            {/* Task footer */}
+
+            <div className="border-t border-slate-800 px-4 py-3">
+              <Link
+                href="/tasks"
+                className="block rounded-lg border border-slate-800 bg-slate-900 px-3 py-2 text-center text-[10px] font-semibold text-slate-400 transition hover:border-cyan-500/30 hover:text-cyan-400"
+              >
+                Open Task Manager
+              </Link>
+            </div>
+          </aside>
         </div>
       </div>
 
-      {/* Task Modal */}
-      {isModalOpen && (
-        <TaskModal
-          members={validMembers}
-          onClose={() => setIsModalOpen(false)}
-          onSubmit={handleCreateTask}
-        />
+      {/* =====================================================
+          EVENT MODAL
+          ===================================================== */}
+
+      {selectedEvent && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"
+          onClick={() => setSelectedEvent(null)}
+        >
+          <div
+            className="w-full max-w-lg overflow-hidden rounded-2xl border border-slate-800 bg-slate-950 shadow-2xl"
+            onClick={(event) =>
+              event.stopPropagation()
+            }
+          >
+            {/* Modal header */}
+
+            <div className="flex items-start justify-between gap-4 border-b border-slate-800 p-5">
+              <div>
+                <div
+                  className={`
+                    mb-2 inline-flex rounded-full
+                    border px-2 py-1
+                    text-[9px] font-bold
+                    uppercase tracking-wider
+
+                    ${getEventColor(
+                      selectedEvent.type
+                    )}
+                  `}
+                >
+                  {selectedEvent.type}
+                </div>
+
+                <h2 className="text-xl font-bold text-white">
+                  {selectedEvent.title}
+                </h2>
+              </div>
+
+              <button
+                onClick={() =>
+                  setSelectedEvent(null)
+                }
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-slate-800 text-slate-500 transition hover:border-slate-600 hover:text-white"
+                aria-label="Close"
+              >
+                ×
+              </button>
+            </div>
+
+            {/* Modal body */}
+
+            <div className="space-y-4 p-5">
+              {/* Date */}
+
+              <div>
+                <p className="text-[9px] font-bold uppercase tracking-wider text-slate-600">
+                  Date
+                </p>
+
+                <p className="mt-1 text-sm text-slate-300">
+                  {formatDate(
+                    selectedEvent.date
+                  )}
+
+                  {selectedEvent.endDate &&
+                    selectedEvent.endDate !==
+                      selectedEvent.date && (
+                      <>
+                        {' '}
+                        –{' '}
+                        {formatDate(
+                          selectedEvent.endDate
+                        )}
+                      </>
+                    )}
+                </p>
+              </div>
+
+              {/* Time */}
+
+              {(selectedEvent.startTime ||
+                selectedEvent.endTime) && (
+                <div>
+                  <p className="text-[9px] font-bold uppercase tracking-wider text-slate-600">
+                    Time
+                  </p>
+
+                  <p className="mt-1 text-sm text-slate-300">
+                    {formatTime(
+                      selectedEvent.startTime
+                    )}
+
+                    {selectedEvent.endTime && (
+                      <>
+                        {' '}
+                        –{' '}
+                        {formatTime(
+                          selectedEvent.endTime
+                        )}
+                      </>
+                    )}
+                  </p>
+                </div>
+              )}
+
+              {/* Location */}
+
+              {selectedEvent.location && (
+                <div>
+                  <p className="text-[9px] font-bold uppercase tracking-wider text-slate-600">
+                    Location
+                  </p>
+
+                  <p className="mt-1 text-sm text-slate-300">
+                    {selectedEvent.location}
+                  </p>
+                </div>
+              )}
+
+              {/* Description */}
+
+              {selectedEvent.description && (
+                <div>
+                  <p className="text-[9px] font-bold uppercase tracking-wider text-slate-600">
+                    Description
+                  </p>
+
+                  <p className="mt-1 text-sm leading-6 text-slate-400">
+                    {selectedEvent.description}
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {/* Modal footer */}
+
+            <div className="border-t border-slate-800 p-4">
+              <button
+                onClick={() =>
+                  setSelectedEvent(null)
+                }
+                className="w-full rounded-lg bg-cyan-500 px-4 py-2.5 text-sm font-bold text-slate-950 transition hover:bg-cyan-400"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
       )}
-    </div>
+    </main>
   );
 }
