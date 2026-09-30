@@ -178,9 +178,9 @@ export const team = [
     img:"/team/default_0.webp",
    
   },
-  {
+   {
     id: 16,
-    name: " ",
+    name: "Yusuf Sabuwala",
     role: "Technical Team",
     category:"Technical",
     bio: " ",
@@ -188,6 +188,7 @@ export const team = [
     img:"/team/default_0.webp",
     
   },
+  
   {
     id: 17,
     name: "Aisha Hammad",
@@ -208,9 +209,9 @@ export const team = [
     img:"/team/abdulsameen_16.webp",
     
   },
-  {
-    id: 19,
-    name: "Yusuf Sabuwala",
+ {
+    id: 16,
+    name: " ",
     role: "Technical Team",
     category:"Technical",
     bio: " ",
