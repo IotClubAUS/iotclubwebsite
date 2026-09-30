@@ -25,13 +25,13 @@ export const team = [
   
   {
     id: 2,
-    name: "Sif Aldin",
+    name: "Sif Aldin Mohchieh",
     role: "Vice-President",
     category:"Executives",
     bio: " ",
-    skills: [" ", " ", "   ","  "],
-    img:"/team/ ",
-    linkedin:" ",
+    skills: [" ", " ", " "," "],
+    img:"/team/default_0.webp",
+    
   },
   {
     id: 3,
@@ -43,25 +43,25 @@ export const team = [
     img:"/team/aseil_3.webp",
     linkedin: "https://www.linkedin.com/in/aseil-alshazly-2b43153b2",
   },
- {
+  {
     id: 4,
-    name: "Hala ",
-    role: "Executive Assisstant",
+    name: "Hala Salah",
+    role: "Executive Assistant",
     category:"Executives",
     bio: " ",
     skills: [" ", " ", " "],
-    img:"/team/ ",
-    linkedin:" ",
+    img:"/team/default_0.webp",
+    
   },
 {
-    id: 100,
-    name: "Rawan  ",
+    id: 5,
+    name: "Rawan Tawfik",
     role: "Internal Coordinator",
     category:"Executives",
-    bio: " ",
+    bio:" ",
     skills: [" ", " ", " "],
-    img:"/team/ ",
-    linkedin:" ",
+    img:"/team/default_0.webp",
+    
   },
 
 
@@ -72,28 +72,18 @@ export const team = [
   
             /* ACTIVITIES */
   {
-    id: 5,
+    id: 6,
     name: "Marwan Saied",
     role: "Activities Coordinator",
-    category:"Activities",
-    bio: "I’ve been always told i’m a creative genius. Whenever presented with a question with 2 solutions, I always find a third that fits better. Can work with anyone anywhere anytime.",
+    category:["Activities","Executives"],
+    bio:"I’ve been always told i’m a creative genius. Whenever presented with a question with 2 solutions, I always find a third that fits better. Can work with anyone anywhere anytime.",
     skills: ["Video-Editing", "AI-Prompting", "Project-Management"],
     img:"/team/marwan_11.webp",
     
   },
   {
-    id: 6,
-    name: " ",
-    role: "Activities Team",
-    category:"Activities",
-    bio: " ",
-    skills: [" ", " ", " "],
-    img:"/team/default_0.webp",
-    
-  },
-  {
     id: 7,
-    name: "Younis Sherif",
+    name: "Mohammed Kayed",
     role: "Activities Team",
     category:"Activities",
     bio: " ",
@@ -103,7 +93,7 @@ export const team = [
   },
   {
     id: 8,
-    name: "Jaida Abdullah",
+    name: "Younis Sherif",
     role: "Activities Team",
     category:"Activities",
     bio: " ",
@@ -113,6 +103,16 @@ export const team = [
   },
   {
     id: 9,
+    name: "Jaida Abdullah",
+    role: "Activities Team",
+    category:"Activities",
+    bio: " ",
+    skills: [" ", " ", " "],
+    img:"/team/default_0.webp",
+    
+  },
+  {
+    id: 10,
     name: "Vanishri Shekhawat",
     role: "Activities Team",
     category:"Activities",
@@ -122,7 +122,7 @@ export const team = [
     
   },
   {
-    id: 10,
+    id: 11,
     name: "Mohammad Samer Al Talleh",
     role: "Activities Team",
     category:"Activities",
@@ -132,8 +132,18 @@ export const team = [
     
   },
   {
-    id: 11,
-    name: " ",
+    id: 12,
+    name: "Joudy Ramy",
+    role: "Activities Team",
+    category:"Activities",
+    bio: " ",
+    skills: [" ", " ", " "],
+    img:"/team/default_0.webp",
+    
+  },
+  {
+    id: 13,
+    name: "Mohammed Raid Abu Nahleh",
     role: "Activities Team",
     category:"Activities",
     bio: " ",
@@ -149,7 +159,7 @@ export const team = [
   
             /* TECHNICAL */
   {
-    id: 12,
+    id: 14,
     name: "Adam Farag ",
     role: "Technical Coordinator",
     category:["Technical","Executives"],
@@ -159,7 +169,7 @@ export const team = [
     github: "https://github.com/adamantiumexo",
   },
   {
-    id: 13,
+    id: 15,
     name: "Jana Shahin ",
     role: "Technical Team",
     category:"Technical",
@@ -169,27 +179,27 @@ export const team = [
    
   },
   {
-    id: 14,
-    name: " ",
-    role: "Technical Team",
-    category:"Technical",
-    bio: " ",
-    skills: [" ", " ", " "],
-    img:"/team/default_0.webp",
-    
-  },
-  {
-    id: 15,
-    name: " ",
-    role: "Technical Team",
-    category:"Technical",
-    bio: " ",
-    skills: [" ", " ", " "],
-    img:"/team/default_0.webp",
-    
-  },
-  {
     id: 16,
+    name: " ",
+    role: "Technical Team",
+    category:"Technical",
+    bio: " ",
+    skills: [" ", " ", " "],
+    img:"/team/default_0.webp",
+    
+  },
+  {
+    id: 17,
+    name: "Aisha Hammad",
+    role: "Technical Team",
+    category:"Technical",
+    bio: " ",
+    skills: [" ", " ", " "],
+    img:"/team/default_0.webp",
+    
+  },
+  {
+    id: 18,
     name: "Abdul Sameen",
     role: "Technical Team",
     category:"Technical",
@@ -199,7 +209,7 @@ export const team = [
     
   },
   {
-    id: 17,
+    id: 19,
     name: "Yusuf Sabuwala",
     role: "Technical Team",
     category:"Technical",
@@ -214,7 +224,7 @@ export const team = [
   
             /* PUBLIC RELATIONS */
   {
-    id: 18,
+    id: 20,
     name: "Saachi Motwani",
     role: "PR Coordinator",
     category: ["Public Relations","Executives"],
@@ -225,28 +235,8 @@ export const team = [
     linkedin: "https://www.linkedin.com/in/saachi-m-273661284",
   },
   {
-    id: 19,
-    name: " ",
-    role: "PR Team",
-    category:"Public Relations",
-    bio: " ",
-    skills: [" ", " ", " "],
-    img:"/team/default_0.webp",
-    
-  },
-  {
-    id: 20,
-    name: "Saarah Jaleel Padiyath",
-    role: "PR Team",
-    category:"Public Relations",
-    bio: "A mechanical engineering major who loves to ask the who, what, when, where and how of anything related to aircrafts. When I’m not experimenting with Arduinos, I’m probably busy yapping about the WNBA.",
-    skills: ["Public Speaking", "Python", "AutoCAD"],
-    img:"/team/saarah_20.webp",
-    
-  },
-  {
     id: 21,
-    name: " ",
+    name: "Aashvi Shah",
     role: "PR Team",
     category:"Public Relations",
     bio: " ",
@@ -256,7 +246,17 @@ export const team = [
   },
   {
     id: 22,
-    name: "Omer Khan",
+    name: "Saarah Jaleel Padiyath",
+    role: "PR Team",
+    category:"Public Relations",
+    bio: "A mechanical engineering major who loves to ask the who, what, when, where and how of anything related to aircrafts. When I’m not experimenting with Arduinos, I’m probably busy yapping about the WNBA.",
+    skills: ["Public Speaking", "Python", "AutoCAD"],
+    img:"/team/saarah_20.webp",
+    
+  },
+  {
+    id: 23,
+    name: "Shahd Ramy Marey",
     role: "PR Team",
     category:"Public Relations",
     bio: " ",
@@ -265,7 +265,17 @@ export const team = [
     
   },
   {
-    id: 23,
+    id: 24,
+    name: "Omar Khan",
+    role: "PR Team",
+    category:"Public Relations",
+    bio: " ",
+    skills: [" ", " ", " "],
+    img:"/team/default_0.webp",
+    
+  },
+  {
+    id: 25,
     name: " ",
     role: "PR Team",
     category:"Public Relations",
@@ -277,60 +287,38 @@ export const team = [
 
   
             /* MEDIA */
-
   {
-    id: 24,
+    id: 26,
     name: "Eyad Wafa",
     role: "Media Coordinator",
     category:["Media","Executives"],
-    bio: "Creative designer who enjoys turning ideas into visuals. Handles media, creates unique designs, and knows how to make content stand out. Spends way too much time perfecting details in Photoshop, but the results are worth it.",
+    bio: "Creative designer who enjoys turning ideas into visuals. Handles media, creates unique designs, and knows how to make content stand out. Spends way too much time perfecting details in Photoshop, but the results are worth it.",    
     skills: ["Photoshop", "Videography", "Creativity "],
     img:"/team/eyad_25.webp",
-    
-  },
-    {
-    id: 25,
-    name: "  ",
-    role: "Media Team",
-    category:"Media",
-    bio: "null",    
-    skills: [" ", " ", " "],
-    img:"/team/.webp",
-    linkedin: " ",
-  },
-  {
-    id: 26,
-    name: " ",
-    role: "Media Team",
-    category:"Media",
-    bio: " ",
-    skills: [" "," ", " " ],
-    img:"/team/.webp",
-    
   },
   {
     id: 27,
-    name: "Zeina Alaya",
-    role: "Media Team",
-    category:"Media",
-    bio: "Passionate about anything tech and art. Sweet tooth. Video games are good for you",
-    skills: ["Motion graphics ", "Illustration", "Mii-making"],
-    img:"/team/zeina_27.webp",
-   
-  },
-  {
-    id: 28,
-    name: " ",
+    name: "Lavin Kefel",
     role: "Media Team",
     category:"Media",
     bio: " ",
     skills: [" ", " ", " "],
-    img:" ",
+    img:"/team/default_0.webp",
+    
+  },
+  {
+    id: 28,
+    name: "Taha Kamal",
+    role: "Media Team",
+    category:"Media",
+    bio: " ",
+    skills: [" ", " ", " "],
+    img:"/team/default_0.webp",
     
   },
   {
     id: 29,
-    name: "Partapuriya M. Achint",
+    name: "Jana Raslan",
     role: "Media Team",
     category:"Media",
     bio: " ",
@@ -340,6 +328,46 @@ export const team = [
   },
   {
     id: 30,
+    name: "Zakwan Khan Mehdi",
+    role: "Media Team",
+    category:"Media",
+    bio: " ",
+    skills: [" ", " ", " "],
+    img:"/team/default_0.webp",
+    
+  },
+  {
+    id: 31,
+    name: "Zeina Alaya",
+    role: "Media Team",
+    category:"Media",
+    bio: "Passionate about anything tech and art. Sweet tooth. Video games are good for you",
+    skills: ["Motion graphics ", "Illustration", "Mii-making"],
+    img:"/team/zeina_27.webp",
+   
+  },
+  {
+    id: 32,
+    name: "Mohammed Rayyan Meher",
+    role: "Media Team",
+    category:"Media",
+    bio: " ",
+    skills: [" ", " ", " "],
+    img:"/team/default_0.webp",
+    
+  },
+  {
+    id: 33,
+    name: "Partapuriya M. Achint",
+    role: "Media Team",
+    category:"Media",
+    bio: " ",
+    skills: [" ", " ", " "],
+    img:"/team/default_0.webp",
+    
+  },
+  {
+    id: 34,
     name: "Rushda Zoya",
     role: "Media Team",
     category:"Media",
@@ -348,7 +376,7 @@ export const team = [
     img:"/team/default_0.webp",
     
   },
-  { id: 31,
+  { id: 35,
     name: "Yusuf Nakhawa",
     role: "Media Team",
     category:"Media",
