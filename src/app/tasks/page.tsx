@@ -115,7 +115,7 @@ const EVENTS: CalendarEvent[] = [
     date: '2026-10-05',
     startTime: '17:00',
     endTime: '19:00',
-    location: 'TBD',
+    location: 'ESB-1043',
     description:
       'Hands-on IoT workshop for club members.',
     type: 'Workshop',
@@ -129,7 +129,7 @@ const EVENTS: CalendarEvent[] = [
     endTime: '19:00',
     location: 'Football Field',
     description:
-      'Media planning, content creation, and upcoming campaigns.',
+      'Collaboration between different clubs',
     type: 'Social',
   },
 
@@ -141,8 +141,44 @@ const EVENTS: CalendarEvent[] = [
     endTime: '19:00',
     location: 'Football Field',
     description:
-      'Media planning, content creation, and upcoming campaigns.',
+      'Collaboration between different clubs',
     type: 'Social',
+  },
+
+  {
+    id: 'Keychain Workshop',
+    title: 'Make your own interactive Keychain',
+    date: '2026-10-20',
+    startTime: '16:00',
+    endTime: '18:00',
+    location: 'ESB',
+    description:
+      'Hands-on IoT workshop for club members.',
+    type: 'Workshop',
+  },
+
+  {
+    id: 'Hackathon',
+    title: 'Hackathon',
+    date: '2026-11-01',
+    startTime: '09:00',
+    endTime: '18:00',
+    location: 'Main Bldg',
+    description:
+      'hackathon event',
+    type: 'Competition',
+  },
+
+  {
+    id: 'Industry Trip',
+    title: 'Visit to ###',
+    date: '2026-10-25',
+    startTime: '09:00',
+    endTime: '18:00',
+    location: '??',
+    description:
+      'Visit to industry',
+    type: 'Other',
   },
 ];
 
