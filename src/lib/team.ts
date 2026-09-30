@@ -299,7 +299,7 @@ export const team = [
   },
   {
     id: 27,
-    name: "Lavin Kefel",
+    name: "Rushda Zoya",
     role: "Media Team",
     category:"Media",
     bio: " ",
@@ -367,17 +367,8 @@ export const team = [
     img:"/team/default_0.webp",
     
   },
-  {
-    id: 34,
-    name: "Rushda Zoya",
-    role: "Media Team",
-    category:"Media",
-    bio: " ",
-    skills: [" ", " ", " "],
-    img:"/team/default_0.webp",
-    
-  },
-  { id: 35,
+  
+  { id: 34,
     name: "Yusuf Nakhawa",
     role: "Media Team",
     category:"Media",
