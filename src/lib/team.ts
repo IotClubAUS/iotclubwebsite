@@ -19,7 +19,7 @@ export const team = [
     bio: "Systems builder who enjoys making hardware talk to software. Runs the club, designs IoT projects, and spends too much time debugging things that should have worked the first time.",
     skills: [ "Full-Stack", "Arduino", "IoT","Embedded Systems"],
     img:"/team/adam_1.webp",
-    github: "www.github.com/OutragedKhan916",
+    github: "https://www.github.com/OutragedKhan916",
     linkedin: "https://www.linkedin.com/in/adam-serhan/",
   },
   
