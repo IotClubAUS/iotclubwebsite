@@ -78,7 +78,7 @@ export const team = [
     category:["Activities","Executives"],
     bio:"I’ve been always told i’m a creative genius. Whenever presented with a question with 2 solutions, I always find a third that fits better. Can work with anyone anywhere anytime.",
     skills: ["Video-Editing", "AI-Prompting", "Project-Management"],
-    img:"/team/marwan_11.webp",
+    img:"/team/marwan_6.webp",
     
   },
   {
@@ -118,7 +118,7 @@ export const team = [
     category:"Activities",
     bio: "A sophomore Electrical Engineering student and a member of the Activities Subcommittee at the IoT Club. With a background in AI research and a passion for Arduino and robotics, I enjoy organizing hands-on events focused on Arduino programming.",
     skills: ["Python ", "Arduino", "Public Speaking"],
-    img:"/team/vanishri_9.webp",
+    img:"/team/vanishri_10.webp",
     
   },
   {
