@@ -5,7 +5,7 @@ const APPLICATIONS_OPEN = false;
 const APPLICATION_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLScUt5c1mp8MHQNj48T8zeBMvSxqnkjAa-ycJI_FVEb6udqawg/viewform?usp=sharing&ouid=115100477030477821907";
 
-const DEADLINE = "September 30, 2026 • 11:59 PM (GST / UAE time)";
+const DEADLINE = "September 20, 2026 • 11:59 PM (GST / UAE time)";
 
 const reasons = [
   {
