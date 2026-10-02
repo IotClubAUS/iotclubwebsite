@@ -155,7 +155,7 @@ useEffect(() => {
 
 {showPopup && (
   <img
-    src="/files/file_1.webp"
+    src="/team/file.webp"
     className="
     fixed
 right-2 md:right-8
@@ -169,7 +169,7 @@ w-24 md:w-72
 )}
 {showPopup && (
   <img
-    src="/files/file_1.webp"
+    src="/team/file.webp"
     className="
     fixed
 left-2 md:left-8
@@ -187,11 +187,12 @@ animate-bounce
 {mouseImgs.map((img)=>(
   <img
     key={img.id}
-    src="/files/file_2.webp"
+    src="/team/file.webp"
     className="
     fixed
     w-16
     h-16
+    object-cover
     pointer-events-none
     z-50
     "
@@ -214,7 +215,7 @@ animate-bounce
             fontSize: "2rem",
           }}
         >
-          Welcome to hashirs easter egg.
+          Welcome to Marwan&apos;s easter egg.
         </h1>
 
 
@@ -248,4 +249,3 @@ animate-bounce
     </main>
   );
 }
-
