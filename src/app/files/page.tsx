@@ -21,7 +21,7 @@ const [mouseImgs, setMouseImgs] = useState<
       const { data } = await supabase
         .from("easter_egg_visits")
         .select("count")
-        .eq("id", 1)
+        .eq("id", 6)
         .single();
 
 setCount(data?.count ?? 0);
