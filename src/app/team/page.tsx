@@ -18,7 +18,7 @@ const [secretClicks, setSecretClicks] = useState(0);
       );
         
 const handleSecretClick = (memberId: number) => {
-  if (memberId !== 5) return; 
+  if (memberId !== 6) return; 
 
   setSecretClicks((prev) => {
     const clicks = prev + 1;
