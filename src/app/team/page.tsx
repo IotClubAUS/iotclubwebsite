@@ -152,7 +152,7 @@ onMouseLeave={(e) => {
 
 style={{
     boxShadow:
-      secretClicks > 0 && member.id === 5
+      secretClicks > 0 && member.id === 6
         ? "0 0 12px rgba(0,212,255,0.08)"
         : "none",
   }}
