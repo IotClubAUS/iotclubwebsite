@@ -232,7 +232,7 @@ export const team = [
     bio: "Computer Science student, club member, and enthusiastic participant in anything that sounds interesting. Enjoys coding, public speaking, and getting involved in campus activities.",
     skills: ["Python", "Data Science", "Sleeping"],
     img:" ",
-    github: "#",
+    //github: "#",
     linkedin: "https://www.linkedin.com/in/saachi-m-273661284",
   },
   {
