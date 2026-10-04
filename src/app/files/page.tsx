@@ -1,39 +1,57 @@
+
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import confetti from "canvas-confetti";
 import { getSupabase } from "@/lib/supabase";
+
 export default function SecretPage() {
   const [count, setCount] = useState<number | null>(null);
-const [showPopup, setShowPopup] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
-const [mouseImgs, setMouseImgs] = useState<
-  { id:number; x:number; y:number; rotate:number }[]
->([]);
+  const hasTracked = useRef(false);
 
+  const [mouseImgs, setMouseImgs] = useState<
+    { id: number; x: number; y: number; rotate: number }[]
+  >([]);
 
   useEffect(() => {
+    if (hasTracked.current) return;
+
+    hasTracked.current = true;
+
     async function trackVisit() {
       const supabase = getSupabase();
 
-      await supabase.rpc("increment_easter_egg");
+      const { error: incrementError } = await supabase.rpc(
+        "increment_easter_egg"
+      );
 
-      const { data } = await supabase
+      if (incrementError) {
+        console.error("Failed to increment Easter egg visits:", incrementError);
+        return;
+      }
+
+      const { data, error } = await supabase
         .from("easter_egg_visits")
         .select("count")
-        .eq("id", 6)
+        .eq("id", 1)
         .single();
 
-setCount(data?.count ?? 0);
+      if (error) {
+        console.error("Failed to fetch Easter egg count:", error);
+        return;
+      }
 
-setTimeout(() => {
-  setShowPopup(true);
-}, 500);      
+      setCount(data?.count ?? 0);
+
+      setTimeout(() => {
+        setShowPopup(true);
+      }, 500);
     }
 
     trackVisit();
   }, []);
-
 
   function launchConfetti() {
     confetti({
@@ -50,7 +68,6 @@ setTimeout(() => {
         "#34d399",
       ],
     });
-
 
     // second burst
     setTimeout(() => {
@@ -76,138 +93,133 @@ setTimeout(() => {
     }, 250);
   }
 
-useEffect(() => {
-  let lastSpawn = 0;
+  useEffect(() => {
+    let lastSpawn = 0;
 
-  function spawnImage(x: number, y: number) {
-    const now = Date.now();
+    function spawnImage(x: number, y: number) {
+      const now = Date.now();
 
-    // slower on all devices
-    if (now - lastSpawn < 120) return;
+      // slower on all devices
+      if (now - lastSpawn < 120) return;
 
-    lastSpawn = now;
+      lastSpawn = now;
 
-    const newImg = {
-      id: now,
-      x,
-      y,
-      rotate: Math.random() * 360,
-    };
+      const newImg = {
+        id: now,
+        x,
+        y,
+        rotate: Math.random() * 360,
+      };
 
-    setMouseImgs((prev) => [
-      ...prev.slice(-3),
-      newImg,
-    ]);
+      setMouseImgs((prev) => [
+        ...prev.slice(-3),
+        newImg,
+      ]);
 
-    setTimeout(() => {
-      setMouseImgs((prev) =>
-        prev.filter((img) => img.id !== newImg.id)
-      );
-    }, 800);
-  }
-
-
-  function handleMouse(e: MouseEvent) {
-    spawnImage(e.clientX, e.clientY);
-  }
-
-
-  function handleTouch(e: TouchEvent) {
-    const touch = e.touches[0];
-
-    if (touch) {
-      spawnImage(
-        touch.clientX,
-        touch.clientY
-      );
+      setTimeout(() => {
+        setMouseImgs((prev) =>
+          prev.filter((img) => img.id !== newImg.id)
+        );
+      }, 800);
     }
-  }
 
+    function handleMouse(e: MouseEvent) {
+      spawnImage(e.clientX, e.clientY);
+    }
 
-  window.addEventListener(
-    "mousemove",
-    handleMouse
-  );
+    function handleTouch(e: TouchEvent) {
+      const touch = e.touches[0];
 
-  window.addEventListener(
-    "touchmove",
-    handleTouch
-  );
+      if (touch) {
+        spawnImage(
+          touch.clientX,
+          touch.clientY
+        );
+      }
+    }
 
-
-  return () => {
-    window.removeEventListener(
+    window.addEventListener(
       "mousemove",
       handleMouse
     );
 
-    window.removeEventListener(
+    window.addEventListener(
       "touchmove",
       handleTouch
     );
-  };
 
-}, []);
+    return () => {
+      window.removeEventListener(
+        "mousemove",
+        handleMouse
+      );
+
+      window.removeEventListener(
+        "touchmove",
+        handleTouch
+      );
+    };
+  }, []);
 
   return (
     <main className="min-h-screen flex items-center justify-center bg-[#080c10]">
-        {/* SIDE POPUP */}
+      {/* SIDE POPUP */}
 
-{showPopup && (
-  <img
-    src="/team/file.webp"
-    className="
-    fixed
-right-2 md:right-8
-    top-1/2
-    -translate-y-1/2
-w-24 md:w-72
-    animate-bounce
-    z-50
-    "
-  />
-)}
-{showPopup && (
-  <img
-    src="/team/file.webp"
-    className="
-    fixed
-left-2 md:left-8
-    top-1/2
-    -translate-y-1/2
-w-24 md:w-72
-animate-bounce
-    z-50
-    "
-  />
-)}
+      {showPopup && (
+        <img
+          src="/team/file.webp"
+          className="
+            fixed
+            right-2 md:right-8
+            top-1/2
+            -translate-y-1/2
+            w-24 md:w-72
+            animate-bounce
+            z-50
+          "
+        />
+      )}
 
-{/* MOUSE TRAIL */}
+      {showPopup && (
+        <img
+          src="/team/file.webp"
+          className="
+            fixed
+            left-2 md:left-8
+            top-1/2
+            -translate-y-1/2
+            w-24 md:w-72
+            animate-bounce
+            z-50
+          "
+        />
+      )}
 
-{mouseImgs.map((img)=>(
-  <img
-    key={img.id}
-    src="/team/file.webp"
-    className="
-    fixed
-    w-16
-    h-16
-    object-cover
-    pointer-events-none
-    z-50
-    "
-    style={{
-  left: img.x - 16,
-  top: img.y - 16,
-  transform:`rotate(${img.rotate}deg)`,
-  transition:"all .8s ease-out",
-  opacity:1,
-}}
-  />
-))}
+      {/* MOUSE TRAIL */}
+
+      {mouseImgs.map((img) => (
+        <img
+          key={img.id}
+          src="/team/file.webp"
+          className="
+            fixed
+            w-16
+            h-16
+            object-cover
+            pointer-events-none
+            z-50
+          "
+          style={{
+            left: img.x - 16,
+            top: img.y - 16,
+            transform: `rotate(${img.rotate}deg)`,
+            transition: "all .8s ease-out",
+            opacity: 1,
+          }}
+        />
+      ))}
 
       <div className="text-center">
-
         <h1
           style={{
             color: "#00d4ff",
@@ -218,34 +230,30 @@ animate-bounce
           Welcome to Marwan&apos;s easter egg.
         </h1>
 
-
         {count !== null && (
           <p className="mt-4 text-gray-400">
             Visitor #{count}
           </p>
         )}
 
-
         <button
           onClick={launchConfetti}
           className="
-          mt-8
-          px-6
-          py-3
-          border
-          border-[#00d4ff]
-          text-[#00d4ff]
-          font-mono
-          hover:bg-[#00d4ff]
-          hover:text-black
-          transition
+            mt-8
+            px-6
+            py-3
+            border
+            border-[#00d4ff]
+            text-[#00d4ff]
+            font-mono
+            hover:bg-[#00d4ff]
+            hover:text-black
+            transition
           "
         >
           Activate Secret
         </button>
-
       </div>
-
     </main>
   );
 }
