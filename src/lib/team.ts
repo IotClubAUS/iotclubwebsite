@@ -28,8 +28,8 @@ export const team = [
     name: "Sif Aldin Mohchieh",
     role: "Vice-President",
     category:"Executives",
-    bio: " ",
-    skills: [" ", " ", " "," "],
+    bio: "Computer Science student and Vice President of the IoT Club. Interested in technology, learning new things, and working on projects with others.",
+    skills: ["Java", "C++", " "," "],
     img:"/team/default_0.webp",
     
   },
@@ -76,19 +76,19 @@ export const team = [
     name: "Marwan Saied",
     role: "Activities Coordinator",
     category:["Activities","Executives"],
-    bio:"I’ve been always told i’m a creative genius. Whenever presented with a question with 2 solutions, I always find a third that fits better. Can work with anyone anywhere anytime.",
-    skills: ["Video-Editing", "AI-Prompting", "Project-Management"],
-    img:"/team/marwan_6.webp",
+    bio:"The type of person to find a third choice when given two.",
+    skills: ["Data & Engineering", "Strategic Problem Solving & Analytics", "Project-Management"],
+    img:"/team/Marwan.webp",
     
   },
   {
     id: 7,
-    name: "Mohammed Kayed",
+    name: "Mohammad Mousa Kayed",
     role: "Activities Team",
     category:"Activities",
-    bio: " ",
-    skills: [" ", " ", " "],
-    img:"/team/default_0.webp",
+    bio: "Future Civil Engineer with a creative mind, a good sense of humor, and way too many ideas. I’m all about good energy, meeting new people, and making every experience a little more fun and memorable.",
+    skills: ["Public speaking", "Communication", "Engaging with people"],
+    img:"/team/MohammedKayed.webp",
     
   },
   {
@@ -106,8 +106,8 @@ export const team = [
     name: "Jaida Abdullah",
     role: "Activities Team",
     category:"Activities",
-    bio: " ",
-    skills: [" ", " ", " "],
+    bio: "I’m about to enter my sophomore year in uni as an electrical engineer. I love learning new hobbies and creating goals for myself",
+    skills: ["Artistic", "Creative", " "],
     img:"/team/default_0.webp",
     
   },
@@ -173,9 +173,9 @@ export const team = [
     name: "Jana Shahin ",
     role: "Technical Team",
     category:"Technical",
-    bio: "Sophomore computer engineering who loves to take things apart to see how they work.",
-    skills: ["Building Things", "Coding", "Communication"],
-    img:"/team/default_0.webp",
+    bio: "Managing this website :) Sophomore computer engineering who loves to take things apart to see how they work. ",
+    skills: ["Managment", "Coding", "Communication"],
+    img:"/team/JanaShahin.webp",
    
   },
    {
@@ -194,9 +194,9 @@ export const team = [
     name: "Aisha Hammad",
     role: "Technical Team",
     category:"Technical",
-    bio: " ",
-    skills: [" ", " ", " "],
-    img:"/team/default_0.webp",
+    bio: "I'm a computer engineering major who loves to code and work with breadboards! ",
+    skills: ["C++", "Python", "Java"],
+    img:"/team/Aisha.webp",
     
   },
   {
@@ -204,8 +204,8 @@ export const team = [
     name: "Abdul Sameen",
     role: "Technical Team",
     category:"Technical",
-    bio: "Mechanical engineering student that’ll turn ideas into models to build that almost always work on the first try, maybe.",
-    skills: ["Robotics", "CAD", "3D-Printing"],
+    bio: "I like designing and building stuff",
+    skills: ["Design", "Manufacturing", "3D-Assembly"],
     img:"/team/abdulsameen_16.webp",
     
   },
@@ -240,9 +240,9 @@ export const team = [
     name: "Aashvi Shah",
     role: "PR Team",
     category:"Public Relations",
-    bio: " ",
-    skills: [" ", " ", " "],
-    img:"/team/default_0.webp",
+    bio: "I am a Business major at AUS with a strong interest in accounting, finance, and the economic side of technology. I am passionate about understanding how smart connected devices drive business efficiency, cost-optimization, and modern financial management.",
+    skills: ["Financial Analysis & Accounting", "Strategic Planning", "Data Analysis "],
+    img:"/team/AashviShah.webp",
     
   },
   {
