@@ -21,6 +21,7 @@ type EventType =
   | 'Competition'
   | 'Social'
   | 'Deadline'
+  | 'Hackathon'
   | 'Other';
 
 type TaskStatus =
@@ -112,13 +113,26 @@ const EVENTS: CalendarEvent[] = [
   {
     id: 'Besomi TinyML workshop',
     title: 'Besomi TinyML Workshop',
-    date: '2026-10-05',
+    date: '2026-10-12',
     startTime: '17:00',
     endTime: '19:00',
     location: 'ESB-1043',
     description:
       'Hands-on IoT workshop for club members.',
     type: 'Workshop',
+  },
+
+  
+  {
+    id: "INSPIRE '26 Collab",
+    title: "INSPIRE '26 Collab",
+    date: '2026-09-05',
+    startTime: '09:00',
+    endTime: '19:00',
+    location: 'Main Building',
+    description:
+      'Collaboration with IEEE SSCS in "INSPIRE 26 ',
+    type: 'Hackathon',
   },
 
   {

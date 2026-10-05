@@ -29,7 +29,7 @@ export const team = [
     role: "Vice-President",
     category:"Executives",
     bio: "Computer Science student and Vice President of the IoT Club. Interested in technology, learning new things, and working on projects with others.",
-    skills: ["Java", "C++", " "," "],
+    skills: ["Java", "C++",],
     img:"/team/default_0.webp",
     
   },
@@ -107,7 +107,7 @@ export const team = [
     role: "Activities Team",
     category:"Activities",
     bio: "I’m about to enter my sophomore year in uni as an electrical engineer. I love learning new hobbies and creating goals for myself",
-    skills: ["Artistic", "Creative", " "],
+    skills: ["Artistic", "Creative"],
     img:"/team/default_0.webp",
     
   },
