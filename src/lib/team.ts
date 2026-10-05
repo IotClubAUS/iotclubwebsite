@@ -158,24 +158,17 @@ export const team = [
 
   
             /* TECHNICAL */
+
   {
     id: 14,
-    name: "Adam Farag ",
-    role: "Technical Coordinator",
-    category:["Technical","Executives"],
-    bio: "Sophomore in Computer Engineering. Can't touch an electronic without taking it apart and putting it back together (most of the time). Always with a screwdriver, soldering iron, or drum sticks.",
-    skills: ["Hardware Mods and Repair", "Embedded", "Music Composition"],
-    img:"/team/adam_12.webp",
-    github: "https://github.com/adamantiumexo",
-  },
-  {
-    id: 15,
     name: "Jana Shahin ",
-    role: "Technical Team",
-    category:"Technical",
+      role: "Technical Coordinator",
+    category:["Technical","Executives"],
     bio: "Managing this website :) Sophomore computer engineering who loves to take things apart to see how they work. ",
     skills: ["Managment", "Coding", "Communication"],
     img:"/team/JanaShahin.webp",
+    github: "https://github.com/adamantiumexo",
+
    
   },
    {
@@ -210,7 +203,7 @@ export const team = [
     
   },
  {
-    id: 16,
+    id: 15,
     name: " ",
     role: "Technical Team",
     category:"Technical",
@@ -219,7 +212,16 @@ export const team = [
     img:"/team/default_0.webp",
     
   },
-  
+   {
+    id: 19,
+    name: " ",
+    role: "Technical Team",
+    category:"Technical",
+    bio: " ",
+    skills: [" ", " ", " "],
+    img:"/team/default_0.webp",
+    
+  },
 
 
   
