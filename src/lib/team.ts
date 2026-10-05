@@ -167,7 +167,7 @@ export const team = [
     bio: "Managing this website :) Sophomore computer engineering who loves to take things apart to see how they work. ",
     skills: ["Managment", "Coding", "Communication"],
     img:"/team/JanaShahin.webp",
-    github: "https://github.com/adamantiumexo",
+    github: "#",
 
    
   },
