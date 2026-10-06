@@ -21,11 +21,7 @@ const photos = [
     title: "Collectibles and plush toys at a club display",
     imageUrl: "/media/gallery/club-display.jpeg",
   },
-  {
-    id: 5,
-    title: "Event attendee posing on campus",
-    imageUrl: "/media/gallery/campus-event-portrait.jpeg",
-  },
+ 
 ];
 
 export default function MediaPage() {
