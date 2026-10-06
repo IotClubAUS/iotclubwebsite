@@ -3,18 +3,28 @@
 const photos = [
   {
     id: 1,
-    title: " ",
-    imageUrl: "",
+    title: "AUS Engineers robot at a cultural event",
+    imageUrl: "/media/gallery/robot-cultural-event.jpeg",
   },
   {
     id: 2,
-    title: "",
-    imageUrl: "",
+    title: "Humanoid and mobile robots on campus",
+    imageUrl: "/media/gallery/robots-campus-demo.jpeg",
   },
   {
     id: 3,
-    title: "",
-    imageUrl: "",
+    title: "Another view of the campus robot demonstration",
+    imageUrl: "/media/gallery/robots-campus-demo-alternate.jpeg",
+  },
+  {
+    id: 4,
+    title: "Collectibles and plush toys at a club display",
+    imageUrl: "/media/gallery/club-display.jpeg",
+  },
+  {
+    id: 5,
+    title: "Event attendee posing on campus",
+    imageUrl: "/media/gallery/campus-event-portrait.jpeg",
   },
 ];
 
@@ -134,43 +144,20 @@ export default function MediaPage() {
                   }}
                 >
                   <div
-                    className="aspect-video w-full flex items-center justify-center"
+                    className="aspect-[3/4] w-full flex items-center justify-center"
                     style={{
                       background: "rgba(0,212,255,.02)",
                       borderBottom: "1px solid rgba(0,212,255,.1)",
                     }}
                   >
-                    {photo.imageUrl ? (
-                      <img
-                        src={photo.imageUrl}
-                        alt={photo.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                    ) : (
-                      <span
-                        style={{
-                          fontFamily: "'Space Mono', monospace",
-                          color: "#6b7a8d",
-                          fontSize: "12px",
-                        }}
-                      >
-                        [ Image Placeholder ]
-                      </span>
-                    )}
+                    <img
+                      src={photo.imageUrl}
+                      alt={photo.title}
+                      loading="lazy"
+                      className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                    />
                   </div>
 
-                  <div className="p-6">
-                    <h3
-                      className="transition-all duration-300 group-hover:text-cyan-300"
-                      style={{
-                        color: "#00d4ff",
-                        fontFamily: "'Space Mono', monospace",
-                        fontSize: "1rem",
-                      }}
-                    >
-                      {photo.title}
-                    </h3>
-                  </div>
                 </div>
               ))}
             </div>
