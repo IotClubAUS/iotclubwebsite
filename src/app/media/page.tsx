@@ -21,7 +21,11 @@ const photos = [
     title: "Collectibles and plush toys at a club display",
     imageUrl: "/media/gallery/club-display.jpeg",
   },
- 
+  {
+    id: 5,
+    title: "Event attendee posing on campus",
+    imageUrl: "/media/gallery/club-fair.jpg",
+  },
 ];
 
 export default function MediaPage() {
@@ -150,7 +154,7 @@ export default function MediaPage() {
                       src={photo.imageUrl}
                       alt={photo.title}
                       loading="lazy"
-                      className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
 
