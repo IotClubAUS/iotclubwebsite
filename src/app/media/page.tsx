@@ -1,32 +1,7 @@
-"use client";
+import ImageGallery from "@/components/ui/image-gallery";
+import { mediaPhotos } from "@/lib/media";
 
-const photos = [
-  {
-    id: 1,
-    title: "AUS Engineers robot at a cultural event",
-    imageUrl: "/media/gallery/robot-cultural-event.jpeg",
-  },
-  {
-    id: 2,
-    title: "Humanoid and mobile robots on campus",
-    imageUrl: "/media/gallery/robots-campus-demo.jpeg",
-  },
-  {
-    id: 3,
-    title: "Another view of the campus robot demonstration",
-    imageUrl: "/media/gallery/robots-campus-demo-alternate.jpeg",
-  },
-  {
-    id: 4,
-    title: "Collectibles and plush toys at a club display",
-    imageUrl: "/media/gallery/club-display.jpeg",
-  },
-  {
-    id: 5,
-    title: "Event attendee posing on campus",
-    imageUrl: "/media/gallery/club-fair.jpg",
-  },
-];
+
 
 export default function MediaPage() {
   return (
@@ -117,7 +92,7 @@ export default function MediaPage() {
           </div>
         </section>
 
-        {/* GALLERY GRID */}
+        {/* EXPANDING GALLERY */}
         <section className="px-6 pb-24">
           <div className="max-w-6xl mx-auto">
             <h2
@@ -131,36 +106,12 @@ export default function MediaPage() {
               <span style={{ color: "#00d4ff" }}>//</span> Photos
             </h2>
 
-            <div className="grid md:grid-cols-3 gap-6">
-              {photos.map((photo) => (
-                <div
-                  key={photo.id}
-                  className="group transition-all duration-300 hover:-translate-y-2 overflow-hidden"
-                  style={{
-                    background: "#0e1520",
-                    border: "1px solid rgba(0,212,255,.15)",
-                    borderRadius: "10px",
-                    cursor: "default",
-                  }}
-                >
-                  <div
-                    className="aspect-[3/4] w-full flex items-center justify-center"
-                    style={{
-                      background: "rgba(0,212,255,.02)",
-                      borderBottom: "1px solid rgba(0,212,255,.1)",
-                    }}
-                  >
-                    <img
-                      src={photo.imageUrl}
-                      alt={photo.title}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-
-                </div>
-              ))}
-            </div>
+            <ImageGallery
+              images={mediaPhotos.map((photo) => ({
+                src: photo.imageUrl,
+                alt: photo.title,
+              }))}
+            />
           </div>
         </section>
       </div>
