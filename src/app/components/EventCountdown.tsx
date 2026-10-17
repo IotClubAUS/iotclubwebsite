@@ -5,7 +5,7 @@ import { ArrowRight, Radio } from "lucide-react";
 
 
 const EVENT_DATE = new Date(
-  "2026-09-15T09:00:00+04:00"
+  "2026-11-18T17:00:00+04:00"
 ).getTime();
 
 
@@ -187,7 +187,7 @@ md:text-xl
 
 {/* NAME of event*/}
 
-Club Fair
+Carnival
 
 
 

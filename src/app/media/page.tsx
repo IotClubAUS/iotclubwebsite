@@ -1,4 +1,8 @@
-import ImageGallery from "@/components/ui/image-gallery";
+import {
+  Gallery,
+  GalleryGrid,
+  GalleryImage,
+} from "@/components/ui/shared-element-gallery";
 import { mediaPhotos } from "@/lib/media";
 
 
@@ -106,12 +110,18 @@ export default function MediaPage() {
               <span style={{ color: "#00d4ff" }}>//</span> Photos
             </h2>
 
-            <ImageGallery
-              images={mediaPhotos.map((photo) => ({
-                src: photo.imageUrl,
-                alt: photo.title,
-              }))}
-            />
+            <Gallery>
+              <GalleryGrid>
+                {mediaPhotos.map((photo) => (
+                  <GalleryImage
+                    key={photo.id}
+                    id={String(photo.id)}
+                    src={photo.imageUrl}
+                    alt={photo.title}
+                  />
+                ))}
+              </GalleryGrid>
+            </Gallery>
           </div>
         </section>
       </div>

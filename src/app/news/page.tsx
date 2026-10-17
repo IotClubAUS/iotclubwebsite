@@ -23,10 +23,12 @@ const tagColors: Record<string, string> = {
 export default function NewsPage() {
   const [activeTag, setActiveTag] = useState("All");
 
+  const newestFirst = [...allNews].reverse();
+
   const filtered =
     activeTag === "All"
-      ? allNews
-      : allNews.filter((n) => n.tag === activeTag);
+      ? newestFirst
+      : newestFirst.filter((n) => n.tag === activeTag);
 
       const router = useRouter();
 
