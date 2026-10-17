@@ -24,4 +24,14 @@ export const mediaPhotos = [
     title: "Event attendee posing on campus",
     imageUrl: "/media/gallery/club-fair.jpg",
   },
+  {
+    id: 6,
+    title: "IoT Club photo",
+    imageUrl: "/media/gallery/iot-photo-1.jpeg",
+  },
+  {
+    id: 7,
+    title: "IoT Club photo",
+    imageUrl: "/media/gallery/iot-photo-2.jpeg",
+  },
 ];
