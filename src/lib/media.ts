@@ -34,4 +34,34 @@ export const mediaPhotos = [
     title: "IoT Club photo",
     imageUrl: "/media/gallery/iot-photo-2.jpeg",
   },
+  {
+    id: 8,
+    title: "IoT Club photo",
+    imageUrl: "/media/gallery/iot-photo-3.jpg",
+  },
+  {
+    id: 9,
+    title: "IoT Club photo",
+    imageUrl: "/media/gallery/iot-photo-4.jpeg",
+  },
+  {
+    id: 10,
+    title: "IoT Club photo",
+    imageUrl: "/media/gallery/iot-photo-5.jpeg",
+  },
+  {
+    id: 11,
+    title: "IoT Club photo",
+    imageUrl: "/media/gallery/iot-photo-6.jpeg",
+  },
+  {
+    id: 12,
+    title: "IoT Club photo",
+    imageUrl: "/media/gallery/iot-photo-7.jpg",
+  },
+  {
+    id: 13,
+    title: "IoT Club photo",
+    imageUrl: "/media/gallery/iot-photo-8.jpg",
+  },
 ];
