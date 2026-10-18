@@ -62,7 +62,7 @@ export const allNews = [
     title: " IoT Club Fair",
     bio:"IoT Club showcased its projects and robots at the AUS Club Fair on 15 September 2026, meeting new students and inviting them to join the club.",
     info:" ",
-    image: "/media/gallery/club-fair.jpg",
+    image: "/news/club-fair-poster.png",
     author: "IoT Admin",
     readTime: "6 min read",
   },
