@@ -182,6 +182,7 @@ const EVENTS: CalendarEvent[] = [
       'hackathon event',
     type: 'Competition',
   },
+  /*
 {
     id: 'Hackathon',
     title: 'Hackathon',
@@ -193,6 +194,7 @@ const EVENTS: CalendarEvent[] = [
       'hackathon event',
     type: 'Competition',
   },
+  */
   {
     id: 'Movie Night',
     title: 'IoT: Across the spiderverse',
