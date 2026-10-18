@@ -182,19 +182,7 @@ const EVENTS: CalendarEvent[] = [
       'hackathon event',
     type: 'Competition',
   },
-  /*
-{
-    id: 'Hackathon',
-    title: 'Hackathon',
-    date: '2026-11-01',
-    startTime: '09:00',
-    endTime: '18:00',
-    location: 'Main Bldg',
-    description:
-      'hackathon event',
-    type: 'Competition',
-  },
-  */
+  
   {
     id: 'Movie Night',
     title: 'IoT: Across the spiderverse',
