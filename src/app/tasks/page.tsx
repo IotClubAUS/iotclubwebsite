@@ -158,7 +158,7 @@ const EVENTS: CalendarEvent[] = [
       'Collaboration between different clubs',
     type: 'Social',
   },
-
+/*
   {
     id: 'Keychain Workshop',
     title: 'Make your own interactive Keychain',
@@ -170,7 +170,7 @@ const EVENTS: CalendarEvent[] = [
       'Hands-on IoT workshop for club members.',
     type: 'Workshop',
   },
-
+*/
   {
     id: 'Hackathon',
     title: 'Hackathon',
@@ -196,7 +196,7 @@ const EVENTS: CalendarEvent[] = [
   {
     id: 'Movie Night',
     title: 'IoT: Across the spiderverse',
-    date: '2026-10-25',
+    date: '2026-10-26',
     startTime: '016:00',
     endTime: '18:00',
     location: 'Floating theatre',
