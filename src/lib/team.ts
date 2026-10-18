@@ -106,8 +106,8 @@ export const team = [
     name: "Jaida Abdullah",
     role: "Activities Team",
     category:"Activities",
-    bio: "I’m about to enter my sophomore year in uni as an electrical engineer. I love learning new hobbies and creating goals for myself",
-    skills: ["Artistic", "Creative"],
+    bio: " Hi Im an Electrical Engineering major and I dont know what Im doing",
+    skills: ["Planning", "Creative"],
     img:"/team/default_0.webp",
     
   },
