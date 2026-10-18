@@ -29,7 +29,7 @@ export const team = [
     role: "Vice-President",
     category:"Executives",
     bio: "Computer Science student and Vice President of the IoT Club. Interested in technology, learning new things, and working on projects with others.",
-    skills: ["Java", "C++",],
+    skills: ["Java", "C++"],
     img:"/team/default_0.webp",
     
   },
@@ -58,8 +58,8 @@ export const team = [
     name: "Rawan Tawfik",
     role: "Internal Coordinator",
     category:"Executives",
-    bio:" ",
-    skills: [" ", " ", " "],
+    bio:"I’m a computer engineering student who loves learning about new things and working with everyone.",
+    skills: ["C++", "Problem-Solving", "Python"],
     img:"/team/default_0.webp",
     
   },
@@ -106,8 +106,8 @@ export const team = [
     name: "Jaida Abdullah",
     role: "Activities Team",
     category:"Activities",
-    bio: "I’m about to enter my sophomore year in uni as an electrical engineer. I love learning new hobbies and creating goals for myself",
-    skills: ["Artistic", "Creative"],
+    bio: " Hi Im an Electrical Engineering major and I dont know what Im doing",
+    skills: ["Planning", "Creative"],
     img:"/team/default_0.webp",
     
   },
@@ -136,9 +136,9 @@ export const team = [
     name: "Joudy Ramy",
     role: "Activities Team",
     category:"Activities",
-    bio: " ",
-    skills: [" ", " ", " "],
-    img:"/team/default_0.webp",
+    bio: "Heyy, I am Joudy! I love hanging out and having fun while doing something new, and I believe whatever decisions you make are always somehow good for you. ",
+    skills: ["Adaptability", "Teamwork", "Planning"],
+    img:"/team/JoudyRamy.webp",
     
   },
   {
@@ -146,9 +146,9 @@ export const team = [
     name: "Mohammed Raid Abu Nahleh",
     role: "Activities Team",
     category:"Activities",
-    bio: " ",
-    skills: [" ", " ", " "],
-    img:"/team/default_0.webp",
+    bio: "I’m from Palestine, I like to play football and paddle, I’m also a professional fifa player and my favorite subject is math",
+    skills: ["Creative", "Great Communication and Teamwork", "Strong attention to detail"],
+    img:"/team/MohammadAbuNahleh.webp",
     
   },
 
@@ -167,7 +167,8 @@ export const team = [
     bio: "Managing this website :) Sophomore computer engineering who loves to take things apart to see how they work. ",
     skills: ["Managment", "Coding", "Communication"],
     img:"/team/JanaShahin.webp",
-    github: "#",
+    github: "https://github.com/JanaShahin-spec",
+    linkedin: "www.linkedin.com/in/jana-shahin-2134671ab",
 
    
   },
@@ -233,7 +234,7 @@ export const team = [
     category: ["Public Relations","Executives"],
     bio: "Computer Science student, club member, and enthusiastic participant in anything that sounds interesting. Enjoys coding, public speaking, and getting involved in campus activities.",
     skills: ["Python", "Data Science", "Sleeping"],
-    img:" ",
+    img:"/team/default_0.webp",
     //github: "#",
     linkedin: "https://www.linkedin.com/in/saachi-m-273661284",
   },
@@ -269,12 +270,12 @@ export const team = [
   },
   {
     id: 24,
-    name: "Omar Khan",
+    name: "Omer Khan",
     role: "PR Team",
     category:"Public Relations",
-    bio: " ",
-    skills: [" ", " ", " "],
-    img:"/team/default_0.webp",
+    bio: "i’m very outgoing and love to meet new people, if you have a cool car, let me know at once, also i lowk love food",
+    skills: ["Great Communication Skills", "Social", "Adaptive"],
+    img:"/team/OmerKhan.webp",
     
   },
   {
@@ -354,8 +355,8 @@ export const team = [
     name: "Mohammed Rayyan Meher",
     role: "Media Team",
     category:"Media",
-    bio: " ",
-    skills: [" ", " ", " "],
+    bio: "hii I am rayyan, i’m majoring in chemical engineering, i love photography and watching movies",
+    skills: ["Photographt", "Python"],
     img:"/team/default_0.webp",
     
   },
