@@ -110,7 +110,7 @@ const EVENTS: CalendarEvent[] = [
     type: 'Club',
   },
 
-  {
+  /*{
     id: 'Besomi TinyML workshop',
     title: 'Besomi TinyML Workshop',
     date: '2026-10-12',
@@ -122,7 +122,7 @@ const EVENTS: CalendarEvent[] = [
     type: 'Workshop',
   },
 
-  
+  */
   {
     id: "INSPIRE '26 Collab",
     title: "INSPIRE '26 Collab",
@@ -182,17 +182,27 @@ const EVENTS: CalendarEvent[] = [
       'hackathon event',
     type: 'Competition',
   },
-
-  {
-    id: 'Industry Trip',
-    title: 'Visit to ###',
-    date: '2026-10-25',
+{
+    id: 'Hackathon',
+    title: 'Hackathon',
+    date: '2026-11-01',
     startTime: '09:00',
     endTime: '18:00',
-    location: '??',
+    location: 'Main Bldg',
     description:
-      'Visit to industry',
-    type: 'Other',
+      'hackathon event',
+    type: 'Competition',
+  },
+  {
+    id: 'Movie Night',
+    title: 'IoT: Across the spiderverse',
+    date: '2026-10-25',
+    startTime: '016:00',
+    endTime: '18:00',
+    location: 'Floating theatre',
+    description:
+      '🕷️ An exciting movie night with the IoT community! Join us for a screening of *Spider-Man: Across the Spider-Verse* ',
+    type: 'Social',
   },
 ];
 
