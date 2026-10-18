@@ -172,7 +172,7 @@ export const team = [
     skills: ["Managment", "Coding", "Communication"],
     img:"/team/JanaShahin.webp",
     github: "https://github.com/JanaShahin-spec",
-    linkedin: "www.linkedin.com/in/jana-shahin-2134671ab",
+    linkedin: "https://www.linkedin.com/in/jana-shahin-2134671ab",
 
    
   },
