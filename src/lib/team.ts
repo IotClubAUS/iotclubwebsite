@@ -31,7 +31,8 @@ export const team = [
     bio: "Computer Science student and Vice President of the IoT Club. Interested in technology, learning new things, and working on projects with others.",
     skills: ["Java", "C++"],
     img:"/team/default_0.webp",
-    
+   // github: "#",
+   // linkedin: "#",
   },
   {
     id: 3,
@@ -51,7 +52,8 @@ export const team = [
     bio: " ",
     skills: [" ", " ", " "],
     img:"/team/default_0.webp",
-    
+    // github: "#",
+   // linkedin: "#",
   },
 {
     id: 5,
@@ -61,7 +63,8 @@ export const team = [
     bio:"I’m a computer engineering student who loves learning about new things and working with everyone.",
     skills: ["C++", "Problem-Solving", "Python"],
     img:"/team/default_0.webp",
-    
+    // github: "#",
+   // linkedin: "#",
   },
 
 
@@ -79,7 +82,8 @@ export const team = [
     bio:"The type of person to find a third choice when given two.",
     skills: ["Data & Engineering", "Strategic Problem Solving & Analytics", "Project-Management"],
     img:"/team/Marwan.webp",
-    
+    // github: "#",
+   // linkedin: "#",
   },
   {
     id: 7,
@@ -229,14 +233,14 @@ export const team = [
             /* PUBLIC RELATIONS */
   {
     id: 20,
-    name: "Saachi Motwani",
+    name: " ",
     role: "PR Coordinator",
     category: ["Public Relations","Executives"],
-    bio: "Computer Science student, club member, and enthusiastic participant in anything that sounds interesting. Enjoys coding, public speaking, and getting involved in campus activities.",
-    skills: ["Python", "Data Science", "Sleeping"],
+    bio: " ",
+    skills: [" ", " ", " "],
     img:"/team/default_0.webp",
     //github: "#",
-    linkedin: "https://www.linkedin.com/in/saachi-m-273661284",
+    //linkedin: "#",
   },
   {
     id: 21,
@@ -299,6 +303,8 @@ export const team = [
     bio: "Creative designer who enjoys turning ideas into visuals. Handles media, creates unique designs, and knows how to make content stand out. Spends way too much time perfecting details in Photoshop, but the results are worth it.",    
     skills: ["Photoshop", "Videography", "Creativity "],
     img:"/team/eyad_25.webp",
+    // github: "#",
+   // linkedin: "#",
   },
   {
     id: 27,
