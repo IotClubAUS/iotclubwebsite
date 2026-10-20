@@ -1,9 +1,11 @@
 "use client";
 import EventCountdown from "@/app/components/EventCountdown";
 import { allNews } from "@/lib/news";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import {
   ArrowRight,
+  PawPrint,
   Cpu,
   Radio,
   Layers,
@@ -247,6 +249,7 @@ software, and intelligent automation.
 </p>
 
 
+<div className="flex flex-col gap-3 sm:flex-row sm:items-center">
           <button
           
   onClick={()=>router.push("/contact")}
@@ -297,6 +300,40 @@ Start Building  <ArrowRight size={14}/>
     "
   />
 </button>
+
+<Link
+  href="/capybara-hunt"
+  prefetch={false}
+  className="
+    group
+    flex
+    items-center
+    justify-center
+    gap-2
+    px-6
+    py-3
+    w-full
+    sm:w-auto
+    rounded-lg
+    border
+    border-cyan-400/50
+    transition-all
+    duration-300
+    hover:bg-cyan-400/10
+    hover:border-cyan-400
+    hover:shadow-[0_0_25px_rgba(0,212,255,0.25)]
+  "
+  style={{
+    color:"#00d4ff",
+    fontFamily:"'Space Mono',monospace",
+    fontWeight:700
+  }}
+>
+  <PawPrint size={14}/>
+  <span className="whitespace-nowrap">Capybara Hunt</span>
+  <ArrowRight size={14}/>
+</Link>
+</div>
 <div
 className="
 hidden
