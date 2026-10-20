@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [{ source: "/capybara-hunt", destination: "/capybara-hunt/index.html" }];
+  },
 };
 
 export default nextConfig;
