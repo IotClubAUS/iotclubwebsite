@@ -203,7 +203,7 @@ text-sm
 
 
 <a
-href="mailto:ausracing@aus.edu"
+href="mailto:iotclub@aus.edu"
 className="
 flex
 items-center
