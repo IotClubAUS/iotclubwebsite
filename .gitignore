@@ -3,3 +3,5 @@ dist/
 .next/
 *.local
 .DS_Store
+.env*
+!.env.example

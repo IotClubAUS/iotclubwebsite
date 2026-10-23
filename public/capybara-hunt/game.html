@@ -1,0 +1,100 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><meta name="theme-color" content="#080c10"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"><title>Capybara Quest — Seek. Solve. Survive.</title><style>
+:root{--bg:#f5edda;--ink:#34281e;--brown:#684632;--tan:#cda77a;--sage:#809577;--card:#fffaf0;--line:#d8c7aa;--red:#a64132}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top right,#e5d5b7,transparent 42%),var(--bg);font-family:ui-rounded,'Trebuchet MS',system-ui,sans-serif;color:var(--ink)}.wrap{max-width:780px;margin:auto;padding:22px 17px 90px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-weight:900;letter-spacing:.04em}.tag{background:#e2d0b0;border:1px solid #c5aa80;border-radius:50px;padding:7px 12px;font-size:12px;font-weight:800}.hero{background:var(--brown);border:5px solid #a57b55;border-radius:27px;color:#fff4de;margin:20px 0;padding:28px 20px;text-align:center;box-shadow:0 9px 0 #d8c7a8}.mascot{font-size:68px;filter:drop-shadow(0 4px 2px #3e281a);line-height:1.2}.hero h1{font-size:clamp(28px,7vw,46px);margin:8px 0 4px;letter-spacing:.035em}.hero p{margin:5px 0}.pill{display:inline-block;border-radius:30px;padding:7px 12px;background:#8b6245;font-size:12px;font-weight:800;margin-top:12px}.panel{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:20px;margin:17px 0;box-shadow:0 5px 0 #e2d5bd}.eyebrow{color:#8d6040;font-size:12px;font-weight:900;letter-spacing:.11em;text-transform:uppercase}.panel h2{font-size:24px;margin:9px 0 12px}.muted{color:#776755;font-size:14px;line-height:1.6}.clue{background:#efe3ce;border:1px dashed #b79b75;border-radius:14px;padding:18px;line-height:1.8;white-space:pre-line;margin:14px 0}.btn{background:var(--brown);color:white;border:0;border-radius:13px;padding:13px 17px;font-weight:800;font-size:15px;cursor:pointer}.btn:disabled{opacity:.45;cursor:not-allowed}.btn.alt{background:#d8e0ce;color:#2e4a2e}.btn.ghost{background:#e8dbc5;color:#4d3826}.btnrow{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}input,select{font:inherit;background:#fffdf8;color:var(--ink);border:2px solid var(--line);border-radius:12px;padding:12px;width:100%;min-width:0}label{font-weight:800;font-size:13px;display:block;margin:10px 0 6px}.progress{height:13px;background:#e6d8bf;border-radius:99px;overflow:hidden}.progress>div{height:100%;background:var(--sage);transition:width .2s}.stepper{display:flex;flex-wrap:wrap;gap:6px;margin:15px 0}.stepper span{width:31px;height:31px;border-radius:50%;display:grid;place-items:center;background:#e6d7bd;font-size:12px;font-weight:900}.stepper span.done{background:#8b9e80;color:white}.stepper span.current{background:#684632;color:white;outline:3px solid #cba778}.status{font-weight:800;padding:12px;border-radius:12px;background:#e4ecd9;margin-top:12px}.error{background:#f7d8d1;color:#8e3224}.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:15px 0}.tile{border:2px solid #cbb393;background:#f1e4d0;border-radius:14px;padding:15px 6px;text-align:center;font-size:20px;font-weight:900;cursor:pointer}.tile.selected{border-color:#597c53;background:#dbe7d3}.listrow{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid #eee2d1}.listrow span{flex:1}.listrow select{width:160px}.alert{background:#18251c;color:#f7f5e9;border:3px solid #536f58;border-radius:18px;text-align:center;padding:22px 15px}.alert h2{color:#fff;font-size:clamp(25px,7vw,38px)}.alert strong{color:#ff8276}.hidden{display:none}.timer{font-variant-numeric:tabular-nums;font-weight:900}.footer{text-align:center;color:#8a7965;font-size:12px;margin-top:25px}.rules{padding-left:20px;line-height:1.8}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.grid4 .tile{font-size:14px}.small{font-size:12px}.iconart{font-size:80px;line-height:1.1;margin:12px}.mission{font-weight:900;font-size:14px;color:#6e8c65} i[data-lucide],svg.lucide{width:1.15em;height:1.15em;vertical-align:-.17em;stroke-width:2.2}.mascot svg.lucide{width:62px;height:62px}.iconart svg.lucide{width:68px;height:68px}.tile svg.lucide{width:25px;height:25px} @media(max-width:480px){.panel{padding:16px}.tiles{gap:6px}.tile{padding:13px 3px}.listrow select{width:132px}.wrap{padding:15px 12px 70px}}
+body.modal-open{overflow:hidden}
+
+/* Night-mode Capybara Quest */
+:root{--bg:#111714;--ink:#f3ead8;--brown:#8b6748;--tan:#d5ae7a;--sage:#a2bb91;--card:#202922;--line:#465347;--red:#f09280}
+body{background:radial-gradient(ellipse at 80% 0%,#344333 0,transparent 46%),radial-gradient(ellipse at 10% 75%,#2d251f 0,transparent 42%),#111714;color:var(--ink)}
+.hero{background:linear-gradient(130deg,#433428,#253c30);border-color:#886a49;color:#fff0d8;box-shadow:0 8px 0 #101713}
+.pill{background:#32483b;color:#e4f3d5}.panel{background:#202922;border-color:#455447;box-shadow:0 5px 0 #111913}.eyebrow{color:#d5ae7a}.clue{background:#2c352c;border-color:#74806c;color:#f3ead8}.tag{background:#304437;border-color:#647b61;color:#e6f0d7}.btn{background:#bd9061;color:#161d16}.btn.alt{background:#799b79;color:#111c15}.btn.ghost{background:#354336;color:#ecf3e5}.btn:disabled{opacity:.35}.progress{background:#384439}.progress>div{background:#b2c68c}.stepper span{background:#354235;color:#dbe3d6}.stepper span.done{background:#647c5f}.stepper span.current{background:#bb9060;outline-color:#4e634b;color:#1b211b}.status{background:#314738;color:#e1f1db}.error{background:#4b292a;color:#ffd6d2}.tile{background:#29392e;border-color:#637560;color:#f3ead8}.tile.selected{background:#536d50;border-color:#b4d29e}.listrow{border-color:#445044}.alert{background:#131e1b;border-color:#6d8568}.alert strong{color:#ff9d83}.footer{color:#a9b19e}
+input,select{background:#141e18;color:#f4eddd;border-color:#526253}input::placeholder{color:#a4aa9c}
+
+.price-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:16px 0}.price-box{padding:12px 8px;border:1px solid #54634f;border-radius:13px;background:#2a362c}.price-box label{font-size:12px;min-height:54px;margin:0 0 8px}.price-box input{padding:10px 6px;text-align:center}.checkpoint{border:1px dashed #829878;border-radius:16px;padding:16px;margin:16px 0;background:#27372d}.checkpoint h3{margin:0 0 6px}.checkpoint p{color:#becbb9;font-size:13px;line-height:1.6}.next-btn{width:100%;margin-top:16px}.qr-overlay{position:fixed;inset:0;background:#050a07ec;z-index:110;display:flex;align-items:center;justify-content:center;padding:15px}.qr-overlay.hidden{display:none}.qr-dialog{background:#202922;border:2px solid #738b6d;border-radius:22px;padding:20px;width:min(100%,460px);max-height:95vh;overflow:auto}.qr-dialog .top{margin-bottom:12px}#reader{width:100%;min-height:150px;background:#111714;border-radius:12px;overflow:hidden}#reader video{max-width:100%}.qr-help{font-size:12px;color:#bdc8b5}.hunt-pic{display:block;width:100%;max-height:430px;object-fit:cover;object-position:center 37%;border-radius:16px;border:2px solid #a8794e;margin:15px auto}.finish-code{margin:14px 0}.secret{background:#1d3025;border:1px solid #86a37b;border-radius:12px;padding:13px;margin:12px 0}.small{font-size:12px}
+@media(max-width:520px){.price-grid{gap:5px}.price-box{padding:8px 4px}.price-box label{font-size:10px;min-height:66px}.price-box input{font-size:13px;padding:8px 3px}}
+
+
+/* Small, low-power animations */
+@keyframes floatMark{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes revealCard{from{opacity:.65;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes softGlow{0%,100%{box-shadow:0 8px 0 #101713}50%{box-shadow:0 8px 0 #101713,0 0 24px #9b80562c}}
+.hero{animation:softGlow 5s ease-in-out infinite;position:relative;overflow:hidden}
+.hero:after{content:'';position:absolute;inset:auto -10% 0;height:2px;background:linear-gradient(90deg,transparent,#c9a06e,transparent);opacity:.55}
+.mascot{animation:floatMark 4s ease-in-out infinite}
+#stage.panel{animation:revealCard .25s ease-out both}
+.btn:not(:disabled){transition:transform .15s ease,filter .15s ease}
+.btn:not(:disabled):active{transform:scale(.98)}
+.btn:not(:disabled):hover{filter:brightness(1.07)}
+.stepper span.current{box-shadow:0 0 0 4px #bb906026}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* Motion upgrade — GPU-friendly transforms, reduced-motion compatible */
+
+
+.hero:before,.hero:after{content:"";position:absolute;pointer-events:none;border:1px solid #d5ad7350;border-radius:50%;width:190px;height:190px;top:-110px;left:-85px;animation:orbitRing 9s ease-in-out infinite alternate}.hero:after{width:155px;height:155px;left:auto;right:-60px;top:auto;bottom:-95px;animation-duration:7s;animation-direction:alternate-reverse}
+.hero h1{animation:heroRise .8s cubic-bezier(.2,.8,.2,1) both}.hero p{animation:heroRise .85s .14s cubic-bezier(.2,.8,.2,1) both}.hero .pill{animation:heroRise .9s .26s cubic-bezier(.2,.8,.2,1) both}
+.brand svg,.brand i{animation:brandWiggle 4s ease-in-out infinite;transform-origin:center}
+.panel{transition:transform .25s ease,border-color .25s ease}.panel:hover{border-color:#8c9e78}
+.btn:not(:disabled){position:relative;overflow:hidden;transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s ease,background-color .22s ease;box-shadow:0 3px 0 #0003}.btn:not(:disabled):hover{transform:translateY(-3px);box-shadow:0 7px 13px #0004}.btn:not(:disabled):active{transform:translateY(1px) scale(.98);box-shadow:0 1px 0 #0003}
+.tile{transition:transform .2s ease,background-color .2s ease,border-color .2s ease}.tile:not(:disabled):hover{transform:translateY(-4px) rotate(-1deg)}.tile.selected{animation:tilePop .28s ease-out}
+.stepper span.current{animation:stepPulse 2.5s ease-in-out infinite}.stepper span.done{animation:stepDone .35s ease-out both}
+.progress>div{transition:width .8s cubic-bezier(.2,.8,.2,1)}.checkpoint{animation:heroRise .4s ease-out both}.status{animation:tilePop .32s ease-out both}
+
+.backup-section{margin-top:16px;padding-top:14px;border-top:1px solid #50624d}.backup-section label{margin:0 0 9px;color:#e9e6d8}.backup-row{display:flex;gap:8px;align-items:stretch}.backup-row input{flex:1}.backup-row .btn{flex:none}.qr-print-code{font-weight:800;font-size:11px;letter-spacing:.03em;overflow-wrap:anywhere;margin-top:8px}
+@keyframes orbitRing{from{transform:translate(0,0) rotate(-10deg) scale(.95)}to{transform:translate(35px,20px) rotate(15deg) scale(1.12)}}
+@keyframes heroRise{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes brandWiggle{0%,88%,100%{transform:rotate(0)}91%{transform:rotate(-15deg)}95%{transform:rotate(12deg)}}
+@keyframes tilePop{from{transform:scale(.93);opacity:.7}70%{transform:scale(1.04)}to{transform:scale(1);opacity:1}}
+@keyframes stepPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.11)}}
+@keyframes stepDone{from{transform:scale(.65)}to{transform:scale(1)}}
+@keyframes dialogPop{from{opacity:0;transform:translateY(20px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:440px){.backup-row{flex-direction:column}.backup-row .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){.hero:before,.hero:after{animation:none!important}*,*:before,*:after{animation:none!important;transition:none!important}}
+@media(prefers-reduced-motion:reduce){}</style><script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script><script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script><style>
+.wrong-qr-popup{position:fixed;z-index:250;left:50%;top:50%;transform:translate(-50%,-50%);width:min(90vw,420px);padding:26px 24px;border:2px solid #f1a477;border-radius:20px;background:#29201d;color:#fff2e9;text-align:center;box-shadow:0 20px 85px #000b;animation:wrongQrIn .22s ease-out}
+.wrong-qr-popup.hidden{display:none}.wrong-qr-popup strong{display:block;font-size:20px;margin-bottom:10px}.wrong-qr-popup p{line-height:1.55;margin:0}.wrong-qr-popup svg{width:36px;height:36px;color:#ffb08a;margin-bottom:12px}
+@keyframes wrongQrIn{from{opacity:0;transform:translate(-50%,-45%) scale(.94)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@media(prefers-reduced-motion:reduce){.wrong-qr-popup{animation:none}}
+
+/* AUS IoT Club theme */
+:root{--bg:#080c10;--ink:#e8edf2;--brown:#00d4ff;--tan:#00d4ff;--sage:#00d4ff;--card:#0e1520;--line:rgba(0,212,255,.2);--red:#ff6b81}
+body{font-family:'Space Mono',ui-monospace,monospace;background:#080c10;color:#e8edf2}
+body::before{content:"";position:fixed;inset:0;z-index:-1;opacity:.07;background-image:linear-gradient(#00d4ff 1px,transparent 1px),linear-gradient(90deg,#00d4ff 1px,transparent 1px);background-size:50px 50px;pointer-events:none}
+.brand{font-weight:700;color:#00d4ff;letter-spacing:.14em;font-size:13px;text-transform:uppercase}
+.hero{background:#0e1520;border:1px solid rgba(0,212,255,.35);border-radius:12px;color:#e8edf2;box-shadow:0 0 40px rgba(0,212,255,.08);text-align:left;padding:32px 22px}
+.mascot{color:#00d4ff;filter:none}.mascot svg.lucide{width:44px;height:44px}
+.hero h1{font-size:clamp(30px,8vw,52px);line-height:1.1;letter-spacing:0;margin:14px 0 8px}
+.hero p{color:#6b7a8d}
+.pill{background:transparent;border:1px solid rgba(0,212,255,.4);color:#00d4ff;border-radius:6px;font-weight:700;letter-spacing:.08em}
+.panel{background:#0e1520;border:1px solid rgba(0,212,255,.2);border-radius:12px;box-shadow:none}
+.eyebrow{color:#00d4ff;letter-spacing:.18em}
+.panel h2{letter-spacing:0}
+.muted,.admin-note,.checkpoint p{color:#8a98aa}
+.clue{background:#0a1018;border:1px dashed rgba(0,212,255,.35);border-radius:8px;color:#e8edf2}
+.tag{background:transparent;border:1px solid rgba(0,212,255,.35);color:#00d4ff;border-radius:6px}
+.btn{background:#00d4ff;color:#080c10;border-radius:8px;font-family:inherit;font-weight:700;transition:box-shadow .3s}
+.btn:hover:not(:disabled){box-shadow:0 0 22px rgba(0,212,255,.5)}
+.btn.alt{background:#00d4ff;color:#080c10}
+.btn.ghost{background:transparent;color:#00d4ff;border:1px solid rgba(0,212,255,.5)}
+.btn:disabled{opacity:.3}
+.progress{background:#16202e;border-radius:4px}.progress>div{background:#00d4ff}
+.stepper span{background:#16202e;color:#8a98aa;border-radius:6px}.stepper span.done{background:rgba(0,212,255,.25);color:#00d4ff}.stepper span.current{background:#00d4ff;color:#080c10;outline:2px solid rgba(0,212,255,.4)}
+.status{background:rgba(0,212,255,.1);color:#9be9ff;border:1px solid rgba(0,212,255,.3);border-radius:8px}.error{background:rgba(255,107,129,.1);color:#ff9aaa;border-color:rgba(255,107,129,.4)}
+.tile{background:#0a1018;border:1px solid rgba(0,212,255,.25);border-radius:8px;color:#e8edf2;font-family:inherit}.tile.selected{background:rgba(0,212,255,.15);border-color:#00d4ff}
+.listrow{border-color:rgba(0,212,255,.15)}
+.alert{background:#0a1018;border:1px solid #00d4ff;border-radius:12px}.alert strong{color:#00d4ff}
+.footer{color:#6b7a8d}
+input,select{background:#0a1018;color:#e8edf2;border:1px solid rgba(0,212,255,.3);border-radius:8px;font-family:inherit}input::placeholder{color:#55657a}input:focus,select:focus{outline:none;border-color:#00d4ff;box-shadow:0 0 0 3px rgba(0,212,255,.15)}
+.price-box{background:#0a1018;border-color:rgba(0,212,255,.25);border-radius:8px}
+.checkpoint{background:#0a1018;border:1px dashed rgba(0,212,255,.35);border-radius:8px}
+.qr-dialog{background:#0e1520;border:1px solid rgba(0,212,255,.35);border-radius:12px}
+#reader{background:#080c10;border-radius:8px}.qr-help{color:#8a98aa}
+.admin-trigger{background:transparent;color:#00d4ff;border:1px solid rgba(0,212,255,.4);border-radius:8px;font-family:inherit}
+.hunt-pic{border:1px solid rgba(0,212,255,.35);border-radius:12px}
+.secret{background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.35);border-radius:8px}
+
+.backup-section{margin-top:16px;padding-top:14px;border-top:1px solid rgba(0,212,255,.2)}
+.backup-row .btn{flex:none}
+.wrong-qr-popup{background:#0e1520;border:1px solid #ff6b81;border-radius:12px;color:#e8edf2;box-shadow:0 0 60px rgba(255,107,129,.2)}
+.wrong-qr-popup svg{color:#ff6b81}
+.hero:before,.hero:after{display:none}
+</style></head><body><main class="wrap"><header class="top"><div class="brand"><i data-lucide="paw-print"></i> CAPYBARA QUEST</div></header><section class="hero"><div class="mascot"><i data-lucide="paw-print"></i><i data-lucide="scan-eye"></i></div><h1>SEEK. SOLVE. SURVIVE.</h1><p>The Great Campus Capybara Hunt</p><div class="pill">8 LISTED MISSIONS · ONE MISSING CAPYBARA</div></section><section class="panel" id="setup"><div class="eyebrow">Before the adventure</div><h2>Assemble your squad</h2><label for="team">Team name</label><input id="team" maxlength="40" placeholder="The Bubble Tea Bandits"><p class="muted">Teams of 1–5. Start at the Floating Theater. No running, no entering restricted spaces, and no interfering with other teams.</p><button class="btn" onclick="start()">Begin the hunt →</button></section><section id="game" class="hidden"><div class="panel"><div class="top"><strong id="teamname"></strong><span id="time" class="timer">00:00</span></div><p class="muted" id="count"></p><div class="progress"><div id="bar"></div></div><div id="steps" class="stepper"></div></div><section id="stage" class="panel"></section><div class="footer">Capybara Quest · Respect campus spaces · Seek. Solve. Survive.</div></section></main><div class="qr-overlay hidden" id="scanOverlay"><section class="qr-dialog" role="dialog" aria-modal="true"><div class="top"><h2>Scan checkpoint</h2><button class="admin-trigger" onclick="closeScanner()" aria-label="Close scanner"><i data-lucide="x"></i></button></div><div id="reader"></div><p class="qr-help" id="scanStatus">Allow camera access to scan the checkpoint QR code.</p><div class="backup-section"><label for="backupCode">Camera not working? Use your checkpoint backup code.</label><div class="backup-row"><input id="backupCode" autocomplete="off" autocapitalize="characters" placeholder="Enter backup code here" onkeydown="if(event.key==='Enter')verifyBackupCode()"><button class="btn alt" onclick="verifyBackupCode()">Verify</button></div><p class="qr-help" id="backupStatus" role="status"></p></div></section></div><div class="wrong-qr-popup hidden" id="wrongQrPopup" role="alert" aria-live="assertive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 7v6m0 4h.01"/></svg><strong>Wrong Mission QR Code!</strong><p>This code is intended for a different mission. Cheating and jumping missions is not allowed!</p></div><script src="/capybara-hunt/hunt.js" defer></script></body></html>
