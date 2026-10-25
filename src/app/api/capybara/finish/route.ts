@@ -6,8 +6,11 @@ export async function POST(req: NextRequest) {
   const auth = await userFromRequest(req);
   if ("error" in auth) return auth.error;
 
-  const { eventId, code } = await req.json().catch(() => ({}));
+  const { eventId, teamId, code } = await req.json().catch(() => ({}));
   if (eventId !== CAPYBARA_EVENT_ID) return NextResponse.json({ error: "Unknown event" }, { status: 400 });
+  if (typeof teamId !== "string" || !/^[0-9a-f-]{36}$/i.test(teamId)) {
+    return NextResponse.json({ error: "Unknown team" }, { status: 400 });
+  }
   if (tooManyAttempts(`finish:${auth.userId}`)) {
     return NextResponse.json({ error: "Too many attempts. Wait a minute." }, { status: 429 });
   }
@@ -19,7 +22,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Incorrect organizer verifier code." }, { status: 403 });
   }
 
-  const { data, error } = await auth.admin.rpc("capybara_finish", { p_event: eventId, p_uid: auth.userId });
+  const { data, error } = await auth.admin.rpc("capybara_finish", { p_event: eventId, p_team: teamId, p_uid: auth.userId });
   if (error) return NextResponse.json({ error: "Unable to verify completion" }, { status: 500 });
   if (data?.error) return NextResponse.json({ error: data.error }, { status: 409 });
   return NextResponse.json({ ok: true });
