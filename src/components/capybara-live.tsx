@@ -12,6 +12,41 @@ import {
 } from "@/lib/capybara-supabase";
 
 type GameProgress = { team: string; stage: number; started: number };
+type StoredTeam = { id: string; name: string };
+type NameStatus = { count: number; resume: { id: string; stage: number; started: number } | null };
+
+// The registration this device is currently playing as, so progress goes to the right row.
+const TEAM_KEY = "capybara-quest-team";
+
+const nameKey = (name: string) => name.trim().replace(/\s+/g, " ").toLowerCase();
+
+function readStoredTeam(): StoredTeam | null {
+  try {
+    const team = JSON.parse(localStorage.getItem(TEAM_KEY) || "null");
+    return team?.id && team?.name ? team : null;
+  } catch {
+    return null;
+  }
+}
+
+function writeStoredTeam(team: StoredTeam | null) {
+  try {
+    if (team) localStorage.setItem(TEAM_KEY, JSON.stringify(team));
+    else localStorage.removeItem(TEAM_KEY);
+  } catch {}
+}
+
+async function checkName(name: string): Promise<NameStatus> {
+  const { data, error } = await capybaraClient.rpc("capybara_check_name", { p_event: CAPYBARA_EVENT_ID, p_name: name });
+  if (error) throw new Error(`Could not check the team name (${error.message}).`);
+  return data as NameStatus;
+}
+
+async function registerTeam(name: string): Promise<{ id?: string; error?: string; full?: boolean }> {
+  const { data, error } = await capybaraClient.rpc("capybara_register", { p_event: CAPYBARA_EVENT_ID, p_name: name });
+  if (error) throw new Error(`Could not register the team (${error.message}).`);
+  return data;
+}
 
 const sortTeams = (teams: CapybaraTeam[]) =>
   [...teams].sort((a, b) => b.stage - a.stage || a.name.localeCompare(b.name));
@@ -21,8 +56,10 @@ export default function CapybaraLive() {
   const uid = useRef("");
   const eventStatus = useRef<CapybaraEvent["status"]>("live");
   const latest = useRef<GameProgress | null>(null);
+  const resolving = useRef<Promise<StoredTeam | null> | null>(null);
 
   const [ready, setReady] = useState(false);
+  const [myTeamId, setMyTeamId] = useState("");
   const [error, setError] = useState("");
   const [teams, setTeams] = useState<CapybaraTeam[]>([]);
   const [event, setEvent] = useState<CapybaraEvent>({
@@ -80,6 +117,7 @@ export default function CapybaraLive() {
       }
       if (!active) return;
       uid.current = userId;
+      setMyTeamId(readStoredTeam()?.id ?? "");
 
       await Promise.all([loadEvent(), loadTeams()]);
       if (!active) return;
@@ -104,24 +142,93 @@ export default function CapybaraLive() {
     };
   }, [loadEvent, loadTeams]);
 
-  const pushProgress = useCallback(async (progress: GameProgress) => {
-    if (!uid.current || eventStatus.current === "ended") return;
-    const { error: writeError } = await capybaraClient.from("capybara_teams").upsert(
-      {
-        id: uid.current,
-        event_id: CAPYBARA_EVENT_ID,
-        name: progress.team.slice(0, 80),
-        stage: Math.max(1, Math.min(8, Number(progress.stage) || 1)),
-        started: progress.started,
-        updated_at: new Date().toISOString(),
-      },
-      { onConflict: "id" },
-    );
-    if (writeError) {
-      console.error("Capybara progress sync failed", writeError);
-      setError(`Progress sync failed (${writeError.code ?? "error"}: ${writeError.message}). Your hunt continues on this device.`);
-    }
+  const selectTeam = useCallback((team: StoredTeam | null) => {
+    writeStoredTeam(team);
+    setMyTeamId(team?.id ?? "");
   }, []);
+
+  // The registration for the team the game is playing. Games saved before registrations existed
+  // pick up this device's own row for that name, or register one.
+  const teamFor = useCallback(
+    async (name: string): Promise<StoredTeam | null> => {
+      const stored = readStoredTeam();
+      if (stored && nameKey(stored.name) === nameKey(name)) return stored;
+      if (!resolving.current) {
+        resolving.current = (async () => {
+          const status = await checkName(name);
+          let team: StoredTeam | null = status.resume ? { id: status.resume.id, name } : null;
+          if (!team) {
+            const result = await registerTeam(name);
+            if (!result.id) throw new Error(result.error || "Could not register the team.");
+            team = { id: result.id, name };
+          }
+          selectTeam(team);
+          return team;
+        })().finally(() => {
+          resolving.current = null;
+        });
+      }
+      return resolving.current;
+    },
+    [selectTeam],
+  );
+
+  const pushProgress = useCallback(
+    async (progress: GameProgress) => {
+      if (!uid.current || eventStatus.current === "ended") return;
+      try {
+        const team = await teamFor(progress.team);
+        if (!team) return;
+        const { data, error: writeError } = await capybaraClient
+          .from("capybara_teams")
+          .update({
+            stage: Math.max(1, Math.min(8, Number(progress.stage) || 1)),
+            started: progress.started,
+            updated_at: new Date().toISOString(),
+          })
+          .eq("id", team.id)
+          .select("id");
+        if (writeError) throw new Error(`${writeError.code ?? "error"}: ${writeError.message}`);
+        // The row is gone (for example, removed by an organizer): register again on the next update.
+        if (!data?.length) selectTeam(null);
+      } catch (e) {
+        console.error("Capybara progress sync failed", e);
+        setError(`Progress sync failed (${e instanceof Error ? e.message : "error"}). Your hunt continues on this device.`);
+      }
+    },
+    [teamFor, selectTeam],
+  );
+
+  // A team name entered in the game: register it, or offer to resume this device's registration.
+  const handleRegister = useCallback(
+    async (mode: string, name: string) => {
+      if (!uid.current) throw new Error("The live event is not connected yet. Try again in a moment.");
+      if (eventStatus.current === "ended") throw new Error("The hunt has ended.");
+      const status = await checkName(name);
+
+      if (mode === "resume") {
+        if (!status.resume) throw new Error("This device has no team with that name to resume.");
+        selectTeam({ id: status.resume.id, name });
+        return { status: "registered", mode: "resume", stage: status.resume.stage, started: status.resume.started };
+      }
+      if (mode === "check") {
+        if (status.resume) return { status: "choose", stage: status.resume.stage, canFresh: status.count < 2 };
+        if (status.count >= 2) {
+          return {
+            status: "full",
+            message: "2 registrations already done with this name. Please register with a different name.",
+          };
+        }
+        if (status.count === 1) return { status: "taken" };
+      }
+
+      const result = await registerTeam(name);
+      if (!result.id) return { status: result.full ? "full" : "error", message: result.error };
+      selectTeam({ id: result.id, name });
+      return { status: "registered", mode: "fresh" };
+    },
+    [selectTeam],
+  );
 
   // Once signed in, send any progress the game already reported and ask it for the current state.
   useEffect(() => {
@@ -145,16 +252,27 @@ export default function CapybaraLive() {
         void pushProgress(progress);
       }
 
+      if (ev.data.kind === "register") {
+        const name = String(ev.data.name ?? "").trim().slice(0, 40);
+        try {
+          reply({ kind: "register-result", name, ...(await handleRegister(String(ev.data.mode), name)) });
+        } catch (e) {
+          reply({ kind: "register-result", name, status: "error", message: e instanceof Error ? e.message : "Could not register the team." });
+        }
+      }
+
       if (ev.data.kind === "finish-request") {
         setBusy(true);
         try {
           const { data } = await capybaraClient.auth.getSession();
           const token = data.session?.access_token;
           if (!token) throw new Error("The live event is not connected yet. Try again in a moment.");
+          const team = readStoredTeam();
+          if (!team) throw new Error("This team is not registered with the live event yet. Try again in a moment.");
           const res = await fetch("/api/capybara/finish", {
             method: "POST",
             headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-            body: JSON.stringify({ eventId: CAPYBARA_EVENT_ID, code: ev.data.code }),
+            body: JSON.stringify({ eventId: CAPYBARA_EVENT_ID, teamId: team.id, code: ev.data.code }),
           });
           const result = await res.json();
           if (!res.ok) throw new Error(result.error || "Finish rejected");
@@ -168,7 +286,7 @@ export default function CapybaraLive() {
     };
     window.addEventListener("message", listener);
     return () => window.removeEventListener("message", listener);
-  }, [pushProgress]);
+  }, [pushProgress, handleRegister]);
 
   async function reopen() {
     setBusy(true);
@@ -242,7 +360,7 @@ export default function CapybaraLive() {
                 >
                   <span className="min-w-0 break-words">
                     {index + 1}. {team.name}
-                    {team.id === uid.current ? " (you)" : ""}
+                    {team.id === myTeamId ? " (you)" : ""}
                   </span>
                   <b className="shrink-0 font-mono text-xs text-cyan-400">
                     {team.stage >= 9 ? "Finished" : `Mission ${String(team.stage).padStart(2, "0")}`}
