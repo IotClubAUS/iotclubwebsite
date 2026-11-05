@@ -39,7 +39,7 @@ export default function AboutPage() {
     <>
       {/* HERO: type over a triptych of photos */}
       <section className="mx-auto max-w-[1280px] px-5 pt-10 md:px-10 md:pt-14">
-        <h1 className="text-[clamp(48px,11vw,170px)] leading-[0.9] text-text">About the club</h1>
+        <h1 className="text-[clamp(41px,9.3vw,144px)] leading-[0.9] text-text">About the club</h1>
         <div className="mt-8 grid grid-cols-3 gap-2 md:mt-12 md:gap-5">
           {triptych.map((photo, index) => (
             <Reveal key={photo.src} delay={index * 0.06} y={32}>
@@ -60,7 +60,7 @@ export default function AboutPage() {
       {/* STATEMENT */}
       <section className="mx-auto max-w-[1280px] px-5 pt-28 md:px-10 md:pt-44">
         <Reveal>
-          <p className="max-w-[22ch] text-[clamp(30px,5vw,76px)] font-medium leading-[1.08] text-text sm:max-w-[28ch] md:max-w-[26ch]">
+          <p className="max-w-[22ch] text-[clamp(26px,4.2vw,65px)] font-medium leading-[1.08] text-text sm:max-w-[28ch] md:max-w-[26ch]">
             A student community for people who want to build things that sense, connect and act.
           </p>
         </Reveal>
@@ -77,7 +77,7 @@ export default function AboutPage() {
         <h2 id="groups" className="text-[clamp(17px,1.7vw,22px)] font-semibold normal-case tracking-normal text-muted">
           How the club is organised
         </h2>
-        <ul className="mt-8 flex flex-col font-display text-[clamp(32px,5.6vw,80px)] font-extrabold uppercase leading-[1.05] text-text">
+        <ul className="mt-8 flex flex-col font-display text-[clamp(27px,4.8vw,68px)] font-extrabold uppercase leading-[1.05] text-text">
           {roles.map((role, index) => (
             <li
               key={role}
@@ -104,7 +104,7 @@ export default function AboutPage() {
             <h2 id="history" className="text-[clamp(17px,1.7vw,22px)] font-semibold normal-case tracking-normal text-muted">
               Since launch
             </h2>
-            <p className="mt-3 font-display text-[clamp(82px,14.4vw,221px)] font-extrabold leading-[0.85] text-accent md:sticky md:top-10">
+            <p className="mt-3 font-display text-[clamp(70px,12.2vw,188px)] font-extrabold leading-[0.85] text-accent md:sticky md:top-10">
               2026
             </p>
           </div>
@@ -118,7 +118,7 @@ export default function AboutPage() {
                   </time>
                   <Link
                     href={`/news/${item.id}`}
-                    className="mt-2 block font-display text-[clamp(27px,3.7vw,54px)] font-extrabold uppercase leading-[0.98] text-text hover:text-accent"
+                    className="mt-2 block font-display text-[clamp(23px,3.1vw,46px)] font-extrabold uppercase leading-[0.98] text-text hover:text-accent"
                   >
                     {item.title.trim()}
                   </Link>

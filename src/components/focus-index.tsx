@@ -21,7 +21,7 @@ export default function FocusIndex({ areas }: { areas: FocusArea[] }) {
                 onClick={() => setSelected(index)}
                 onMouseEnter={() => setSelected(index)}
                 onFocus={() => setSelected(index)}
-                className={`block w-full text-left font-display text-[clamp(41px,8.1vw,116px)] font-extrabold uppercase leading-[0.95] transition-colors duration-150 ${
+                className={`block w-full text-left font-display text-[clamp(35px,6.9vw,99px)] font-extrabold uppercase leading-[0.95] transition-colors duration-150 ${
                   active ? "text-accent" : "text-muted/70 hover:text-text"
                 }`}
               >

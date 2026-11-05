@@ -76,10 +76,10 @@ export default function TeamPage() {
       {/* HERO: the member count at poster size beside a photo */}
       <section className="mx-auto grid max-w-[1280px] gap-8 px-5 pt-10 md:grid-cols-[7fr_5fr] md:items-end md:gap-12 md:px-10 md:pt-14">
         <div>
-          <h1 className="text-[clamp(48px,7.6vw,116px)] leading-[0.9] text-text">Team</h1>
+          <h1 className="text-[clamp(41px,6.5vw,99px)] leading-[0.9] text-text">Team</h1>
           <p
             aria-label={`${team.length} members`}
-            className="mt-6 font-display text-[clamp(119px,23.8vw,340px)] font-extrabold leading-[0.85] text-accent md:mt-8"
+            className="mt-6 font-display text-[clamp(101px,20.2vw,289px)] font-extrabold leading-[0.85] text-accent md:mt-8"
           >
             {team.length}
           </p>
@@ -158,7 +158,7 @@ export default function TeamPage() {
         {/* ADVISOR */}
         {advisors.length > 0 && activeRole === "All" && (
           <section aria-labelledby="advisors" className="mt-28 md:mt-40">
-            <h2 id="advisors" className="text-[clamp(37px,6vw,88px)] leading-[0.92] text-text">
+            <h2 id="advisors" className="text-[clamp(31px,5.1vw,75px)] leading-[0.92] text-text">
               Faculty advisor
             </h2>
             <ul className="mt-8 flex flex-col gap-8">

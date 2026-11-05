@@ -51,7 +51,7 @@ export default function AuthGate({ onLogin }: AuthGateProps) {
       </div>
 
       <div>
-        <h1 className="text-[clamp(48px,6.8vw,102px)] leading-[0.9] text-text">Committee sign in</h1>
+        <h1 className="text-[clamp(41px,5.8vw,87px)] leading-[0.9] text-text">Committee sign in</h1>
         <p className="mt-6 max-w-md text-[18px] leading-[1.5] text-muted">
           Sign in with your committee account to see tasks and points.
         </p>

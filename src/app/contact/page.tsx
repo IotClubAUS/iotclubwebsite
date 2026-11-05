@@ -42,14 +42,14 @@ export default function JoinPage() {
         />
 
         <div>
-          <h1 className="text-[clamp(54px,8.9vw,143px)] leading-[0.9] text-text">Join the club</h1>
+          <h1 className="text-[clamp(46px,7.6vw,122px)] leading-[0.9] text-text">Join the club</h1>
           <p className="mt-8 max-w-xl text-[clamp(19px,1.9vw,24px)] leading-[1.45] text-muted">
             A community of students building devices, autonomous systems and connected technology
             that solves real problems.
           </p>
 
           <div className="mt-10">
-            <p className="font-display text-[clamp(27px,3.1vw,44px)] font-extrabold uppercase leading-[0.95] text-text">
+            <p className="font-display text-[clamp(23px,2.6vw,37px)] font-extrabold uppercase leading-[0.95] text-text">
               {APPLICATIONS_OPEN ? "Applications are open" : "Applications are closed"}
             </p>
             <p className="mt-3 text-[17px] text-muted">
@@ -79,7 +79,7 @@ export default function JoinPage() {
         <dl className="mt-8 grid gap-x-16 gap-y-14 md:grid-cols-2">
           {reasons.map((reason, index) => (
             <Reveal key={reason.title} delay={(index % 2) * 0.06}>
-              <dt className="font-display text-[clamp(37px,5.1vw,75px)] font-extrabold uppercase leading-[0.92] text-text">
+              <dt className="font-display text-[clamp(31px,4.3vw,64px)] font-extrabold uppercase leading-[0.92] text-text">
                 {reason.title}
               </dt>
               <dd className="mt-4 max-w-md text-[19px] leading-[1.55] text-muted">{reason.desc}</dd>

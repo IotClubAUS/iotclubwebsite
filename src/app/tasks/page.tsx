@@ -1276,14 +1276,14 @@ export default function HomePage() {
 <main className="min-h-screen bg-bg text-text">
       {/* HERO: the next events from the club calendar, as large dates */}
       <section aria-labelledby="tasks-title" className="mx-auto max-w-[1600px] px-3 pb-12 pt-10 sm:px-6 lg:px-8 lg:pt-14">
-        <h1 id="tasks-title" className="text-[clamp(56px,11vw,168px)] leading-[0.9] text-text">
+        <h1 id="tasks-title" className="text-[clamp(48px,9.3vw,143px)] leading-[0.9] text-text">
           Calendar and tasks
         </h1>
         {upcomingEvents.length > 0 && (
           <ol className="mt-10 grid gap-8 md:grid-cols-3">
             {upcomingEvents.map((event) => (
               <li key={event.id}>
-                <p className="font-display text-[clamp(88px,13vw,200px)] font-extrabold leading-[0.85] text-ember">
+                <p className="font-display text-[clamp(75px,11vw,170px)] font-extrabold leading-[0.85] text-ember">
                   {Number(event.date.slice(8, 10))}
                 </p>
                 <p className="mt-2 text-[16px] text-muted">
@@ -1292,7 +1292,7 @@ export default function HomePage() {
                 <button
                   type="button"
                   onClick={() => setSelectedEvent(event)}
-                  className="mt-2 text-left font-display text-[clamp(28px,3vw,44px)] font-extrabold uppercase leading-[1] text-text hover:text-accent"
+                  className="mt-2 text-left font-display text-[clamp(24px,2.5vw,37px)] font-extrabold uppercase leading-[1] text-text hover:text-accent"
                 >
                   {event.title}
                 </button>
