@@ -49,9 +49,9 @@ export const team = [
     name: "Hala Salah",
     role: "Executive Assistant",
     category:"Executives",
-    bio: " ",
+    bio: "I’m a Design Management student who loves being creative, meeting new people, and trying new things. I enjoy being involved in university life, working with others, and turning ideas into something meaningful. I’m always excited to learn, take on new challenges, and make the most out of every experience.",
     skills: [" ", " ", " "],
-    img:"/team/default_0.webp",
+    img:"/team/HalaSalah.webp",
     // github: "#",
    // linkedin: "#",
   },
@@ -60,9 +60,9 @@ export const team = [
     name: "Rawan Tawfik",
     role: "Internal Coordinator",
     category:"Executives",
-    bio:"I’m a computer engineering student who loves learning about new things and working with everyone.",
+    bio:"I love meeting new people and working with others. As the IoT Club’s Internal Coordinator, I’m excited to help create a welcoming environment where everyone feels included, connected, and motivated to be involved!",
     skills: ["C++", "Problem-Solving", "Python"],
-    img:"/team/default_0.webp",
+    img:"/team/RawanTawfik.webp",
     // github: "#",
    // linkedin: "#",
   },
@@ -155,6 +155,16 @@ export const team = [
     img:"/team/MohammadAbuNahleh.webp",
     
   },
+  {
+    id: 37,
+    name: "Solaiman",
+    role: "Activities Team",
+    category:"Activities",
+    bio: " ",
+    skills: [" ", " ", " "],
+    img:"/team/default_0.webp",
+    
+  },
 
 
 
@@ -181,10 +191,12 @@ export const team = [
     name: "Yusuf Sabuwala",
     role: "Technical Team",
     category:"Technical",
-    bio: " ",
-    skills: [" ", " ", " "],
+    bio: "CS student at AUS building quantitative trading systems, RISC-V processors, and full-stack AI tools.",
+    skills: ["C++", "Python", "Full-Stack"],
     img:"/team/default_0.webp",
-    
+    github: "https://github.com/yusuf-bot",
+    linkedin: "https://www.linkedin.com/in/yusuf-sabuwala-49b930303/",
+
   },
   
   {
@@ -209,7 +221,7 @@ export const team = [
   },
  {
     id: 15,
-    name: " ",
+    name: "Shaik Safiya Tehaseen",
     role: "Technical Team",
     category:"Technical",
     bio: " ",
@@ -219,7 +231,17 @@ export const team = [
   },
    {
     id: 19,
-    name: " ",
+    name: "Rayyan Perwez",
+    role: "Technical Team",
+    category:"Technical",
+    bio: " ",
+    skills: [" ", " ", " "],
+    img:"/team/default_0.webp",
+    
+  },
+  {
+    id: 38,
+    name: "Layan Saoud",
     role: "Technical Team",
     category:"Technical",
     bio: " ",
@@ -284,13 +306,33 @@ export const team = [
   },
   {
     id: 25,
-    name: " ",
+    name: "Riya Bhojwani",
     role: "PR Team",
     category:"Public Relations",
-    bio: " ",
-    skills: [" ", " ", " "],
-    img:"/team/default_0.webp",
-    
+    bio: "Currently pursuing Chemical Engineering, with an interest in creativity and connecting with people. Always curious about new ideas and open to exploring different perspectives.",
+    skills: ["Creativity", "Time Management", "Communication"],
+    img:"/team/RiyaBhojwani.webp",
+
+  },
+  {
+    id: 35,
+    name: "Arwa Elsayed",
+    role: "PR Team",
+    category:"Public Relations",
+    bio: "I’m a Digital Construction Engineering student at AUS with an interest in media, public relations, and creative content. I’m always up for new experiences, meeting different people, and taking on opportunities that help me grow and try something different.",
+    skills: ["Public Relations", "Sponsor & Partnership Outreach", "Social Media Content Creation"],
+    img:"/team/ArwaElsayed.webp",
+
+  },
+  {
+    id: 36,
+    name: "Mariam Hilis",
+    role: "PR Team",
+    category:"Public Relations",
+    bio: "Hey I’m Mariam (aka the girl who’s always got coffee in her hand)! My major is Intelligent Systems and Mechatronics Engineering (don’t ask me why), and I’m looking forward to doing great things in the Internet of Things club (FOLLOW US IF U HAVENT ALREADY!)",
+    skills: ["Communication", "Proactive", "Organized"],
+    img:"/team/MariamHilis.webp",
+
   },
 
   
@@ -317,16 +359,6 @@ export const team = [
     
   },
   {
-    id: 28,
-    name: "Taha Kamal",
-    role: "Media Team",
-    category:"Media",
-    bio: " ",
-    skills: [" ", " ", " "],
-    img:"/team/default_0.webp",
-    
-  },
-  {
     id: 29,
     name: "Jana Raslan",
     role: "Media Team",
@@ -341,9 +373,9 @@ export const team = [
     name: "Zakwan Khan Mehdi",
     role: "Media Team",
     category:"Media",
-    bio: " ",
-    skills: [" ", " ", " "],
-    img:"/team/default_0.webp",
+    bio: "I love shawarma.",
+    skills: ["Editing", "Graphic Designing", "Detecting Shawarma"],
+    img:"/team/ZakwanKhanMehdi.webp",
     
   },
   {

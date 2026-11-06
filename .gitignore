@@ -2,5 +2,8 @@ node_modules/
 dist/
 .next/
 *.local
-.DS_Storedesign/shots/
+.DS_Store
+design/shots/
 SSHCHAT.md
+.env*
+!.env.example
