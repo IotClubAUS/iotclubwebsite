@@ -3,5 +3,7 @@ dist/
 .next/
 *.local
 .DS_Store
+design/shots/
+SSHCHAT.md
 .env*
 !.env.example
